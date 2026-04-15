@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как мы это делаем — Небесное бюро дизайна</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f7;
+            font-family: 'Inter', sans-serif;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .top-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 20px 0;
+            background: #f5f5f7;
+        }
+
+        .lang-switch {
+            display: flex;
+            background: #f0f0f2;
+            border-radius: 60px;
+            padding: 4px;
+            gap: 2px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-ru, .lang-en {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .lang-ru {
+            background: #111;
+            color: white;
+        }
+
+        .lang-en {
+            background: transparent;
+            color: #111;
+        }
+
+        .lang-ru:hover, .lang-en:hover {
+            opacity: 0.7;
+        }
+
+        .burger {
+            background: transparent;
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .burger span {
+            width: 24px;
+            height: 2.5px;
+            background: #111;
+            border-radius: 3px;
+        }
+
+        .burger:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .hero {
+            margin-bottom: 64px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+            z-index: 1100;
+            padding: 100px 28px 40px;
+            transition: right 0.3s ease;
+            border-left: 1px solid #eaeaf0;
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu a {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1e;
+            text-decoration: none;
+            padding: 14px 0;
+            border-bottom: 1px solid #efeff2;
+            transition: 0.2s;
+        }
+
+        .side-menu a:hover {
+            color: #4a117c;
+            padding-left: 8px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #2a2a2e;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .process-step {
+            background: white;
+            border-radius: 32px;
+            padding: 48px;
+            margin-bottom: 32px;
+            border: 1px solid #e8e8ec;
+            transition: 0.2s;
+        }
+
+        .process-step:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #c994e2;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 16px;
+        }
+
+        .step-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .step-desc {
+            font-size: 18px;
+            color: #2a2a2e;
+            line-height: 1.6;
+        }
+
+        .coding-bottom {
+            margin: 48px 0 48px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+
+        .coding-bottom img {
+            width: 100%;
+            display: block;
+        }
+
+        .button {
+            display: inline-flex;
+            background: linear-gradient(135deg, #4a117c, #8b3cc7, #c994e2);
+            color: white;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 44px;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(74,17,124,0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-wrapper {
+            text-align: center;
+            margin-top: 24px;
+            margin-bottom: 32px;
+        }
+
+        .contacts {
+            background: white;
+            border-radius: 32px;
+            padding: 48px;
+            margin: 48px 0 32px;
+            text-align: center;
+            border: 1px solid #e8e8ec;
+        }
+
+        .contacts h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .contacts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #2a2a2e;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #4a117c;
+        }
+
+        .contact-item:hover {
+            color: #4a117c;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid #e0e0e6;
+            color: #777;
+            font-size: 14px;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 760px) {
+            .page-title { font-size: 32px; }
+            .process-step { padding: 28px 24px; }
+            .step-title { font-size: 22px; }
+            .step-desc { font-size: 16px; }
+            .contacts { padding: 32px 24px; }
+            .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
+            .burger { width: 42px; height: 42px; }
+            .top-panel { padding: 12px 0 16px 0; }
+            .contacts-grid { gap: 20px; flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-panel">
+        <div class="lang-switch">
+            <a href="how.html" class="lang-ru">Ru</a>
+            <a href="how-en.html" class="lang-en">En</a>
+        </div>
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <img class="hero-image" src="images/main.png" alt="Как мы работаем — Небесное бюро дизайна">
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <a href="index.html">Главная</a>
+        <a href="how.html">Как мы это делаем</a>
+        <a href="services.html">Услуги и цены</a>
+        <a href="#contacts">Контакты</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <h1 class="page-title">Как мы создаём ваш сайт</h1>
+
+    <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-title">🎙️ Голос → Текст</div>
+        <div class="step-desc">
+            Вам не нужно писать длинные технические задания или разбираться в дизайне. Просто отправляйте голосовые сообщения в Telegram — говорите так, как будто объясняете другу. Мы расшифруем каждое слово, выделим главное и превратим в чёткий бриф. Никакой бюрократии, только ваши мысли и наше внимание к деталям.
+        </div>
+    </div>
+
+    <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-title">📄 Текст → Смысл</div>
+        <div class="step-desc">
+            Мы не копирайтеры, но мы умеем слышать. Из ваших слов мы достаём истинную ценность вашего дела. Формулируем послание, которое попадает прямо в сердце вашего клиента. Убираем воду, оставляем суть. Ваш голос становится ясным и убедительным.
+        </div>
+    </div>
+
+    <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-title">🎨 Смысл → Стиль (шрифт, цвет, фото, видео)</div>
+        <div class="step-desc">
+            По нашей уникальной методике мы подбираем шрифты, которые передают характер вашего бренда. Цветовую палитру, которая вызывает доверие. Фотографии и видео, которые показывают вас настоящего. Без хаоса — только гармония, где каждый элемент работает на вашу ценность.
+        </div>
+    </div>
+
+    <div class="process-step">
+        <div class="step-number">04</div>
+        <div class="step-title">🚀 Стиль → Готовый сайт</div>
+        <div class="step-desc">
+            За несколько дней мы собираем всё в «небесный код» — чистый, быстрый, адаптивный под любые устройства. Вы получаете работающий сайт, который полностью отражает вашу ценность.
+        </div>
+    </div>
+
+    <div class="coding-bottom">
+        <img src="images/coding.jpg" alt="Процесс разработки — небесный код">
+    </div>
+
+    <div class="button-wrapper">
+        <a href="https://t.me/Medragonwords" class="button" target="_blank">Начать проект →</a>
+    </div>
+
+    <div class="contacts" id="contacts">
+        <h3>Свяжитесь с нами</h3>
+        <div class="contacts-grid">
+            <a href="https://wa.me/79217900603" class="contact-item" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>+7 921 790-06-03</span>
+            </a>
+            <a href="https://linkedin.com/in/drbakharev" class="contact-item" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+                <span>in/drbakharev</span>
+            </a>
+            <a href="mailto:konstantlab@gmail.com" class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>konstantlab@gmail.com</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        Небесное бюро дизайна — слышим вас, создаём небесный код
+    </footer>
+</div>
+
+<script>
+    const burger = document.getElementById('burgerBtn');
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu() {
+        menu.classList.add('open');
+        overlay.classList.add('show');
+    }
+
+    function closeMenuFunc() {
+        menu.classList.remove('open');
+        overlay.classList.remove('show');
+    }
+
+    burger.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+    overlay.addEventListener('click', closeMenuFunc);
+
+    document.querySelectorAll('a[href="#contacts"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contacts').scrollIntoView({
+                behavior: 'smooth'
+            });
+            closeMenuFunc();
+        });
+    });
+</script>
+</body>
+</html>
