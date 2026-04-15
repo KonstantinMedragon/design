@@ -26,35 +26,26 @@
             padding: 0 24px;
         }
 
-        .hero {
-            position: relative;
-            margin-top: 24px;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-        }
-
-        .hero-image {
-            width: 100%;
-            display: block;
-        }
-
-        /* Кнопка перевода Ru/En — овал, поднята выше */
-        .lang-switch {
-            position: absolute;
-            top: 16px;
-            left: 16px;
+        .top-panel {
             display: flex;
-            gap: 2px;
-            background: transparent;
-            padding: 0;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 20px 0;
+            background: #f5f5f7;
+        }
+
+        .lang-switch {
+            display: flex;
+            background: #f0f0f2;
             border-radius: 60px;
-            z-index: 20;
+            padding: 4px;
+            gap: 2px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .lang-ru, .lang-en {
-            padding: 8px 18px;
-            border-radius: 40px;
+            padding: 8px 20px;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
@@ -62,29 +53,21 @@
             letter-spacing: 0.3px;
         }
 
-        /* Активный язык (Ru на русской странице) — тёмный фон, белый шрифт */
         .lang-ru {
             background: #111;
             color: white;
-            border: none;
         }
 
-        /* Неактивный язык (En на русской странице) — прозрачный фон, чёрный шрифт, тонкая рамка */
         .lang-en {
             background: transparent;
             color: #111;
-            border: 1px solid rgba(0, 0, 0, 0.25);
         }
 
         .lang-ru:hover, .lang-en:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
-        /* Бургер (три чёрные линии) — поднят выше, без обводки */
         .burger {
-            position: absolute;
-            top: 16px;
-            right: 16px;
             background: transparent;
             width: 48px;
             height: 48px;
@@ -95,7 +78,6 @@
             align-items: center;
             gap: 5px;
             cursor: pointer;
-            z-index: 20;
             transition: 0.2s;
         }
 
@@ -110,7 +92,18 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        /* Боковое меню (выезжает справа) */
+        .hero {
+            margin-bottom: 64px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+        }
+
         .side-menu {
             position: fixed;
             top: 0;
@@ -173,7 +166,7 @@
             background: white;
             border-radius: 32px;
             padding: 56px 48px;
-            margin: 64px 0 48px;
+            margin: 0 0 48px 0;
             text-align: center;
             border: 1px solid #e8e8ec;
         }
@@ -267,6 +260,50 @@
             margin-bottom: 32px;
         }
 
+        /* Блок контактов */
+        .contacts {
+            background: white;
+            border-radius: 32px;
+            padding: 48px;
+            margin: 48px 0 32px;
+            text-align: center;
+            border: 1px solid #e8e8ec;
+        }
+
+        .contacts h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .contacts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #2a2a2e;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #4a117c;
+        }
+
+        .contact-item:hover {
+            color: #4a117c;
+            transform: translateY(-2px);
+        }
+
         footer {
             text-align: center;
             padding: 32px;
@@ -279,26 +316,22 @@
         @media (max-width: 760px) {
             .studio-name { font-size: 36px; }
             .heavenly-code { font-size: 24px; }
-            .about-section, .soul-code { padding: 32px 24px; }
+            .about-section, .soul-code, .contacts { padding: 32px 24px; }
             .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
-            .burger { width: 42px; height: 42px; top: 12px; right: 12px; }
-            .lang-switch { top: 12px; left: 12px; }
+            .burger { width: 42px; height: 42px; }
+            .top-panel { padding: 12px 0 16px 0; }
+            .contacts-grid { gap: 20px; flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="hero">
-        <img class="hero-image" src="images/main.png" alt="Небесное бюро дизайна">
-        
-        <!-- Кнопка перевода: Ru активный (тёмный), En неактивный (прозрачный) -->
+    <div class="top-panel">
         <div class="lang-switch">
             <a href="index.html" class="lang-ru">Ru</a>
             <a href="index-en.html" class="lang-en">En</a>
         </div>
-        
-        <!-- Бургер (три чёрные линии) -->
         <div class="burger" id="burgerBtn">
             <span></span>
             <span></span>
@@ -306,12 +339,16 @@
         </div>
     </div>
 
+    <div class="hero">
+        <img class="hero-image" src="images/main.png" alt="Небесное бюро дизайна">
+    </div>
+
     <div class="side-menu" id="sideMenu">
         <div class="close-menu" id="closeMenu">&times;</div>
         <a href="index.html">Главная</a>
         <a href="how.html">Как мы это делаем</a>
         <a href="services.html">Услуги и цены</a>
-        <a href="https://t.me/Medragonwords" target="_blank">Telegram</a>
+        <a href="#contacts">Контакты</a>
     </div>
     <div class="overlay" id="overlay"></div>
 
@@ -335,6 +372,25 @@
 
     <div class="button-wrapper">
         <a href="https://t.me/Medragonwords" class="button" target="_blank">Начать проект</a>
+    </div>
+
+    <!-- Блок контактов -->
+    <div class="contacts" id="contacts">
+        <h3>Свяжитесь с нами</h3>
+        <div class="contacts-grid">
+            <a href="https://wa.me/79217900603" class="contact-item" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>+7 921 790-06-03</span>
+            </a>
+            <a href="https://linkedin.com/in/drbakharev" class="contact-item" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+                <span>in/drbakharev</span>
+            </a>
+            <a href="mailto:konstantlab@gmail.com" class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>konstantlab@gmail.com</span>
+            </a>
+        </div>
     </div>
 
     <footer>
@@ -361,6 +417,17 @@
     burger.addEventListener('click', openMenu);
     closeMenu.addEventListener('click', closeMenuFunc);
     overlay.addEventListener('click', closeMenuFunc);
+
+    // Плавный скролл к контактам
+    document.querySelectorAll('a[href="#contacts"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contacts').scrollIntoView({
+                behavior: 'smooth'
+            });
+            closeMenuFunc();
+        });
+    });
 </script>
 </body>
 </html>
