@@ -28,7 +28,7 @@
 
         .hero {
             position: relative;
-            margin-top: 32px;
+            margin-top: 24px;
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 8px 24px rgba(0,0,0,0.05);
@@ -39,58 +39,61 @@
             display: block;
         }
 
+        /* Кнопка перевода Ru/En — овал, поднята выше */
         .lang-switch {
             position: absolute;
-            top: 24px;
-            left: 24px;
+            top: 16px;
+            left: 16px;
             display: flex;
-            gap: 4px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            padding: 6px;
+            gap: 2px;
+            background: transparent;
+            padding: 0;
             border-radius: 60px;
             z-index: 20;
         }
 
         .lang-ru, .lang-en {
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
             font-size: 14px;
             text-decoration: none;
             transition: 0.2s;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
+        /* Активный язык (Ru на русской странице) — тёмный фон, белый шрифт */
         .lang-ru {
             background: #111;
             color: white;
+            border: none;
         }
 
+        /* Неактивный язык (En на русской странице) — прозрачный фон, чёрный шрифт, тонкая рамка */
         .lang-en {
-            background: white;
+            background: transparent;
             color: #111;
+            border: 1px solid rgba(0, 0, 0, 0.25);
         }
 
         .lang-ru:hover, .lang-en:hover {
-            opacity: 0.85;
-            transform: scale(0.97);
+            opacity: 0.8;
         }
 
+        /* Бургер (три чёрные линии) — поднят выше, без обводки */
         .burger {
             position: absolute;
-            top: 24px;
-            right: 24px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            width: 52px;
-            height: 52px;
+            top: 16px;
+            right: 16px;
+            background: transparent;
+            width: 48px;
+            height: 48px;
             border-radius: 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
             z-index: 20;
             transition: 0.2s;
@@ -98,15 +101,16 @@
 
         .burger span {
             width: 24px;
-            height: 2px;
-            background: white;
-            border-radius: 2px;
+            height: 2.5px;
+            background: #111;
+            border-radius: 3px;
         }
 
         .burger:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.05);
         }
 
+        /* Боковое меню (выезжает справа) */
         .side-menu {
             position: fixed;
             top: 0;
@@ -114,7 +118,7 @@
             width: 300px;
             height: 100%;
             background: white;
-            box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+            box-shadow: -4px 0 24px rgba(0,0,0,0.1);
             z-index: 1100;
             padding: 100px 28px 40px;
             transition: right 0.3s ease;
@@ -277,7 +281,8 @@
             .heavenly-code { font-size: 24px; }
             .about-section, .soul-code { padding: 32px 24px; }
             .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
-            .burger { width: 44px; height: 44px; }
+            .burger { width: 42px; height: 42px; top: 12px; right: 12px; }
+            .lang-switch { top: 12px; left: 12px; }
         }
     </style>
 </head>
@@ -287,11 +292,13 @@
     <div class="hero">
         <img class="hero-image" src="images/main.png" alt="Небесное бюро дизайна">
         
+        <!-- Кнопка перевода: Ru активный (тёмный), En неактивный (прозрачный) -->
         <div class="lang-switch">
             <a href="index.html" class="lang-ru">Ru</a>
             <a href="index-en.html" class="lang-en">En</a>
         </div>
         
+        <!-- Бургер (три чёрные линии) -->
         <div class="burger" id="burgerBtn">
             <span></span>
             <span></span>
@@ -322,7 +329,6 @@
         <p>Мы не просто пишем программы. Мы создаём «небесный код» — чистый, лёгкий и быстрый. Каждая строка рождается из уважения к вашей ценности. Никакого перегруза, только то, что помогает миру увидеть вас настоящего.</p>
     </div>
 
-    <!-- Картинка coding.jpg внизу -->
     <div class="coding-bottom">
         <img src="images/coding.jpg" alt="Небесный код — разработка сайтов">
     </div>
