@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Небесное бюро дизайна — Главная</title>
+    <link rel="alternate" hreflang="ru" href="https://skycode.codes/" />
+<link rel="alternate" hreflang="en" href="https://skycode.codes/index-en.html" />
+<link rel="alternate" hreflang="x-default" href="https://skycode.codes/" />
+    <script>
+(function() {
+    var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var isEnglish = userLang.startsWith('en');
+    var isEnglishPage = window.location.pathname === '/index-en.html';
+    var isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    
+    // Проверяем, что это не бот Google (простейший вариант)
+    var isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') > -1;
+    
+    if (!isGoogleBot && !isEnglishPage && isRoot && isEnglish) {
+        window.location.href = '/index-en.html';
+    }
+})();
+</script>
         <!-- SEO мета-теги -->
     <meta name="description" content="Небесное бюро дизайна — создание сайтов под ключ: лендинги, многостраничники, интернет-магазины, платформы для курсов. Небесный код для вашего бизнеса.">
     <meta name="keywords" content="создание сайтов под ключ, разработка интернет-магазинов, сайт для онлайн-курсов, лендинг для бизнеса, многостраничный сайт, веб-дизайн для малого бизнеса">
