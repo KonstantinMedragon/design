@@ -5,43 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Небесное бюро дизайна — Главная</title>
     <link rel="alternate" hreflang="ru" href="https://skycode.codes/" />
-<link rel="alternate" hreflang="en" href="https://skycode.codes/index-en.html" />
-<link rel="alternate" hreflang="x-default" href="https://skycode.codes/" />
+    <link rel="alternate" hreflang="en" href="https://skycode.codes/index-en.html" />
+    <link rel="alternate" hreflang="x-default" href="https://skycode.codes/" />
+    
     <script>
-(function() {
-    var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    var isEnglish = userLang.startsWith('en');
-    var isEnglishPage = window.location.pathname === '/index-en.html';
-    var isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    (function() {
+        // Удаляем параметр noredirect=1 из URL после загрузки
+        if (window.location.search.indexOf('noredirect=1') !== -1) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        // Редиректим всех, у кого язык НЕ русский, украинский, белорусский
+        var isRussian = userLang.startsWith('ru') || userLang.startsWith('uk') || userLang.startsWith('be');
+        var isEnglishPage = window.location.pathname === '/index-en.html';
+        var isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
+        var isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') > -1;
+        var hasNoRedirectParam = window.location.search.indexOf('noredirect=1') === -1;
+        
+        if (!isGoogleBot && !isEnglishPage && isRoot && !isRussian && hasNoRedirectParam) {
+            window.location.href = '/index-en.html?noredirect=1';
+        }
+    })();
+    </script>
     
-    // Проверяем, что это не бот Google (простейший вариант)
-    var isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') > -1;
-    
-    if (!isGoogleBot && !isEnglishPage && isRoot && isEnglish) {
-        window.location.href = '/index-en.html';
-    }
-})();
-</script>
-        <!-- SEO мета-теги -->
+    <!-- SEO мета-теги -->
     <meta name="description" content="Небесное бюро дизайна — создание сайтов под ключ: лендинги, многостраничники, интернет-магазины, платформы для курсов. Небесный код для вашего бизнеса.">
     <meta name="keywords" content="создание сайтов под ключ, разработка интернет-магазинов, сайт для онлайн-курсов, лендинг для бизнеса, многостраничный сайт, веб-дизайн для малого бизнеса">
     <meta name="author" content="Небесное бюро дизайна">
     <meta name="robots" content="index, follow">
-        <meta name="google-site-verification" content="i_3i6IIvHfKkTZEbAE9Z92KYeKfCO2GsBr6to_qVb6g" />
+    <meta name="google-site-verification" content="i_3i6IIvHfKkTZEbAE9Z92KYeKfCO2GsBr6to_qVb6g" />
+    
     <!-- Open Graph / Facebook / LinkedIn / Telegram / WhatsApp -->
-<meta property="og:title" content="Небесное бюро дизайна | Сайты для вашей ценности">
-<meta property="og:description" content="Небесный код для вашего сайта. Создаём сайты для всех, у кого есть что сказать миру.">
-<meta property="og:image" content="https://skycode.codes/images/main.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://skycode.codes">
-<meta property="og:type" content="website">
+    <meta property="og:title" content="Небесное бюро дизайна | Сайты для вашей ценности">
+    <meta property="og:description" content="Небесный код для вашего сайта. Создаём сайты для всех, у кого есть что сказать миру.">
+    <meta property="og:image" content="https://skycode.codes/images/main.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://skycode.codes">
+    <meta property="og:type" content="website">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Небесное бюро дизайна">
-<meta name="twitter:description" content="Небесный код для вашего сайта.">
-<meta name="twitter:image" content="https://skycode.codes/images/main.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Небесное бюро дизайна">
+    <meta name="twitter:description" content="Небесный код для вашего сайта.">
+    <meta name="twitter:image" content="https://skycode.codes/images/main.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -298,7 +307,6 @@
             margin-bottom: 32px;
         }
 
-        /* Блок контактов */
         .contacts {
             background: white;
             border-radius: 32px;
@@ -412,7 +420,6 @@
         <a href="https://t.me/Medragonwords" class="button" target="_blank">Начать проект</a>
     </div>
 
-    <!-- Блок контактов -->
     <div class="contacts" id="contacts">
         <h3>Свяжитесь с нами</h3>
         <div class="contacts-grid">
@@ -456,7 +463,6 @@
     closeMenu.addEventListener('click', closeMenuFunc);
     overlay.addEventListener('click', closeMenuFunc);
 
-    // Плавный скролл к контактам
     document.querySelectorAll('a[href="#contacts"]').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
