@@ -10,33 +10,31 @@
     
     <script>
     (function() {
-        // Удаляем параметр noredirect=1 из URL после загрузки
-        if (window.location.search.indexOf('noredirect=1') !== -1) {
+        var urlParams = new URLSearchParams(window.location.search);
+        var noRedirect = urlParams.has('noredirect');
+        
+        if (noRedirect) {
             window.history.replaceState({}, document.title, window.location.pathname);
-        }
-        
-        var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-        // Редиректим всех, у кого язык НЕ русский, украинский, белорусский
-        var isRussian = userLang.startsWith('ru') || userLang.startsWith('uk') || userLang.startsWith('be');
-        var isEnglishPage = window.location.pathname === '/index-en.html';
-        var isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
-        var isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') > -1;
-        var hasNoRedirectParam = window.location.search.indexOf('noredirect=1') === -1;
-        
-        if (!isGoogleBot && !isEnglishPage && isRoot && !isRussian && hasNoRedirectParam) {
-            window.location.href = '/index-en.html?noredirect=1';
+        } else {
+            var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            var isRussian = userLang.startsWith('ru') || userLang.startsWith('uk') || userLang.startsWith('be');
+            var isEnglishPage = window.location.pathname === '/index-en.html';
+            var isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
+            var isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') > -1;
+            
+            if (!isGoogleBot && !isEnglishPage && isRoot && !isRussian) {
+                window.location.href = '/index-en.html';
+            }
         }
     })();
     </script>
     
-    <!-- SEO мета-теги -->
     <meta name="description" content="Небесное бюро дизайна — создание сайтов под ключ: лендинги, многостраничники, интернет-магазины, платформы для курсов. Небесный код для вашего бизнеса.">
     <meta name="keywords" content="создание сайтов под ключ, разработка интернет-магазинов, сайт для онлайн-курсов, лендинг для бизнеса, многостраничный сайт, веб-дизайн для малого бизнеса">
     <meta name="author" content="Небесное бюро дизайна">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="i_3i6IIvHfKkTZEbAE9Z92KYeKfCO2GsBr6to_qVb6g" />
     
-    <!-- Open Graph / Facebook / LinkedIn / Telegram / WhatsApp -->
     <meta property="og:title" content="Небесное бюро дизайна | Сайты для вашей ценности">
     <meta property="og:description" content="Небесный код для вашего сайта. Создаём сайты для всех, у кого есть что сказать миру.">
     <meta property="og:image" content="https://skycode.codes/images/main.png">
@@ -45,7 +43,6 @@
     <meta property="og:url" content="https://skycode.codes">
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Небесное бюро дизайна">
     <meta name="twitter:description" content="Небесный код для вашего сайта.">
@@ -75,43 +72,10 @@
 
         .top-panel {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             padding: 16px 0 20px 0;
             background: #f5f5f7;
-        }
-
-        .lang-switch {
-            display: flex;
-            background: #f0f0f2;
-            border-radius: 60px;
-            padding: 4px;
-            gap: 2px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .lang-ru, .lang-en {
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            transition: 0.2s;
-            letter-spacing: 0.3px;
-        }
-
-        .lang-ru {
-            background: #111;
-            color: white;
-        }
-
-        .lang-en {
-            background: transparent;
-            color: #111;
-        }
-
-        .lang-ru:hover, .lang-en:hover {
-            opacity: 0.7;
         }
 
         .burger {
@@ -363,7 +327,6 @@
             .studio-name { font-size: 36px; }
             .heavenly-code { font-size: 24px; }
             .about-section, .soul-code, .contacts { padding: 32px 24px; }
-            .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
             .burger { width: 42px; height: 42px; }
             .top-panel { padding: 12px 0 16px 0; }
             .contacts-grid { gap: 20px; flex-direction: column; align-items: center; }
@@ -373,14 +336,15 @@
 <body>
 
 <div class="container">
-   <div class="top-panel" style="display: flex; justify-content: flex-end; align-items: center; padding: 16px 0 20px 0; background: #f5f5f7;">
-    <div class="burger" id="burgerBtn">
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="top-panel">
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-</div>
- <div class="hero">
+
+    <div class="hero">
         <img class="hero-image" src="images/main.png" alt="Небесное бюро дизайна">
     </div>
 
