@@ -27,7 +27,6 @@
             cursor: pointer;
         }
         
-        /* Заголовок по центру сверху */
         .header-title {
             position: absolute;
             top: 24px;
@@ -35,7 +34,7 @@
             right: 0;
             text-align: center;
             z-index: 10;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 28px;
             font-weight: 700;
             color: #111;
@@ -118,28 +117,28 @@
             { name: 'Samui Brew', url: 'https://samuibrew.tilda.ws', img: 'images/samuibrew.png' }
         ];
         
-        // Функция обновления параметров цилиндра при ресайзе
         function updateCylinder() {
             const width = window.innerWidth;
             const isMobile = width < 768;
             
-            // Адаптивные параметры
-            let radius, planeWidth, planeHeight, cameraDistance, cameraY;
+            // Радиус и размеры карточек НЕ МЕНЯЕМ, только поднимаем цилиндр
+            let radius, planeWidth, planeHeight, cameraDistance, cameraY, cylinderY;
             if (isMobile) {
-                radius = 2.4;
-                planeWidth = 1.1;
-                planeHeight = 2.2;
-                cameraDistance = 5.0;
-                cameraY = 1.2;
+                radius = 1.42;
+                planeWidth = 0.68;
+                planeHeight = 1.37;
+                cameraDistance = 4.0;
+                cameraY = 1.82;        // было 1.65 → +10%
+                cylinderY = 0.143;      // было 0.13 → +10%
             } else {
-                radius = 3.8;
-                planeWidth = 1.6;
-                planeHeight = 3.2;
-                cameraDistance = 8.0;
-                cameraY = 1.5;
+                radius = 2.28;
+                planeWidth = 1.0;
+                planeHeight = 2.0;
+                cameraDistance = 6.1;
+                cameraY = 2.18;         // было 1.98 → +10%
+                cylinderY = 0.198;       // было 0.18 → +10%
             }
             
-            // Обновляем позиции и размеры всех плоскостей
             const count = projects.length;
             const angleStep = (Math.PI * 2) / count;
             
@@ -147,27 +146,25 @@
                 const angle = idx * angleStep;
                 const x = Math.sin(angle) * radius;
                 const z = Math.cos(angle) * radius;
-                plane.position.set(x, 0, z);
-                plane.rotation.y = angle;
-                plane.rotateY(Math.PI); // разворот наружу
+                plane.position.set(x, cylinderY, z);
                 
-                // Обновляем геометрию
+                // Наружу через кватернион
+                const direction = new THREE.Vector3(x, 0, z).normalize();
+                plane.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
+                
+                // Обновляем геометрию (размеры не меняем)
                 const oldGeo = plane.geometry;
                 const newGeo = new THREE.PlaneGeometry(planeWidth, planeHeight);
                 plane.geometry = newGeo;
                 if (oldGeo) oldGeo.dispose();
             });
             
-            // Обновляем камеру
             camera.position.set(0, cameraY, cameraDistance);
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             
-            // Обновляем рендерер
             renderer.setSize(window.innerWidth, window.innerHeight);
-            
-            // Обновляем controls
-            controls.target.set(0, 0, 0);
+            controls.target.set(0, cylinderY, 0);
             controls.update();
         }
         
@@ -175,19 +172,21 @@
             const width = window.innerWidth;
             const isMobile = width < 768;
             
-            let radius, planeWidth, planeHeight, cameraDistance, cameraY;
+            let radius, planeWidth, planeHeight, cameraDistance, cameraY, cylinderY;
             if (isMobile) {
-                radius = 2.4;
-                planeWidth = 1.1;
-                planeHeight = 2.2;
-                cameraDistance = 5.0;
-                cameraY = 1.2;
+                radius = 1.42;
+                planeWidth = 0.68;
+                planeHeight = 1.37;
+                cameraDistance = 4.0;
+                cameraY = 1.82;
+                cylinderY = 0.143;
             } else {
-                radius = 3.8;
-                planeWidth = 1.6;
-                planeHeight = 3.2;
-                cameraDistance = 8.0;
-                cameraY = 1.5;
+                radius = 2.28;
+                planeWidth = 1.0;
+                planeHeight = 2.0;
+                cameraDistance = 6.1;
+                cameraY = 2.18;
+                cylinderY = 0.198;
             }
             
             scene = new THREE.Scene();
@@ -195,7 +194,7 @@
             
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.set(0, cameraY, cameraDistance);
-            camera.lookAt(0, 0, 0);
+            camera.lookAt(0, cylinderY, 0);
             
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -212,7 +211,6 @@
             backLight.position.set(-1, 1, -1);
             scene.add(backLight);
             
-            // Создаём цилиндр с картинками
             const count = projects.length;
             const angleStep = (Math.PI * 2) / count;
             cylinderGroup = new THREE.Group();
@@ -238,9 +236,11 @@
                     material
                 );
                 
-                plane.position.set(x, 0, z);
-                plane.rotation.y = angle;
-                plane.rotateY(Math.PI); // разворот наружу
+                plane.position.set(x, cylinderY, z);
+                
+                // Поворот наружу через кватернион
+                const direction = new THREE.Vector3(x, 0, z).normalize();
+                plane.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
                 
                 plane.userData = { url: project.url, name: project.name };
                 clickableObjects.push(plane);
@@ -249,18 +249,16 @@
             
             scene.add(cylinderGroup);
             
-            // Управление
             controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
-            controls.autoRotate = true;
+            controls.autoRotate = !isMobile;
             controls.autoRotateSpeed = 0.8;
             controls.enableZoom = true;
             controls.enablePan = false;
             controls.zoomSpeed = 0.8;
-            controls.target.set(0, 0, 0);
+            controls.target.set(0, cylinderY, 0);
             
-            // Raycaster для кликов
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
             
@@ -282,7 +280,6 @@
             
             window.addEventListener('click', onClick, false);
             
-            // Анимация
             function animate() {
                 requestAnimationFrame(animate);
                 controls.update();
@@ -290,7 +287,6 @@
             }
             animate();
             
-            // Подписываемся на ресайз с обновлением цилиндра
             window.addEventListener('resize', () => {
                 updateCylinder();
             });
