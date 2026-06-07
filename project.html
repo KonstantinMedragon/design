@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Галерея проектов — Небесное бюро дизайна</title>
-    <link rel="canonical" href="https://skycode.codes/project.html" />
-    <meta name="description" content="Портфолио проектов Небесного бюро дизайна.">
+    <title>Портфолио — Небесное бюро дизайна</title>
+    
+    <!-- SEO мета-теги -->
+    <meta name="description" content="Портфолио веб-дизайна и разработки сайтов: Bauco, Bread, CV Bakharev, Medragon, Pilates, Samui Brew. Создание лендингов, многостраничников, интернет-магазинов.">
+    <meta name="keywords" content="портфолио веб-дизайн, создание сайтов, разработка лендингов, интернет-магазины, сайт для курсов, небесное бюро дизайна, skycode">
+    <meta name="author" content="Небесное бюро дизайна">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Галерея проектов — Небесное бюро дизайна">
-    <meta property="og:description" content="Вращающийся цилиндр с нашими работами. Нажмите на любой проект, чтобы перейти на сайт.">
-    <meta property="og:image" content="https://skycode.codes/images/bauco.png">
+    <link rel="canonical" href="https://skycode.codes/project.html" />
+    
+    <!-- Open Graph / Facebook / LinkedIn / Telegram / WhatsApp -->
+    <meta property="og:title" content="Портфолио — Небесное бюро дизайна">
+    <meta property="og:description" content="Вращающийся цилиндр с нашими работами. Сайты для Bauco, Bread, Medragon, Pilates и других проектов. Нажмите на любой проект, чтобы перейти на сайт.">
+    <meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://skycode.codes/project.html">
     <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Портфолио — Небесное бюро дизайна">
+    <meta name="twitter:description" content="Вращающийся цилиндр с нашими работами. Нажмите на любой проект, чтобы перейти на сайт.">
+    <meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -109,7 +123,6 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        /* Центральный заголовок между кнопкой и бургером */
         .header-title {
             font-family: 'Playfair Display', serif;
             font-size: 24px;
@@ -276,6 +289,17 @@
             { name: 'Samui Brew', url: 'https://samuibrew.tilda.ws', img: 'images/samuibrew.png' }
         ];
         
+        let autoRotateTimeout = null;
+        
+        function forceAutoRotate() {
+            if (controls) {
+                controls.autoRotate = false;
+                setTimeout(() => {
+                    controls.autoRotate = true;
+                }, 50);
+            }
+        }
+        
         function updateCylinder() {
             const isMobile = window.innerWidth < 768;
             
@@ -440,23 +464,25 @@
             window.addEventListener('click', onPointerClick, false);
             window.addEventListener('touchstart', onPointerClick, false);
             
-            // Функция полного перезапуска авто-вращения
-            function resetAutoRotate() {
-                controls.autoRotate = false;
-                setTimeout(() => {
-                    controls.autoRotate = true;
-                }, 100);
+            // Полный перезапуск авто-вращения без свайпа
+            function resetAndRestartAutoRotate() {
+                if (controls) {
+                    controls.autoRotate = false;
+                    setTimeout(() => {
+                        controls.autoRotate = true;
+                    }, 100);
+                }
             }
             
-            // При возврате на страницу перезапускаем вращение
+            // При возврате на страницу перезапускаем вращение автоматически
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) {
-                    resetAutoRotate();
+                    resetAndRestartAutoRotate();
                 }
             });
             
             window.addEventListener('focus', () => {
-                resetAutoRotate();
+                resetAndRestartAutoRotate();
             });
             
             function animate() {
