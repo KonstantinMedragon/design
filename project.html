@@ -23,6 +23,33 @@
             background-color: #f5f5f7;
         }
         
+        canvas {
+            cursor: pointer;
+        }
+        
+        /* Заголовок по центру сверху */
+        .header-title {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+            background: rgba(245, 245, 247, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 24px;
+            width: fit-content;
+            margin: 0 auto;
+            border-radius: 60px;
+            pointer-events: none;
+            border: 1px solid rgba(0,0,0,0.05);
+            letter-spacing: -0.3px;
+        }
+        
         .info {
             position: absolute;
             bottom: 20px;
@@ -33,15 +60,14 @@
             color: #111;
             background: rgba(245, 245, 247, 0.85);
             backdrop-filter: blur(8px);
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 40px;
             width: fit-content;
             margin: 0 auto;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             pointer-events: none;
             border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         .info a {
@@ -55,32 +81,16 @@
             text-decoration: underline;
         }
         
-        .instruction {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 400;
-            pointer-events: none;
-            font-family: 'Inter', sans-serif;
-        }
-        
         @media (max-width: 600px) {
-            .instruction { display: none; }
-            .info { font-size: 10px; bottom: 10px; white-space: nowrap; }
+            .header-title { font-size: 18px; top: 16px; padding: 4px 16px; }
+            .info { font-size: 10px; bottom: 10px; padding: 6px 14px; }
         }
     </style>
 </head>
 <body>
-    <div class="instruction">🖱️ Нажмите и перетащите, чтобы вращать | ✨ Нажмите на логотип, чтобы открыть сайт</div>
+    <div class="header-title">портфолио проектов</div>
     <div class="info">
-        ✦ <a href="https://skycode.codes/" target="_blank">Небесное бюро дизайна</a> — портфолио проектов ✦
+        <a href="https://skycode.codes/" target="_blank">небесное бюро дизайна</a>
     </div>
 
     <script type="importmap">
@@ -96,11 +106,9 @@
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        // --- Элементы сцены (будут инициализированы после адаптации) ---
-        let scene, camera, renderer, controls, cylinderGroup, raycaster, mouse;
+        let scene, camera, renderer, controls, cylinderGroup;
         const clickableObjects = [];
         
-        // --- Данные проектов ---
         const projects = [
             { name: 'Bauco', url: 'https://konstantinmedragon.github.io/bau/index-en.html', img: 'images/bauco.png' },
             { name: 'Bread', url: 'https://samuibrew.tilda.ws/bread', img: 'images/bread.png' },
@@ -110,42 +118,91 @@
             { name: 'Samui Brew', url: 'https://samuibrew.tilda.ws', img: 'images/samuibrew.png' }
         ];
         
-        // --- Функция адаптации размера цилиндра под экран ---
+        // Функция обновления параметров цилиндра при ресайзе
+        function updateCylinder() {
+            const width = window.innerWidth;
+            const isMobile = width < 768;
+            
+            // Адаптивные параметры
+            let radius, planeWidth, planeHeight, cameraDistance, cameraY;
+            if (isMobile) {
+                radius = 2.4;
+                planeWidth = 1.1;
+                planeHeight = 2.2;
+                cameraDistance = 5.0;
+                cameraY = 1.2;
+            } else {
+                radius = 3.8;
+                planeWidth = 1.6;
+                planeHeight = 3.2;
+                cameraDistance = 8.0;
+                cameraY = 1.5;
+            }
+            
+            // Обновляем позиции и размеры всех плоскостей
+            const count = projects.length;
+            const angleStep = (Math.PI * 2) / count;
+            
+            clickableObjects.forEach((plane, idx) => {
+                const angle = idx * angleStep;
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                plane.position.set(x, 0, z);
+                plane.rotation.y = angle;
+                plane.rotateY(Math.PI); // разворот наружу
+                
+                // Обновляем геометрию
+                const oldGeo = plane.geometry;
+                const newGeo = new THREE.PlaneGeometry(planeWidth, planeHeight);
+                plane.geometry = newGeo;
+                if (oldGeo) oldGeo.dispose();
+            });
+            
+            // Обновляем камеру
+            camera.position.set(0, cameraY, cameraDistance);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            
+            // Обновляем рендерер
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Обновляем controls
+            controls.target.set(0, 0, 0);
+            controls.update();
+        }
+        
         function initScene() {
             const width = window.innerWidth;
             const isMobile = width < 768;
             
-            // Параметры адаптации
-            let radius, planeWidth, planeHeight, cameraDistance;
-            
+            let radius, planeWidth, planeHeight, cameraDistance, cameraY;
             if (isMobile) {
-                radius = 2.0;
-                planeWidth = 0.9;
-                planeHeight = 1.85;
-                cameraDistance = 4.5;
+                radius = 2.4;
+                planeWidth = 1.1;
+                planeHeight = 2.2;
+                cameraDistance = 5.0;
+                cameraY = 1.2;
             } else {
-                radius = 3.2;
-                planeWidth = 1.4;
-                planeHeight = 2.85;
-                cameraDistance = 7;
+                radius = 3.8;
+                planeWidth = 1.6;
+                planeHeight = 3.2;
+                cameraDistance = 8.0;
+                cameraY = 1.5;
             }
             
-            // --- Сцена ---
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0xf5f5f7);
             
-            // --- Камера ---
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(0, 1.2, cameraDistance);
+            camera.position.set(0, cameraY, cameraDistance);
             camera.lookAt(0, 0, 0);
             
-            // --- Рендерер ---
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
             document.body.appendChild(renderer.domElement);
             
-            // --- Освещение ---
+            // Освещение
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
             scene.add(ambientLight);
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
@@ -155,7 +212,7 @@
             backLight.position.set(-1, 1, -1);
             scene.add(backLight);
             
-            // --- Цилиндр с картинками ---
+            // Создаём цилиндр с картинками
             const count = projects.length;
             const angleStep = (Math.PI * 2) / count;
             cylinderGroup = new THREE.Group();
@@ -182,10 +239,8 @@
                 );
                 
                 plane.position.set(x, 0, z);
-                
-                // ПОВОРОТ НАРУЖУ: плоскость смотрит по направлению от центра (angle) + разворот лицом к камере
                 plane.rotation.y = angle;
-                plane.rotateY(Math.PI);  // Разворачиваем наружу
+                plane.rotateY(Math.PI); // разворот наружу
                 
                 plane.userData = { url: project.url, name: project.name };
                 clickableObjects.push(plane);
@@ -194,33 +249,25 @@
             
             scene.add(cylinderGroup);
             
-            // --- Управление ---
+            // Управление
             controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 1.0;
+            controls.autoRotateSpeed = 0.8;
             controls.enableZoom = true;
             controls.enablePan = false;
             controls.zoomSpeed = 0.8;
             controls.target.set(0, 0, 0);
             
-            // --- Raycaster для кликов ---
-            raycaster = new THREE.Raycaster();
-            mouse = new THREE.Vector2();
+            // Raycaster для кликов
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
             
-            // --- Анимация ---
-            function animate() {
-                requestAnimationFrame(animate);
-                controls.update();
-                renderer.render(scene, camera);
-            }
-            animate();
-            
-            // --- Обработка кликов ---
             function onClick(event) {
-                mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
-                mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+                const rect = renderer.domElement.getBoundingClientRect();
+                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
                 
                 raycaster.setFromCamera(mouse, camera);
                 const intersects = raycaster.intersectObjects(clickableObjects);
@@ -235,22 +282,20 @@
             
             window.addEventListener('click', onClick, false);
             
-            // --- Адаптация при изменении размера окна ---
-            window.addEventListener('resize', onWindowResize);
-        }
-        
-        function onWindowResize() {
-            if (!camera || !renderer) return;
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            // Анимация
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
             
-            // Пересоздаём сцену с новыми параметрами при изменении ориентации
-            // Полностью перезагружаем страницу для простоты (чтобы не было артефактов)
-            window.location.reload();
+            // Подписываемся на ресайз с обновлением цилиндра
+            window.addEventListener('resize', () => {
+                updateCylinder();
+            });
         }
         
-        // Запуск
         initScene();
     </script>
 </body>
