@@ -252,7 +252,7 @@
     </div>
     <div class="overlay" id="overlay"></div>
 
-    <div class="header-title">портфолио проектов</div>
+    <div class="header-title">портфолио</div>
     <div class="info">
         <a href="https://skycode.codes/" target="_blank">небесное бюро дизайна</a>
     </div>
@@ -287,11 +287,11 @@
             
             let radius, planeWidth, planeHeight, cameraDistance, sceneOffsetY;
             if (isMobile) {
-                // Телефон: уменьшенный радиус, чтобы цилиндр не выходил за край
-                radius = 0.65;        // было 0.8 → уменьшили зазор между карточками
+                // Телефон: ещё меньше радиус (убираем зазор между карточками)
+                radius = 0.5;
                 planeWidth = 0.35;
                 planeHeight = 0.7;
-                cameraDistance = 3.0;
+                cameraDistance = 2.8;
                 sceneOffsetY = 0.4;
             } else {
                 radius = 2.28;
@@ -332,10 +332,10 @@
             let radius, planeWidth, planeHeight, cameraDistance, sceneOffsetY;
             
             if (isMobile) {
-                radius = 0.65;
+                radius = 0.5;
                 planeWidth = 0.35;
                 planeHeight = 0.7;
-                cameraDistance = 3.0;
+                cameraDistance = 2.8;
                 sceneOffsetY = 0.4;
             } else {
                 radius = 2.28;
@@ -447,7 +447,7 @@
             window.addEventListener('click', onPointerClick, false);
             window.addEventListener('touchstart', onPointerClick, false);
             
-            // Восстанавливаем авто-вращение после возврата на страницу (кнопка "назад")
+            // Восстанавливаем авто-вращение после возврата на страницу
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) {
                     controls.autoRotate = true;
