@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Галерея проектов — Небесное бюро дизайна</title>
     <link rel="canonical" href="https://skycode.codes/project.html" />
-    <meta name="description" content="Портфолио проектов Небесного бюро дизайна: сайты для Bauco, Bread, CV, Medragon, Pilates, Samui Brew.">
+    <meta name="description" content="Портфолио проектов Небесного бюро дизайна.">
     <meta name="robots" content="index, follow">
     
     <meta property="og:title" content="Галерея проектов — Небесное бюро дизайна">
@@ -49,6 +49,27 @@
             pointer-events: none;
         }
 
+        /* Центральный заголовок между бургером и кнопкой перевода */
+        .header-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            background: rgba(245, 245, 247, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 6px 20px;
+            border-radius: 60px;
+            pointer-events: none;
+            border: 1px solid rgba(0,0,0,0.05);
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+            z-index: 25;
+        }
+
         .lang-switch {
             display: flex;
             background: #f0f0f2;
@@ -57,6 +78,8 @@
             gap: 2px;
             border: 1px solid rgba(0, 0, 0, 0.1);
             pointer-events: auto;
+            position: relative;
+            z-index: 30;
         }
 
         .lang-ru, .lang-en {
@@ -96,6 +119,8 @@
             cursor: pointer;
             transition: 0.2s;
             pointer-events: auto;
+            position: relative;
+            z-index: 30;
         }
 
         .burger span {
@@ -166,28 +191,6 @@
         .overlay.show {
             display: block;
         }
-
-        .header-title {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #111;
-            background: rgba(245, 245, 247, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 8px 24px;
-            width: fit-content;
-            margin: 0 auto;
-            border-radius: 60px;
-            pointer-events: none;
-            border: 1px solid rgba(0,0,0,0.05);
-            letter-spacing: -0.3px;
-        }
         
         .info {
             position: absolute;
@@ -224,7 +227,7 @@
             .top-panel { padding: 12px 16px; }
             .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
             .burger { width: 42px; height: 42px; }
-            .header-title { font-size: 18px; top: 60px; padding: 4px 16px; }
+            .header-title { font-size: 16px; padding: 4px 12px; white-space: nowrap; }
             .info { font-size: 10px; bottom: 10px; padding: 6px 14px; }
         }
     </style>
@@ -241,6 +244,8 @@
             <span></span>
         </div>
     </div>
+    <!-- Центральный заголовок -->
+    <div class="header-title">портфолио</div>
 
     <div class="side-menu" id="sideMenu">
         <div class="close-menu" id="closeMenu">&times;</div>
@@ -252,7 +257,6 @@
     </div>
     <div class="overlay" id="overlay"></div>
 
-    <div class="header-title">портфолио</div>
     <div class="info">
         <a href="https://skycode.codes/" target="_blank">небесное бюро дизайна</a>
     </div>
@@ -287,7 +291,6 @@
             
             let radius, planeWidth, planeHeight, cameraDistance, sceneOffsetY;
             if (isMobile) {
-                // Телефон: ещё меньше радиус (убираем зазор между карточками)
                 radius = 0.5;
                 planeWidth = 0.35;
                 planeHeight = 0.7;
@@ -415,6 +418,9 @@
             controls.target.set(0, sceneOffsetY, 0);
             controls.rotateSpeed = 1.0;
             
+            // Принудительно сохраняем авто-вращение даже после взаимодействия
+            controls.autoRotate = true;
+            
             // Raycaster для кликов
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
@@ -447,11 +453,16 @@
             window.addEventListener('click', onPointerClick, false);
             window.addEventListener('touchstart', onPointerClick, false);
             
-            // Восстанавливаем авто-вращение после возврата на страницу
+            // Восстанавливаем авто-вращение после возврата на страницу (кнопка "назад")
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) {
                     controls.autoRotate = true;
                 }
+            });
+            
+            // Дополнительно: при любом возврате фокуса на окно
+            window.addEventListener('focus', () => {
+                controls.autoRotate = true;
             });
             
             function animate() {
