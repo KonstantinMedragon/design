@@ -203,28 +203,22 @@
             right: 0;
             text-align: center;
             z-index: 10;
-            color: #111;
-            background: rgba(245, 245, 247, 0.85);
-            backdrop-filter: blur(8px);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 14px;
+            background: transparent;
+            backdrop-filter: none;
             padding: 10px 20px;
-            border-radius: 40px;
             width: fit-content;
             margin: 0 auto;
-            font-size: 13px;
-            font-weight: 500;
             pointer-events: none;
-            border: 1px solid rgba(0,0,0,0.05);
         }
         
-        .info a {
-            color: #4a117c;
-            text-decoration: none;
-            pointer-events: auto;
-            font-weight: 600;
-        }
-        
-        .info a:hover {
-            text-decoration: underline;
+        .info span {
+            background: linear-gradient(135deg, #4a117c, #8b3cc7, #c994e2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         @media (max-width: 768px) {
@@ -261,7 +255,7 @@
     <div class="overlay" id="overlay"></div>
 
     <div class="info">
-        <a href="https://skycode.codes/" target="_blank">небесное бюро дизайна</a>
+        <span>* для перехода на сайт проекта дважды нажмите на изображение *</span>
     </div>
 
     <script type="importmap">
@@ -281,24 +275,13 @@
         const clickableObjects = [];
         
         const projects = [
-            { name: 'Bauco', url: 'https://konstantinmedragon.github.io/bau/index-en.html', img: 'images/bauco.png' },
+            { name: 'Bauco', url: 'https://konstantinmedragon.github.io/bau/service-en.html', img: 'images/bauco.png' },
             { name: 'Bread', url: 'https://samuibrew.tilda.ws/bread', img: 'images/bread.png' },
             { name: 'CV Bakharev', url: 'https://konstantinmedragon.github.io/CVBakharev/', img: 'images/CV.png' },
             { name: 'Medragon', url: 'https://medragon.tilda.ws/course', img: 'images/medragon.jpg' },
             { name: 'Pilates', url: 'https://pilatesbodyhome.ru/studio.html', img: 'images/pilates.png' },
             { name: 'Samui Brew', url: 'https://samuibrew.tilda.ws', img: 'images/samuibrew.png' }
         ];
-        
-        let autoRotateTimeout = null;
-        
-        function forceAutoRotate() {
-            if (controls) {
-                controls.autoRotate = false;
-                setTimeout(() => {
-                    controls.autoRotate = true;
-                }, 50);
-            }
-        }
         
         function updateCylinder() {
             const isMobile = window.innerWidth < 768;
@@ -464,7 +447,6 @@
             window.addEventListener('click', onPointerClick, false);
             window.addEventListener('touchstart', onPointerClick, false);
             
-            // Полный перезапуск авто-вращения без свайпа
             function resetAndRestartAutoRotate() {
                 if (controls) {
                     controls.autoRotate = false;
@@ -474,7 +456,6 @@
                 }
             }
             
-            // При возврате на страницу перезапускаем вращение автоматически
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) {
                     resetAndRestartAutoRotate();
