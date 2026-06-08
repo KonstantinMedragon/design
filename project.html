@@ -28,7 +28,7 @@
     <meta name="twitter:description" content="Вращающийся цилиндр с нашими работами. Нажмите на любой проект, чтобы перейти на сайт.">
     <meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -123,18 +123,19 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
+        /* Заголовок портфолио — крупнее */
         .header-title {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 36px;
+            font-weight: 800;
             color: #111;
             background: rgba(245, 245, 247, 0.85);
             backdrop-filter: blur(8px);
-            padding: 6px 20px;
+            padding: 6px 24px;
             border-radius: 60px;
             pointer-events: none;
             border: 1px solid rgba(0,0,0,0.05);
-            letter-spacing: -0.2px;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
@@ -196,6 +197,7 @@
             display: block;
         }
         
+        /* Нижний текст — крупнее, градиент фиолетовый → чёрный */
         .info {
             position: absolute;
             bottom: 20px;
@@ -204,8 +206,8 @@
             text-align: center;
             z-index: 10;
             font-style: italic;
-            font-weight: 500;
-            font-size: 14px;
+            font-weight: 600;
+            font-size: 18px;
             background: transparent;
             backdrop-filter: none;
             padding: 10px 20px;
@@ -215,7 +217,7 @@
         }
         
         .info span {
-            background: linear-gradient(135deg, #4a117c, #8b3cc7, #c994e2);
+            background: linear-gradient(135deg, #4a117c, #1a1a1a);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -225,8 +227,8 @@
             .top-panel { padding: 12px 16px; }
             .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
             .burger { width: 42px; height: 42px; }
-            .header-title { font-size: 14px; padding: 4px 12px; }
-            .info { font-size: 10px; bottom: 10px; padding: 6px 14px; }
+            .header-title { font-size: 24px; padding: 4px 16px; }
+            .info { font-size: 12px; bottom: 10px; padding: 6px 14px; }
         }
     </style>
 </head>
