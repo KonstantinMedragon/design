@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Projects — Heavenly Design Bureau</title>
+    
+    <!-- SEO meta tags -->
+    <meta name="description" content="Portfolio of web design and development: Bauco, Bread, CV Bakharev, Medragon, Pilates, Samui Brew. Landing pages, multi-page websites, e-commerce, course platforms.">
+    <meta name="keywords" content="web design portfolio, website development, landing page design, e-commerce website, course platform, heavenly design bureau, skycode">
+    <meta name="author" content="Heavenly Design Bureau">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://skycode.codes/project-en.html" />
+    
+    <!-- Open Graph / Facebook / LinkedIn / Telegram / WhatsApp -->
+    <meta property="og:title" content="Projects — Heavenly Design Bureau">
+    <meta property="og:description" content="A rotating 3D cylinder with our work: websites for Bauco, Bread, Medragon, Pilates and other projects. Click on any project to visit the website.">
+    <meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://skycode.codes/project-en.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects — Heavenly Design Bureau">
+    <meta name="twitter:description" content="A rotating 3D cylinder with our work. Click on any project to visit the website.">
+    <meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f7;
+            font-family: 'Inter', sans-serif;
+            color: #111;
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        canvas {
+            cursor: pointer;
+        }
+
+        .top-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: transparent;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .lang-switch {
+            display: flex;
+            background: #f0f0f2;
+            border-radius: 60px;
+            padding: 4px;
+            gap: 2px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            pointer-events: auto;
+        }
+
+        .lang-ru, .lang-en {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .lang-ru {
+            background: transparent;
+            color: #111;
+        }
+
+        .lang-en {
+            background: #111;
+            color: white;
+        }
+
+        .lang-ru:hover, .lang-en:hover {
+            opacity: 0.7;
+        }
+
+        .burger {
+            background: transparent;
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+            pointer-events: auto;
+        }
+
+        .burger span {
+            width: 24px;
+            height: 2.5px;
+            background: #111;
+            border-radius: 3px;
+        }
+
+        .burger:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: #111;
+            background: rgba(245, 245, 247, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 6px 24px;
+            border-radius: 60px;
+            pointer-events: none;
+            border: 1px solid rgba(0,0,0,0.05);
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+            z-index: 1100;
+            padding: 100px 28px 40px;
+            transition: right 0.3s ease;
+            border-left: 1px solid #eaeaf0;
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu a {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1e;
+            text-decoration: none;
+            padding: 14px 0;
+            border-bottom: 1px solid #efeff2;
+            transition: 0.2s;
+        }
+
+        .side-menu a:hover {
+            color: #4a117c;
+            padding-left: 8px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #2a2a2e;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+        
+        .info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 18px;
+            background: transparent;
+            backdrop-filter: none;
+            padding: 10px 20px;
+            width: fit-content;
+            margin: 0 auto;
+            pointer-events: none;
+        }
+        
+        .info span {
+            background: linear-gradient(135deg, #4a117c, #1a1a1a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .top-panel { padding: 12px 16px; }
+            .lang-ru, .lang-en { padding: 5px 14px; font-size: 12px; }
+            .burger { width: 42px; height: 42px; }
+            .header-title { font-size: 24px; padding: 4px 16px; }
+            .info { font-size: 12px; bottom: 10px; padding: 6px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-panel">
+        <div class="lang-switch">
+            <a href="project.html" class="lang-ru">Ru</a>
+            <a href="project-en.html" class="lang-en">En</a>
+        </div>
+        <div class="header-title">projects</div>
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <a href="index-en.html">Home</a>
+        <a href="how-en.html">How we do it</a>
+        <a href="services-en.html">Services & Prices</a>
+        <a href="project-en.html">Projects Gallery</a>
+        <a href="contacts-en.html">Contacts</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="info">
+        <span>* double click on the image to go to the project website *</span>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        let scene, camera, renderer, controls, cylinderGroup;
+        const clickableObjects = [];
+        
+        const projects = [
+            { name: 'Bauco', url: 'https://konstantinmedragon.github.io/bau/service-en.html', img: 'images/bauco.png' },
+            { name: 'Bread', url: 'https://samuibrew.tilda.ws/bread', img: 'images/bread.png' },
+            { name: 'CV Bakharev', url: 'https://konstantinmedragon.github.io/CVBakharev/', img: 'images/CV.png' },
+            { name: 'Medragon', url: 'https://medragon.tilda.ws/course', img: 'images/medragon.jpg' },
+            { name: 'Pilates', url: 'https://pilatesbodyhome.ru/studio.html', img: 'images/pilates.png' },
+            { name: 'Samui Brew', url: 'https://samuibrew.tilda.ws', img: 'images/samuibrew.png' }
+        ];
+        
+        function updateCylinder() {
+            const isMobile = window.innerWidth < 768;
+            
+            let radius, planeWidth, planeHeight, cameraDistance, sceneOffsetY;
+            if (isMobile) {
+                radius = 0.5;
+                planeWidth = 0.35;
+                planeHeight = 0.7;
+                cameraDistance = 2.8;
+                sceneOffsetY = 0.4;
+            } else {
+                radius = 2.28;
+                planeWidth = 1.0;
+                planeHeight = 2.0;
+                cameraDistance = 6.1;
+                sceneOffsetY = 1.2;
+            }
+            
+            const count = projects.length;
+            const angleStep = (Math.PI * 2) / count;
+            
+            clickableObjects.forEach((plane, idx) => {
+                const angle = idx * angleStep;
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                plane.position.set(x, sceneOffsetY, z);
+                
+                const direction = new THREE.Vector3(x, 0, z).normalize();
+                plane.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
+                
+                if (plane.geometry) plane.geometry.dispose();
+                plane.geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
+            });
+            
+            camera.position.set(0, sceneOffsetY + 0.5, cameraDistance);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            controls.target.set(0, sceneOffsetY, 0);
+            controls.update();
+        }
+        
+        function initScene() {
+            const isMobile = window.innerWidth < 768;
+            
+            let radius, planeWidth, planeHeight, cameraDistance, sceneOffsetY;
+            
+            if (isMobile) {
+                radius = 0.5;
+                planeWidth = 0.35;
+                planeHeight = 0.7;
+                cameraDistance = 2.8;
+                sceneOffsetY = 0.4;
+            } else {
+                radius = 2.28;
+                planeWidth = 1.0;
+                planeHeight = 2.0;
+                cameraDistance = 6.1;
+                sceneOffsetY = 1.2;
+            }
+            
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf5f5f7);
+            
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, sceneOffsetY + 0.5, cameraDistance);
+            camera.lookAt(0, sceneOffsetY, 0);
+            
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+            
+            // Освещение
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
+            directionalLight.position.set(1, 2, 1);
+            scene.add(directionalLight);
+            const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            backLight.position.set(-1, 1, -1);
+            scene.add(backLight);
+            
+            const count = projects.length;
+            const angleStep = (Math.PI * 2) / count;
+            cylinderGroup = new THREE.Group();
+            const textureLoader = new THREE.TextureLoader();
+            
+            projects.forEach((project, index) => {
+                const angle = index * angleStep;
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                
+                const texture = textureLoader.load(project.img);
+                texture.minFilter = THREE.LinearFilter;
+                
+                const material = new THREE.MeshStandardMaterial({
+                    map: texture,
+                    side: THREE.DoubleSide,
+                    roughness: 0.3,
+                    metalness: 0.05
+                });
+                
+                const plane = new THREE.Mesh(
+                    new THREE.PlaneGeometry(planeWidth, planeHeight),
+                    material
+                );
+                
+                plane.position.set(x, sceneOffsetY, z);
+                
+                const direction = new THREE.Vector3(x, 0, z).normalize();
+                plane.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
+                
+                plane.userData = { url: project.url, name: project.name };
+                clickableObjects.push(plane);
+                cylinderGroup.add(plane);
+            });
+            
+            scene.add(cylinderGroup);
+            
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 1.2;
+            controls.enableZoom = true;
+            controls.enablePan = false;
+            controls.zoomSpeed = 0.8;
+            controls.target.set(0, sceneOffsetY, 0);
+            controls.rotateSpeed = 1.0;
+            
+            // Raycaster для кликов
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            
+            function onPointerClick(event) {
+                let clientX, clientY;
+                if (event.touches) {
+                    clientX = event.touches[0].clientX;
+                    clientY = event.touches[0].clientY;
+                } else {
+                    clientX = event.clientX;
+                    clientY = event.clientY;
+                }
+                
+                const rect = renderer.domElement.getBoundingClientRect();
+                mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+                
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(clickableObjects);
+                
+                if (intersects.length > 0) {
+                    const hit = intersects[0].object;
+                    if (hit.userData && hit.userData.url) {
+                        window.open(hit.userData.url, '_blank');
+                    }
+                }
+            }
+            
+            window.addEventListener('click', onPointerClick, false);
+            window.addEventListener('touchstart', onPointerClick, false);
+            
+            function resetAndRestartAutoRotate() {
+                if (controls) {
+                    controls.autoRotate = false;
+                    setTimeout(() => {
+                        controls.autoRotate = true;
+                    }, 100);
+                }
+            }
+            
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    resetAndRestartAutoRotate();
+                }
+            });
+            
+            window.addEventListener('focus', () => {
+                resetAndRestartAutoRotate();
+            });
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            window.addEventListener('resize', () => {
+                updateCylinder();
+            });
+        }
+        
+        initScene();
+
+        // Бургер-меню
+        const burger = document.getElementById('burgerBtn');
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function openMenu() {
+            menu.classList.add('open');
+            overlay.classList.add('show');
+        }
+
+        function closeMenuFunc() {
+            menu.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        burger.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        overlay.addEventListener('click', closeMenuFunc);
+    </script>
+</body>
+</html>
