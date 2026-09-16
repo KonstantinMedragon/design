@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -99,6 +100,7 @@
             line-height: 1.25;
             letter-spacing: -0.3px;
             margin-bottom: 32px;
+            text-align: center;
         }
 
         .text-section h1 {
@@ -157,12 +159,131 @@
             opacity: 0.92;
         }
 
+        /* ===== FOOTER (Skycode style) ===== */
+        .footer {
+            background: #f5f5f7;
+            padding: 64px 24px 40px;
+            margin-top: 48px;
+        }
+
+        .footer-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #e8e8ec;
+            color: #4a117c;
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .footer-socials a:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #4a117c, #8b3cc7);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(74,17,124,0.25);
+        }
+
+        .footer-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #111;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            background: #ffffff;
+            border: 1px solid #e8e8ec;
+            transition: all 0.25s ease;
+            margin-bottom: 40px;
+        }
+
+        .footer-email i {
+            color: #4a117c;
+            font-size: 18px;
+        }
+
+        .footer-email:hover {
+            transform: translateY(-2px);
+            border-color: #4a117c;
+            color: #4a117c;
+            box-shadow: 0 4px 12px rgba(74,17,124,0.12);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #e0e0e6;
+            padding-top: 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #888891;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .footer-bottom a {
+            color: #4a117c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             .hero-carousel {
                 height: clamp(360px, 50vh, 450px);
             }
             .text-section {
                 padding: 48px 24px;
+            }
+            .footer {
+                padding: 48px 20px 32px;
+            }
+            .footer-socials {
+                gap: 14px;
+            }
+            .footer-socials a {
+                width: 46px;
+                height: 46px;
+                font-size: 19px;
+            }
+            .footer-email {
+                font-size: 14px;
+                padding: 10px 18px;
             }
         }
     </style>
@@ -181,10 +302,10 @@
         <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- INTRO TEXT (centered heading) -->
+    <!-- INTRO TEXT -->
     <section class="text-section center-heading">
         <h1>«Fifth Element» Exhibition</h1>
-        <p style="text-align: left;">You have landed on the page of a project dedicated to the system of the Five Elements. Here you will find the schedule and locations of exhibitions, see the works of the author Konstantin Medragon, and get acquainted with his book «The Fifth Element · 五行».</p>
+        <p>Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book "The Fifth Element · 五行".</p>
     </section>
 
     <!-- FULL-WIDTH IMAGE 1 -->
@@ -218,10 +339,10 @@
         <img src="images/exh4.webp" alt="Exhibition artwork">
     </div>
 
-    <!-- ORDER OF THE ELEMENTS (centered heading) -->
-    <section class="text-section center-heading">
+    <!-- ORDER OF THE ELEMENTS -->
+    <section class="text-section">
         <h2>The Order of the Elements</h2>
-        <p style="text-align: left;">According to ancient texts, these symbols appeared in the following order. Water — as the foundation of life. Fire — as the act of creation. Wood — as life itself, manifested in form. Metal — as the reflection of manifested life and death. And the fifth, central element — Earth, the symbol of the human being and the capacity for self-awareness.</p>
+        <p>According to ancient texts, these symbols appeared in the following order. Water — as the foundation of life. Fire — as the act of creation. Wood — as life itself, manifested in form. Metal — as the reflection of manifested life and death. And the fifth, central element — Earth, the symbol of the human being and the capacity for self-awareness.</p>
     </section>
 
     <!-- BOOK IMAGE (linked) -->
@@ -235,6 +356,38 @@
         <p>The book "The Fifth Element · 五行" is a journey into this universal language. It describes ten Hollywood actors whose stories reveal the meaning of the five main Elements in our lives and characters. Through their examples, you will see how the elements shape destiny, talent, and a person's path. The book is written by Konstantin Medragon — a biochemist and researcher of ancient systems. It is both a practical guide and a philosophical reflection on time, nature, and the human being.</p>
         <p>You can get acquainted with the book and the author's works at a series of exhibitions. Follow the schedule and locations on this website. The next exhibition will be held at Peter Dallmann's art gallery "Fox Eat Broccoli" in Koh Samui, Thailand.</p>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <h3 class="footer-title">Follow the Project</h3>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/medragonworlds" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/66810143190" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/medragonwords" target="_blank" rel="noopener" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/19gAq5rhdA/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+
+            <a href="mailto:konstantlab@gmail.com" class="footer-email">
+                <i class="far fa-envelope"></i>
+                <span>konstantlab@gmail.com</span>
+            </a>
+
+            <div class="footer-bottom">
+                © 2026 The Fifth Element · 五行 — Konstantin Medragon<br>
+                Design and development — <a href="https://skycode.codes/" target="_blank" rel="noopener">Skycode</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // ===== INFINITE CAROUSEL =====
