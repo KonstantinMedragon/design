@@ -88,24 +88,27 @@
             text-align: left;
         }
 
-        .text-section h1 {
+        .text-section.center-heading {
+            text-align: center;
+        }
+
+        .text-section h1,
+        .text-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 44px);
-            font-weight: 700;
             color: #111;
-            line-height: 1.2;
+            line-height: 1.25;
             letter-spacing: -0.3px;
             margin-bottom: 32px;
         }
 
+        .text-section h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+        }
+
         .text-section h2 {
-            font-family: 'Playfair Display', serif;
             font-size: clamp(24px, 3vw, 36px);
             font-weight: 700;
-            color: #111;
-            line-height: 1.25;
-            letter-spacing: -0.3px;
-            margin-bottom: 28px;
         }
 
         .text-section p {
@@ -115,20 +118,43 @@
             color: #3a3a3e;
             line-height: 1.7;
             margin-bottom: 24px;
+            text-align: left;
         }
 
         .text-section p:last-child {
             margin-bottom: 0;
         }
 
-        /* ===== FULL-BLEED IMAGE ===== */
+        /* ===== FULL-WIDTH IMAGE (без обрезки) ===== */
         .full-image {
+            display: block;
             width: 100%;
-            height: clamp(400px, 70vh, 800px);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #f5f5f7;
+            height: auto;
+            background: #f5f5f7;
+        }
+
+        .full-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===== LINKED IMAGE (book) ===== */
+        .book-link {
+            display: block;
+            width: 100%;
+            background: #f5f5f7;
+        }
+
+        .book-link img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: opacity 0.25s ease;
+        }
+
+        .book-link:hover img {
+            opacity: 0.92;
         }
 
         @media (max-width: 768px) {
@@ -137,9 +163,6 @@
             }
             .text-section {
                 padding: 48px 24px;
-            }
-            .full-image {
-                height: clamp(280px, 50vh, 500px);
             }
         }
     </style>
@@ -158,14 +181,16 @@
         <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- INTRO TEXT -->
-    <section class="text-section">
-        <h1>«Fifth Element» Exhibition Website</h1>
-        <p>You have landed on the page of a project dedicated to the system of the Five Elements. Here you will find the schedule and locations of exhibitions, see the works of the author Konstantin Medragon, and get acquainted with his book «The Fifth Element · 五行».</p>
+    <!-- INTRO TEXT (centered heading) -->
+    <section class="text-section center-heading">
+        <h1>«Fifth Element» Exhibition</h1>
+        <p style="text-align: left;">You have landed on the page of a project dedicated to the system of the Five Elements. Here you will find the schedule and locations of exhibitions, see the works of the author Konstantin Medragon, and get acquainted with his book «The Fifth Element · 五行».</p>
     </section>
 
-    <!-- FULL-BLEED IMAGE 1 -->
-    <div class="full-image" style="background-image: url('images/exh1.webp');"></div>
+    <!-- FULL-WIDTH IMAGE 1 -->
+    <div class="full-image">
+        <img src="images/exh1.webp" alt="Exhibition artwork">
+    </div>
 
     <!-- UNIVERSAL LANGUAGE TEXT -->
     <section class="text-section">
@@ -176,8 +201,10 @@
         <p>Fire — transformation, passion, and the relentless drive to consume and create anew. It is the spark of inspiration and the flame of destruction. The painting burns with reds, oranges, and golds, its textures rough and radiant, as if the canvas itself is ablaze.</p>
     </section>
 
-    <!-- FULL-BLEED IMAGE 2 -->
-    <div class="full-image" style="background-image: url('images/exh2.webp');"></div>
+    <!-- FULL-WIDTH IMAGE 2 -->
+    <div class="full-image">
+        <img src="images/exh2.webp" alt="Exhibition artwork">
+    </div>
 
     <!-- WOOD / METAL / EARTH TEXT -->
     <section class="text-section">
@@ -186,8 +213,28 @@
         <p>Earth — the center, the fulcrum, the place where all things return and from which all things emerge. It is the stomach of the human being — the cauldron of reflection and transformation. Yellows, ochres, and warm browns fill this canvas, and textures are dense, grounded, and endlessly fertile.</p>
     </section>
 
-    <!-- FULL-BLEED IMAGE 3 -->
-    <div class="full-image" style="background-image: url('images/exh4.webp');"></div>
+    <!-- FULL-WIDTH IMAGE 3 -->
+    <div class="full-image">
+        <img src="images/exh4.webp" alt="Exhibition artwork">
+    </div>
+
+    <!-- ORDER OF THE ELEMENTS (centered heading) -->
+    <section class="text-section center-heading">
+        <h2>The Order of the Elements</h2>
+        <p style="text-align: left;">According to ancient texts, these symbols appeared in the following order. Water — as the foundation of life. Fire — as the act of creation. Wood — as life itself, manifested in form. Metal — as the reflection of manifested life and death. And the fifth, central element — Earth, the symbol of the human being and the capacity for self-awareness.</p>
+    </section>
+
+    <!-- BOOK IMAGE (linked) -->
+    <a href="https://medragon.tilda.ws/en" class="book-link" target="_blank" rel="noopener">
+        <img src="images/book.jpg" alt="The Fifth Element · 五行 — book by Konstantin Medragon">
+    </a>
+
+    <!-- ABOUT THE BOOK -->
+    <section class="text-section">
+        <h2>About the Book</h2>
+        <p>The book "The Fifth Element · 五行" is a journey into this universal language. It describes ten Hollywood actors whose stories reveal the meaning of the five main Elements in our lives and characters. Through their examples, you will see how the elements shape destiny, talent, and a person's path. The book is written by Konstantin Medragon — a biochemist and researcher of ancient systems. It is both a practical guide and a philosophical reflection on time, nature, and the human being.</p>
+        <p>You can get acquainted with the book and the author's works at a series of exhibitions. Follow the schedule and locations on this website. The next exhibition will be held at Peter Dallmann's art gallery "Fox Eat Broccoli" in Koh Samui, Thailand.</p>
+    </section>
 
     <script>
         // ===== INFINITE CAROUSEL =====
