@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fifth Element · 五行 — Exhibition by Konstantin Medragon</title>
+    <meta name="description" content="The Fifth Element · 五行 — an exhibition project dedicated to the system of the Five Elements. Works by Konstantin Medragon.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #111;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO CAROUSEL — full-bleed ===== */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: clamp(500px, 60vh, 650px);
+            overflow: hidden;
+            background: #f5f5f7;
+        }
+
+        .slides-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* легкое затемнение снизу — для читаемости точек */
+        .hero-carousel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #ffffff;
+            width: 28px;
+            border-radius: 4px;
+        }
+
+        /* ===== WELCOME SECTION ===== */
+        .welcome {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 72px 24px 96px;
+            text-align: center;
+        }
+
+        .welcome h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            margin-bottom: 32px;
+        }
+
+        .welcome p {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(16px, 1.6vw, 18px);
+            font-weight: 400;
+            color: #3a3a3e;
+            line-height: 1.65;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-carousel {
+                height: clamp(360px, 50vh, 450px);
+            }
+            .welcome {
+                padding: 48px 24px 72px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO CAROUSEL -->
+    <div class="hero-carousel">
+        <div class="slides-track" id="slidesTrack">
+            <div class="slide" style="background-image: url('images/water.webp');"></div>
+            <div class="slide" style="background-image: url('images/tree.webp');"></div>
+            <div class="slide" style="background-image: url('images/fire.webp');"></div>
+            <div class="slide" style="background-image: url('images/eart.webp');"></div>
+            <div class="slide" style="background-image: url('images/metal.webp');"></div>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- WELCOME TEXT -->
+    <section class="welcome">
+        <h1>Welcome to the «Fifth Element» Exhibition Website</h1>
+        <p>You have landed on the page of a project dedicated to the system of the Five Elements. Here you will find the schedule and locations of exhibitions, see the works of the author Konstantin Medragon, and get acquainted with his book «The Fifth Element · 五行».</p>
+    </section>
+
+    <script>
+        // ===== INFINITE CAROUSEL =====
+        const track = document.getElementById('slidesTrack');
+        const dotsContainer = document.getElementById('sliderDots');
+        const slides = track.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        let currentIndex = 0;
+        let isTransitioning = false;
+        let autoInterval = null;
+
+        // Клон первого слайда — для бесшовного цикла
+        const firstClone = slides[0].cloneNode(true);
+        track.appendChild(firstClone);
+
+        // Точки-индикаторы
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', () => {
+                stopAuto();
+                goTo(i);
+                startAuto();
+            });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        function updateDots(index) {
+            const realIndex = index % totalSlides;
+            dots.forEach((d, i) => d.classList.toggle('active', i === realIndex));
+        }
+
+        function goTo(index) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex = index;
+
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots(currentIndex);
+
+            setTimeout(() => {
+                // Если дошли до клона — мгновенно возвращаемся к началу
+                if (currentIndex >= totalSlides) {
+                    track.style.transition = 'none';
+                    currentIndex = 0;
+                    track.style.transform = 'translateX(0%)';
+                    updateDots(0);
+
+                    // Принудительный reflow, затем возвращаем transition
+                    void track.offsetWidth;
+                    requestAnimationFrame(() => {
+                        track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                }
+                isTransitioning = false;
+            }, 620);
+        }
+
+        function next() {
+            goTo(currentIndex + 1);
+        }
+
+        function startAuto() {
+            stopAuto();
+            autoInterval = setInterval(next, 5000);
+        }
+
+        function stopAuto() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = null;
+            }
+        }
+
+        // Пауза при наведении
+        const carousel = document.querySelector('.hero-carousel');
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+
+        startAuto();
+    </script>
+
+</body>
+</html>
