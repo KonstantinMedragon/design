@@ -45,7 +45,6 @@
             background-repeat: no-repeat;
         }
 
-        /* легкое затемнение снизу — для читаемости точек */
         .hero-carousel::after {
             content: '';
             position: absolute;
@@ -81,15 +80,15 @@
             border-radius: 4px;
         }
 
-        /* ===== WELCOME SECTION ===== */
-        .welcome {
+        /* ===== TEXT SECTION ===== */
+        .text-section {
             max-width: 860px;
             margin: 0 auto;
-            padding: 72px 24px 96px;
-            text-align: center;
+            padding: 72px 24px;
+            text-align: left;
         }
 
-        .welcome h1 {
+        .text-section h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(28px, 4vw, 44px);
             font-weight: 700;
@@ -99,22 +98,48 @@
             margin-bottom: 32px;
         }
 
-        .welcome p {
+        .text-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+            margin-bottom: 28px;
+        }
+
+        .text-section p {
             font-family: 'Inter', sans-serif;
             font-size: clamp(16px, 1.6vw, 18px);
             font-weight: 400;
             color: #3a3a3e;
-            line-height: 1.65;
-            max-width: 720px;
-            margin: 0 auto;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== FULL-BLEED IMAGE ===== */
+        .full-image {
+            width: 100%;
+            height: clamp(400px, 70vh, 800px);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f5f5f7;
         }
 
         @media (max-width: 768px) {
             .hero-carousel {
                 height: clamp(360px, 50vh, 450px);
             }
-            .welcome {
-                padding: 48px 24px 72px;
+            .text-section {
+                padding: 48px 24px;
+            }
+            .full-image {
+                height: clamp(280px, 50vh, 500px);
             }
         }
     </style>
@@ -133,11 +158,36 @@
         <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- WELCOME TEXT -->
-    <section class="welcome">
-        <h1>Welcome to the «Fifth Element» Exhibition Website</h1>
+    <!-- INTRO TEXT -->
+    <section class="text-section">
+        <h1>«Fifth Element» Exhibition Website</h1>
         <p>You have landed on the page of a project dedicated to the system of the Five Elements. Here you will find the schedule and locations of exhibitions, see the works of the author Konstantin Medragon, and get acquainted with his book «The Fifth Element · 五行».</p>
     </section>
+
+    <!-- FULL-BLEED IMAGE 1 -->
+    <div class="full-image" style="background-image: url('images/exh1.webp');"></div>
+
+    <!-- UNIVERSAL LANGUAGE TEXT -->
+    <section class="text-section">
+        <h2>A Universal Language of Reality</h2>
+        <p>The Five Elements are a universal way of classifying reality itself — a way of describing existence through five colors, five sounds, five tastes, five emotions, and five pairs of organs. Everything that surrounds us, everything we experience, can be understood through this prism.</p>
+        <p>The exhibition presents five paintings, each corresponding to one of the Elements. The properties of each Element are conveyed not only through color but also through texture — powerful, tactile images that embody the spirit of each element.</p>
+        <p>Water — depth, mystery, and hidden threat beneath a calm surface. It is the force that carves canyons over millennia and the whisper that moves through dreams. In this painting, Water speaks through deep blues and blacks, through flowing and receding textures, inviting the viewer to look beneath the surface.</p>
+        <p>Fire — transformation, passion, and the relentless drive to consume and create anew. It is the spark of inspiration and the flame of destruction. The painting burns with reds, oranges, and golds, its textures rough and radiant, as if the canvas itself is ablaze.</p>
+    </section>
+
+    <!-- FULL-BLEED IMAGE 2 -->
+    <div class="full-image" style="background-image: url('images/exh2.webp');"></div>
+
+    <!-- WOOD / METAL / EARTH TEXT -->
+    <section class="text-section">
+        <p>Wood — growth, expansion, and the gentle persistence of life pushing through stone. It is the first stirring of spring and the slow unfolding of destiny. Greens and browns dominate this canvas, and textures rise and branch, reaching upward toward the light.</p>
+        <p>Metal — precision, clarity, and the edge of truth. It is the blade that cuts through illusion and the mirror that reflects the soul. The painting is executed in whites, silvers, and cool greys, its textures hard and brilliant, like the surface of a polished sword.</p>
+        <p>Earth — the center, the fulcrum, the place where all things return and from which all things emerge. It is the stomach of the human being — the cauldron of reflection and transformation. Yellows, ochres, and warm browns fill this canvas, and textures are dense, grounded, and endlessly fertile.</p>
+    </section>
+
+    <!-- FULL-BLEED IMAGE 3 -->
+    <div class="full-image" style="background-image: url('images/exh4.webp');"></div>
 
     <script>
         // ===== INFINITE CAROUSEL =====
@@ -150,11 +200,9 @@
         let isTransitioning = false;
         let autoInterval = null;
 
-        // Клон первого слайда — для бесшовного цикла
         const firstClone = slides[0].cloneNode(true);
         track.appendChild(firstClone);
 
-        // Точки-индикаторы
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('div');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -182,14 +230,12 @@
             updateDots(currentIndex);
 
             setTimeout(() => {
-                // Если дошли до клона — мгновенно возвращаемся к началу
                 if (currentIndex >= totalSlides) {
                     track.style.transition = 'none';
                     currentIndex = 0;
                     track.style.transform = 'translateX(0%)';
                     updateDots(0);
 
-                    // Принудительный reflow, затем возвращаем transition
                     void track.offsetWidth;
                     requestAnimationFrame(() => {
                         track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -215,7 +261,6 @@
             }
         }
 
-        // Пауза при наведении
         const carousel = document.querySelector('.hero-carousel');
         carousel.addEventListener('mouseenter', stopAuto);
         carousel.addEventListener('mouseleave', startAuto);
