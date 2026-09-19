@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Fifth Element · 五行 — Exhibition by Konstantin Medragon</title>
-    <meta name="description" content="The Fifth Element · 五行 — an exhibition project dedicated to the system of the Five Elements. Works by Konstantin Medragon.">
+    <meta name="description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+    <meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, art exhibition, Koh Samui, Fox Eat Broccoli, contemporary art, textures, paintings">
+    <meta name="author" content="Konstantin Medragon">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
+    <meta property="og:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+    <meta property="og:image" content="https://medragon.tilda.ws/images/eart.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    <meta property="og:url" content="https://medragon.tilda.ws/en">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Fifth Element · 五行">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
+    <meta name="twitter:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+    <meta name="twitter:image" content="https://medragon.tilda.ws/images/eart.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== HERO CAROUSEL — full-bleed ===== */
+        /* ===== HERO CAROUSEL ===== */
         .hero-carousel {
             position: relative;
             width: 100%;
@@ -127,7 +146,7 @@
             margin-bottom: 0;
         }
 
-        /* ===== FULL-WIDTH IMAGE (без обрезки) ===== */
+        /* ===== FULL-WIDTH IMAGE ===== */
         .full-image {
             display: block;
             width: 100%;
@@ -159,7 +178,151 @@
             opacity: 0.92;
         }
 
-        /* ===== FOOTER (Skycode style) ===== */
+        /* ===== CTA SECTION (Get the Book) ===== */
+        .cta-section {
+            background: #f5f5f7;
+            padding: 64px 24px;
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(16px, 1.6vw, 18px);
+            color: #3a3a3e;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #4a117c 0%, #8b3cc7 60%, #c994e2 100%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 40px;
+            border-radius: 44px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(74,17,124,0.2);
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(74,17,124,0.28);
+        }
+
+        .cta-button i {
+            font-size: 18px;
+        }
+
+        /* ===== EVENT SECTION (Upcoming Exhibition) ===== */
+        .event-section {
+            background: #ffffff;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .event-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .event-label {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4a117c;
+            background: #f0eef5;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin-bottom: 24px;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .event-date {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 2.4vw, 26px);
+            font-weight: 600;
+            color: #4a117c;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .event-details {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(16px, 1.6vw, 18px);
+            color: #3a3a3e;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .event-details strong {
+            color: #111;
+            font-weight: 600;
+        }
+
+        .event-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 32px;
+            background: #ffffff;
+            color: #4a117c;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 14px 32px;
+            border-radius: 44px;
+            text-decoration: none;
+            border: 1.5px solid #4a117c;
+            transition: all 0.25s ease;
+        }
+
+        .event-button:hover {
+            background: #4a117c;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74,17,124,0.2);
+        }
+
+        .event-button i {
+            font-size: 16px;
+        }
+
+        /* ===== FOOTER ===== */
         .footer {
             background: #f5f5f7;
             padding: 64px 24px 40px;
@@ -214,7 +377,16 @@
             box-shadow: 0 6px 16px rgba(74,17,124,0.25);
         }
 
-        .footer-email {
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .footer-email,
+        .footer-site {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -228,15 +400,16 @@
             background: #ffffff;
             border: 1px solid #e8e8ec;
             transition: all 0.25s ease;
-            margin-bottom: 40px;
         }
 
-        .footer-email i {
+        .footer-email i,
+        .footer-site i {
             color: #4a117c;
             font-size: 18px;
         }
 
-        .footer-email:hover {
+        .footer-email:hover,
+        .footer-site:hover {
             transform: translateY(-2px);
             border-color: #4a117c;
             color: #4a117c;
@@ -270,6 +443,10 @@
             .text-section {
                 padding: 48px 24px;
             }
+            .cta-section,
+            .event-section {
+                padding: 56px 24px;
+            }
             .footer {
                 padding: 48px 20px 32px;
             }
@@ -281,9 +458,14 @@
                 height: 46px;
                 font-size: 19px;
             }
-            .footer-email {
+            .footer-email,
+            .footer-site {
                 font-size: 14px;
                 padding: 10px 18px;
+            }
+            .cta-button {
+                font-size: 15px;
+                padding: 14px 32px;
             }
         }
     </style>
@@ -302,18 +484,18 @@
         <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- INTRO TEXT -->
+    <!-- INTRO -->
     <section class="text-section center-heading">
         <h1>«Fifth Element» Exhibition</h1>
         <p>Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book "The Fifth Element · 五行".</p>
     </section>
 
-    <!-- FULL-WIDTH IMAGE 1 -->
+    <!-- IMAGE 1 -->
     <div class="full-image">
         <img src="images/exh1.webp" alt="Exhibition artwork">
     </div>
 
-    <!-- UNIVERSAL LANGUAGE TEXT -->
+    <!-- UNIVERSAL LANGUAGE -->
     <section class="text-section">
         <h2>A Universal Language of Reality</h2>
         <p>The Five Elements are a universal way of classifying reality itself — a way of describing existence through five colors, five sounds, five tastes, five emotions, and five pairs of organs. Everything that surrounds us, everything we experience, can be understood through this prism.</p>
@@ -322,19 +504,19 @@
         <p>Fire — transformation, passion, and the relentless drive to consume and create anew. It is the spark of inspiration and the flame of destruction. The painting burns with reds, oranges, and golds, its textures rough and radiant, as if the canvas itself is ablaze.</p>
     </section>
 
-    <!-- FULL-WIDTH IMAGE 2 -->
+    <!-- IMAGE 2 -->
     <div class="full-image">
         <img src="images/exh2.webp" alt="Exhibition artwork">
     </div>
 
-    <!-- WOOD / METAL / EARTH TEXT -->
+    <!-- WOOD / METAL / EARTH -->
     <section class="text-section">
         <p>Wood — growth, expansion, and the gentle persistence of life pushing through stone. It is the first stirring of spring and the slow unfolding of destiny. Greens and browns dominate this canvas, and textures rise and branch, reaching upward toward the light.</p>
         <p>Metal — precision, clarity, and the edge of truth. It is the blade that cuts through illusion and the mirror that reflects the soul. The painting is executed in whites, silvers, and cool greys, its textures hard and brilliant, like the surface of a polished sword.</p>
         <p>Earth — the center, the fulcrum, the place where all things return and from which all things emerge. It is the stomach of the human being — the cauldron of reflection and transformation. Yellows, ochres, and warm browns fill this canvas, and textures are dense, grounded, and endlessly fertile.</p>
     </section>
 
-    <!-- FULL-WIDTH IMAGE 3 -->
+    <!-- IMAGE 3 -->
     <div class="full-image">
         <img src="images/exh4.webp" alt="Exhibition artwork">
     </div>
@@ -345,8 +527,8 @@
         <p>According to ancient texts, these symbols appeared in the following order. Water — as the foundation of life. Fire — as the act of creation. Wood — as life itself, manifested in form. Metal — as the reflection of manifested life and death. And the fifth, central element — Earth, the symbol of the human being and the capacity for self-awareness.</p>
     </section>
 
-    <!-- BOOK IMAGE (linked) -->
-    <a href="https://medragon.tilda.ws/en" class="book-link" target="_blank" rel="noopener">
+    <!-- BOOK IMAGE (linked to Amazon) -->
+    <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" class="book-link" target="_blank" rel="noopener">
         <img src="images/book.jpg" alt="The Fifth Element · 五行 — book by Konstantin Medragon">
     </a>
 
@@ -355,6 +537,33 @@
         <h2>About the Book</h2>
         <p>The book "The Fifth Element · 五行" is a journey into this universal language. It describes ten Hollywood actors whose stories reveal the meaning of the five main Elements in our lives and characters. Through their examples, you will see how the elements shape destiny, talent, and a person's path. The book is written by Konstantin Medragon — a biochemist and researcher of ancient systems. It is both a practical guide and a philosophical reflection on time, nature, and the human being.</p>
         <p>You can get acquainted with the book and the author's works at a series of exhibitions. Follow the schedule and locations on this website. The next exhibition will be held at Peter Dallmann's art gallery "Fox Eat Broccoli" in Koh Samui, Thailand.</p>
+    </section>
+
+    <!-- CTA: GET THE BOOK -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Get the Book</h2>
+            <p class="cta-text">Available now in hardcover on Amazon.</p>
+            <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" class="cta-button" target="_blank" rel="noopener">
+                <i class="fab fa-amazon"></i>
+                <span>Order on Amazon</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- UPCOMING EXHIBITION -->
+    <section class="event-section">
+        <div class="event-inner">
+            <span class="event-label">Upcoming Exhibition</span>
+            <h2 class="event-title">The Fifth Element · 五行</h2>
+            <div class="event-date">October 1, 2026</div>
+            <p class="event-details"><strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann</p>
+            <p class="event-details">Koh Samui, Thailand</p>
+            <a href="https://maps.app.goo.gl/T9fy6sdWiY1b2whk6" class="event-button" target="_blank" rel="noopener">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Open in Google Maps</span>
+            </a>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -377,10 +586,16 @@
                 </a>
             </div>
 
-            <a href="mailto:info@skycode.codes" class="footer-email">
-                <i class="far fa-envelope"></i>
-                <span>info@skycode.codes</span>
-            </a>
+            <div class="footer-links">
+                <a href="https://medragon.tilda.ws/en" class="footer-site" target="_blank" rel="noopener">
+                    <i class="fas fa-globe"></i>
+                    <span>medragon.tilda.ws/en</span>
+                </a>
+                <a href="mailto:konstantinmedragon@gmail.com" class="footer-email">
+                    <i class="far fa-envelope"></i>
+                    <span>konstantinmedragon@gmail.com</span>
+                </a>
+            </div>
 
             <div class="footer-bottom">
                 © 2026 The Fifth Element · 五行 — Konstantin Medragon<br>
