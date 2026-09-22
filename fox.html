@@ -36,7 +36,7 @@
 
     /* ВЕРХНЯЯ ПОЛОСА — градиент из 5 цветов стихий */
     .top-bar {
-        height: 6mm;
+        height: 5mm;
         background: linear-gradient(90deg,
             #284131 0%,
             #9b1614 25%,
@@ -47,7 +47,7 @@
         flex-shrink: 0;
     }
 
-    /* ЛЕГЕНДА СТИХИЙ — 5 цветов в ряд */
+    /* ЛЕГЕНДА СТИХИЙ */
     .elements-legend {
         display: flex;
         flex-shrink: 0;
@@ -58,7 +58,7 @@
     .legend-item {
         flex: 1;
         text-align: center;
-        padding: 2.5mm 1mm;
+        padding: 2mm 1mm;
         font-family: 'Inter', sans-serif;
         font-size: 7pt;
         font-weight: 600;
@@ -69,40 +69,37 @@
     .legend-wood   { color: #284131; }
     .legend-fire   { color: #9b1614; }
     .legend-earth  { color: #e09112; }
-    .legend-metal  { color: #cdccd1; }
+    .legend-metal  { color: #7a7a85; }
     .legend-water  { color: #4095d5; }
 
-    /* HERO IMAGE */
+    /* HERO — изображение целиком, от края до края */
     .hero {
-        width: 100%;
-        height: 58mm;
-        background-image: url('images/exh1.webp');
-        background-size: cover;
-        background-position: center;
-        background-color: #f5f5f7;
         position: relative;
+        width: 100%;
         flex-shrink: 0;
+        background: #f5f5f7;
+        overflow: hidden;
     }
 
-    .hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 55%);
+    .hero img {
+        display: block;
+        width: 100%;
+        height: auto;
     }
 
+    /* Метка "Exhibition Opening" — снизу, чтобы не заслоняла картину */
     .hero-label {
         position: absolute;
-        top: 6mm;
+        bottom: 5mm;
         left: 8mm;
         font-family: 'Inter', sans-serif;
         font-size: 8pt;
         font-weight: 600;
         letter-spacing: 2.5px;
         text-transform: uppercase;
-        color: #ffffff;
+        color: #3a3a3e;
         z-index: 2;
-        background: rgba(74,17,124,0.75);
+        background: rgba(204,208,216,0.9);
         padding: 2mm 5mm;
         border-radius: 30px;
         backdrop-filter: blur(4px);
@@ -168,7 +165,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 11pt;
         font-weight: 600;
-        color: #4a117c;
+        color: #3a3a3e;
         margin-bottom: 2mm;
     }
 
@@ -192,14 +189,14 @@
         font-family: 'Inter', sans-serif;
         font-size: 8.5pt;
         font-weight: 600;
-        color: #4a117c;
+        color: #3a3a3e;
         text-decoration: none;
-        border-bottom: 1px solid rgba(74,17,124,0.3);
+        border-bottom: 1px solid rgba(58,58,62,0.3);
         padding-bottom: 1px;
     }
 
     .map-link:hover {
-        border-bottom-color: #4a117c;
+        border-bottom-color: #3a3a3e;
     }
 
     /* PROGRAM LIST */
@@ -225,7 +222,7 @@
         width: 2.5mm;
         height: 2.5mm;
         border-radius: 50%;
-        background: linear-gradient(135deg, #4a117c, #8b3cc7);
+        background: #ccd0d8;
     }
 
     .program li strong {
@@ -237,11 +234,11 @@
     .family-note {
         margin-top: 2.5mm;
         padding: 2.5mm 4mm;
-        background: #f0eef5;
+        background: #f5f5f7;
         border-radius: 3mm;
         font-family: 'Inter', sans-serif;
         font-size: 8.5pt;
-        color: #4a117c;
+        color: #3a3a3e;
         font-weight: 500;
         text-align: center;
         line-height: 1.4;
@@ -261,7 +258,7 @@
     }
 
     .footer-link {
-        color: #4a117c;
+        color: #3a3a3e;
         text-decoration: none;
         font-weight: 600;
     }
@@ -284,7 +281,7 @@
     <!-- ВЕРХНЯЯ ПОЛОСА: градиент из 5 цветов стихий -->
     <div class="top-bar"></div>
 
-    <!-- ЛЕГЕНДА: 5 названий стихий, каждое своим цветом -->
+    <!-- ЛЕГЕНДА -->
     <div class="elements-legend">
         <div class="legend-item legend-wood">Wood</div>
         <div class="legend-item legend-fire">Fire</div>
@@ -293,8 +290,9 @@
         <div class="legend-item legend-water">Water</div>
     </div>
 
-    <!-- HERO: exh1.webp + метка "Exhibition Opening" -->
+    <!-- HERO: изображение целиком, от края до края -->
     <div class="hero">
+        <img src="images/exh1.webp" alt="The Fifth Element — exhibition artwork">
         <div class="hero-label">Exhibition Opening</div>
     </div>
 
