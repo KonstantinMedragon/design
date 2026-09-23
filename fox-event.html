@@ -41,46 +41,6 @@
         overflow-x: hidden;
     }
 
-    /* ===== КНОПКА ВОЗВРАТА ===== */
-    .back-button {
-        position: fixed;
-        top: 16px;
-        left: 16px;
-        z-index: 1000;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #ffffff;
-        color: #111;
-        font-family: 'Inter', sans-serif;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 10px 18px;
-        border-radius: 40px;
-        text-decoration: none;
-        border: 1px solid #e8e8ec;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: all 0.25s ease;
-        letter-spacing: 0.3px;
-    }
-
-    .back-button i {
-        font-size: 12px;
-        color: #4a117c;
-        transition: transform 0.25s ease;
-    }
-
-    .back-button:hover {
-        transform: translateY(-2px);
-        border-color: #4a117c;
-        color: #4a117c;
-        box-shadow: 0 8px 20px rgba(74,17,124,0.15);
-    }
-
-    .back-button:hover i {
-        transform: translateX(-3px);
-    }
-
     /* ===== ВЕРХНЯЯ ПОЛОСА 5 ЦВЕТОВ ===== */
     .top-bar {
         height: 6px;
@@ -113,9 +73,51 @@
     .legend-metal  { color: #7a7a85; }
     .legend-water  { color: #4095d5; }
 
+    /* ===== КНОПКА ВОЗВРАТА ===== */
+    .back-button-wrap {
+        text-align: center;
+        padding: 24px 24px 8px;
+        background: #ffffff;
+    }
+
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 40px;
+        text-decoration: none;
+        border: 1px solid #e8e8ec;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .back-button i {
+        font-size: 12px;
+        color: #4a117c;
+        transition: transform 0.25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        border-color: #4a117c;
+        color: #4a117c;
+        box-shadow: 0 8px 20px rgba(74,17,124,0.15);
+    }
+
+    .back-button:hover i {
+        transform: translateX(-3px);
+    }
+
     /* ===== HEADER ===== */
     .header {
-        padding: 64px 24px 32px;
+        padding: 32px 24px 32px;
         text-align: center;
         border-bottom: 1px solid #e8e8ec;
     }
@@ -476,9 +478,11 @@
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 640px) {
+        .back-button-wrap {
+            padding: 20px 20px 4px;
+        }
+
         .back-button {
-            top: 12px;
-            left: 12px;
             padding: 8px 14px;
             font-size: 12px;
             gap: 6px;
@@ -486,7 +490,7 @@
 
         .back-button i { font-size: 11px; }
 
-        .header { padding: 56px 20px 28px; }
+        .header { padding: 24px 20px 28px; }
 
         .legend-item {
             padding: 10px 2px;
@@ -532,17 +536,11 @@
     }
 
     @media print {
-        .back-button { display: none; }
+        .back-button-wrap { display: none; }
     }
 </style>
 </head>
 <body>
-
-<!-- КНОПКА ВОЗВРАТА -->
-<a href="art.html" class="back-button">
-    <i class="fas fa-arrow-left"></i>
-    <span>Back to exhibition</span>
-</a>
 
 <!-- ВЕРХНЯЯ ПОЛОСА -->
 <div class="top-bar"></div>
@@ -554,6 +552,14 @@
     <div class="legend-item legend-earth">Earth</div>
     <div class="legend-item legend-metal">Metal</div>
     <div class="legend-item legend-water">Water</div>
+</div>
+
+<!-- КНОПКА ВОЗВРАТА -->
+<div class="back-button-wrap">
+    <a href="art.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to exhibition</span>
+    </a>
 </div>
 
 <!-- HEADER -->
