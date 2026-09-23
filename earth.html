@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Earth — The Fifth Element · 五行</title>
+<meta name="description" content="Earth — the center, the fertile foundation of life, the element of self-determination. In the Five Elements tradition, Earth corresponds to the Stomach and Spleen, the planet Saturn, the sweet taste, and the color yellow.">
+<meta name="keywords" content="Earth element, Five Elements, 五行, Earth in Chinese medicine, Stomach Spleen, Saturn, sweet taste, yellow color, Konstantin Medragon">
+<meta name="author" content="Konstantin Medragon">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Earth — The Fifth Element · 五行">
+<meta property="og:description" content="Earth — the center, the fertile foundation of life, the element of self-determination. In the Five Elements tradition, Earth corresponds to the Stomach and Spleen, the planet Saturn, the sweet taste, and the color yellow.">
+<meta property="og:image" content="https://skycode.codes/images/eart.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://skycode.codes/earth.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Fifth Element · 五行">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth — The Fifth Element · 五行">
+<meta name="twitter:description" content="Earth — the center, the fertile foundation of life, the element of self-determination. Stomach and Spleen, planet Saturn, sweet taste, yellow color.">
+<meta name="twitter:image" content="https://skycode.codes/images/eart.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: #ffffff;
+        font-family: 'Inter', sans-serif;
+        color: #111;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ===== ВЕРХНЯЯ ПОЛОСА 5 ЦВЕТОВ ===== */
+    .top-bar {
+        height: 6px;
+        background: linear-gradient(90deg,
+            #284131 0%, #9b1614 25%, #e09112 50%, #cdccd1 75%, #4095d5 100%
+        );
+    }
+
+    /* ===== ЛЕГЕНДА ЭЛЕМЕНТОВ ===== */
+    .elements-legend {
+        display: flex;
+        background: #ffffff;
+        border-bottom: 1px solid #e8e8ec;
+    }
+
+    .legend-item {
+        flex: 1;
+        text-align: center;
+        padding: 12px 4px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s ease;
+    }
+
+    .legend-item:hover {
+        background: #f5f5f7;
+    }
+
+    .legend-wood   { color: #284131; }
+    .legend-fire   { color: #9b1614; }
+    .legend-earth  { color: #e09112; }
+    .legend-metal  { color: #7a7a85; }
+    .legend-water  { color: #4095d5; }
+
+    /* ===== КНОПКА ВОЗВРАТА ===== */
+    .back-button-wrap {
+        text-align: center;
+        padding: 24px 24px 8px;
+        background: #ffffff;
+    }
+
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 40px;
+        text-decoration: none;
+        border: 1px solid #e8e8ec;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .back-button i {
+        font-size: 12px;
+        color: #e09112;
+        transition: transform 0.25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        border-color: #e09112;
+        color: #e09112;
+        box-shadow: 0 8px 20px rgba(224,145,18,0.15);
+    }
+
+    .back-button:hover i {
+        transform: translateX(-3px);
+    }
+
+    /* ===== HERO IMAGE ===== */
+    .hero {
+        width: 100%;
+        display: block;
+        background: #f5f5f7;
+    }
+
+    .hero img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+        padding: 48px 24px 24px;
+        text-align: center;
+    }
+
+    .element-label {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #e09112;
+        background: rgba(224,145,18,0.1);
+        padding: 8px 20px;
+        border-radius: 40px;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 7vw, 60px);
+        font-weight: 800;
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(14px, 1.7vw, 17px);
+        font-weight: 400;
+        color: #5a5a60;
+        letter-spacing: 0.3px;
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px 24px 80px;
+    }
+
+    .content p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.8vw, 18px);
+        font-weight: 400;
+        color: #3a3a3e;
+        line-height: 1.75;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .content p strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .content p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        background: #f5f5f7;
+        padding: 48px 24px 40px;
+        text-align: center;
+        border-top: 1px solid #e8e8ec;
+    }
+
+    .footer-link {
+        color: #4a117c;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        display: inline-block;
+        margin-bottom: 16px;
+        border-bottom: 1px solid rgba(74,17,124,0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.2s ease;
+    }
+
+    .footer-link:hover {
+        border-bottom-color: #4a117c;
+    }
+
+    .footer-contact {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #5a5a60;
+        line-height: 1.8;
+    }
+
+    .footer-contact a {
+        color: #3a3a3e;
+        text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+        color: #4a117c;
+    }
+
+    .footer-contact .contact-line {
+        display: block;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 640px) {
+        .back-button-wrap {
+            padding: 20px 20px 4px;
+        }
+
+        .back-button {
+            padding: 8px 14px;
+            font-size: 12px;
+            gap: 6px;
+        }
+
+        .back-button i { font-size: 11px; }
+
+        .legend-item {
+            padding: 10px 2px;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .header { padding: 36px 20px 20px; }
+
+        .element-label {
+            font-size: 10px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+        }
+
+        .content { padding: 24px 20px 64px; }
+
+        .footer { padding: 40px 20px 32px; }
+    }
+
+    @media (max-width: 380px) {
+        .legend-item { font-size: 8px; letter-spacing: 0.6px; }
+    }
+
+    @media print {
+        .back-button-wrap { display: none; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ВЕРХНЯЯ ПОЛОСА -->
+<div class="top-bar"></div>
+
+<!-- ЛЕГЕНДА -->
+<div class="elements-legend">
+    <a href="tree.html" class="legend-item legend-wood">Wood</a>
+    <a href="fire.html" class="legend-item legend-fire">Fire</a>
+    <a href="earth.html" class="legend-item legend-earth">Earth</a>
+    <a href="metal.html" class="legend-item legend-metal">Metal</a>
+    <a href="water.html" class="legend-item legend-water">Water</a>
+</div>
+
+<!-- КНОПКА ВОЗВРАТА -->
+<div class="back-button-wrap">
+    <a href="art.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to exhibition</span>
+    </a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero">
+    <img src="images/eart.webp" alt="Earth — The Fifth Element">
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="element-label">Earth · 土</div>
+    <h1 class="title">Earth</h1>
+</header>
+
+<!-- CONTENT -->
+<div class="content">
+    <p>Earth gives birth to myriads of things, and to Earth they all return. It is the element that connects cycles and creates meaning — the ground on which the human being is born. Earth is the fertile foundation of life, and also what deeply completes the cycle of creation. </p>
+
+    <p>Earth carries certainty and support. It bestows and rewards. It is the element of the center — the fifth element, the one that holds the other four in place. In a person, Earth corresponds to the capacity for self-determination: the ability to decide who one is, to stand on one's own ground, to become a self. This is what makes a human being human — and this is why the fifth element is placed at the center of the system.</p>
+
+    <p>When Earth is in balance, reflection turns into a gift: the talent of a writer, the ability to perceive concepts, to hold meaning, to give form to what has no shape. When Earth loses its balance, the same reflection becomes cyclical — thoughts that circle without arriving, the inability to make a decision. It is like a tree whose trunk is buried in soil: it cannot grow, because what should be its foundation has become its prison.</p>
+
+    <p>Earth is tied to the <strong>Stomach and Spleen</strong>, together with the pancreas — the organs of receptivity and assimilation, the ability to take in and transform physical food. Its planet is <strong>Saturn</strong>, the slow elder, the lord of structure. Its taste is <strong>sweet</strong>, the taste of nourishment and reward. And its color is <strong>yellow</strong> — the color that, in ancient China, only the emperor was allowed to wear.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
+    <div class="footer-contact">
+        <span class="contact-line"><a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a></span>
+        <span class="contact-line"><a href="tel:+66810143190">+66 81 014 3190</a></span>
+    </div>
+</footer>
+
+</body>
+</html>
