@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Fifth Element · 五行 — Interactive Performance & Exhibition</title>
 <meta name="description" content="An interactive performance and exhibition by Konstantin Medragon. October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui, Thailand. Free entry.">
 <meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, art exhibition, interactive performance, Koh Samui, Fox Eat Broccoli">
@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://skycode.codes/art.html">
+<meta property="og:url" content="https://skycode.codes/flyer.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Fifth Element · 五行">
 
@@ -25,7 +25,11 @@
 <meta name="twitter:description" content="October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui. Free entry. Drinks, artist lecture, presentation of works and book.">
 <meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
     @page { size: A5; margin: 0; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,6 +42,46 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+    }
+
+    /* ====== КНОПКА ВОЗВРАТА ====== */
+    .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 40px;
+        text-decoration: none;
+        border: 1px solid #e8e8ec;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .back-button i {
+        font-size: 12px;
+        color: #4a117c;
+        transition: transform 0.25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        border-color: #4a117c;
+        color: #4a117c;
+        box-shadow: 0 8px 20px rgba(74,17,124,0.15);
+    }
+
+    .back-button:hover i {
+        transform: translateX(-3px);
     }
 
     .flyer-wrapper {
@@ -413,26 +457,43 @@
     }
 
     /* ====== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ====== */
+    @media screen and (max-width: 800px) {
+        body { padding: 70px 16px 24px; }
+        .back-button { top: 14px; left: 14px; padding: 8px 16px; font-size: 12px; }
+    }
+
     @media screen and (max-width: 640px) {
-        body { padding: 12px; }
-        .flyer { zoom: 0.62; }
+        body { padding: 64px 10px 20px; }
+        .flyer { zoom: 0.68; }
+        .back-button { top: 12px; left: 12px; padding: 8px 14px; font-size: 11px; }
     }
+
     @media screen and (max-width: 480px) {
-        body { padding: 8px; }
-        .flyer { zoom: 0.52; }
+        body { padding: 60px 6px 16px; }
+        .flyer { zoom: 0.56; }
+        .back-button { top: 10px; left: 10px; padding: 7px 12px; font-size: 10px; gap: 6px; }
+        .back-button i { font-size: 10px; }
     }
+
     @media screen and (max-width: 380px) {
-        .flyer { zoom: 0.44; }
+        .flyer { zoom: 0.46; }
     }
 
     @media print {
         body { background: #ffffff; padding: 0; min-height: auto; display: block; }
         .flyer-wrapper { display: block; }
         .flyer { box-shadow: none; margin: 0; }
+        .back-button { display: none; }
     }
 </style>
 </head>
 <body>
+
+<!-- КНОПКА ВОЗВРАТА -->
+<a href="art.html" class="back-button">
+    <i class="fas fa-arrow-left"></i>
+    <span>Back to exhibition</span>
+</a>
 
 <div class="flyer-wrapper">
 <div class="flyer">
@@ -460,7 +521,7 @@
                 <strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann<br>
                 Koh Samui, Thailand
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Fox+Eat+Broccoli+Koh+Samui" class="map-link" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Fox+Eat+Broccoli+Koh+Samui" class="map-link" target="_blank" rel="noopener">
                 📍 Open location in Google Maps
             </a>
         </div>
