@@ -1,467 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fifth Element · 五行 — Exhibition by Konstantin Medragon</title>
-    <meta name="description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
-    <meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, art exhibition, Koh Samui, Fox Eat Broccoli, contemporary art, textures, paintings">
-    <meta name="author" content="Konstantin Medragon">
-    <meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fifth Element · 五行 — Exhibition by Konstantin Medragon</title>
+<meta name="description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+<meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, art exhibition, Koh Samui, Fox Eat Broccoli, contemporary art, textures, paintings">
+<meta name="author" content="Konstantin Medragon">
+<meta name="robots" content="index, follow">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
-    <meta property="og:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
-    <meta property="og:image" content="https://medragon.tilda.ws/images/logo.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://medragon.tilda.ws/en">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="The Fifth Element · 五行">
+<meta property="og:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
+<meta property="og:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+<meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://skycode.codes/art.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Fifth Element · 五行">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
-    <meta name="twitter:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
-    <meta name="twitter:image" content="https://medragon.tilda.ws/images/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Fifth Element · 五行 — Exhibition by Konstantin Medragon">
+<meta name="twitter:description" content="Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book «The Fifth Element · 五行».">
+<meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background: #ffffff;
-            font-family: 'Inter', sans-serif;
-            color: #111;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
+    body {
+        background: #ffffff;
+        font-family: 'Inter', sans-serif;
+        color: #111;
+        line-height: 1.5;
+        overflow-x: hidden;
+    }
 
-        .hero-carousel {
-            position: relative;
-            width: 100%;
-            height: clamp(500px, 60vh, 650px);
-            overflow: hidden;
-            background: #f5f5f7;
-        }
+    /* ===== HERO CAROUSEL ===== */
+    .hero-carousel {
+        position: relative;
+        width: 100%;
+        height: clamp(500px, 60vh, 650px);
+        overflow: hidden;
+        background: #f5f5f7;
+    }
 
-        .slides-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-        }
+    .slides-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
 
-        .slide {
-            flex: 0 0 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    .slide {
+        flex: 0 0 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-        .hero-carousel::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
+    .hero-carousel::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 50%);
+        pointer-events: none;
+        z-index: 1;
+    }
 
-        .slider-dots {
-            position: absolute;
-            bottom: 24px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            z-index: 3;
-        }
+    .slider-dots {
+        position: absolute;
+        bottom: 24px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        z-index: 3;
+    }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    .dot {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255,255,255,0.6);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-        .dot.active {
-            background-color: #ffffff;
-            width: 28px;
-            border-radius: 4px;
-        }
+    .dot.active {
+        background-color: #ffffff;
+        width: 28px;
+        border-radius: 4px;
+    }
 
-        .text-section {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 72px 24px;
-            text-align: left;
-        }
+    /* ===== TEXT SECTION ===== */
+    .text-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 72px 24px;
+        text-align: left;
+    }
 
-        .text-section.center-heading {
-            text-align: center;
-        }
+    .text-section.center-heading {
+        text-align: center;
+    }
 
-        .text-section h1,
-        .text-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #111;
-            line-height: 1.25;
-            letter-spacing: -0.3px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
+    .text-section h1,
+    .text-section h2 {
+        font-family: 'Playfair Display', serif;
+        color: #111;
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+        margin-bottom: 32px;
+        text-align: center;
+    }
 
-        .text-section h1 {
-            font-size: clamp(28px, 4vw, 44px);
-            font-weight: 700;
-        }
+    .text-section h1 {
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 700;
+    }
 
-        .text-section h2 {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: 700;
-        }
+    .text-section h2 {
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 700;
+    }
 
-        .text-section p {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(16px, 1.6vw, 18px);
-            font-weight: 400;
-            color: #3a3a3e;
-            line-height: 1.7;
-            margin-bottom: 24px;
-            text-align: left;
-        }
+    .text-section p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.6vw, 18px);
+        font-weight: 400;
+        color: #3a3a3e;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        text-align: left;
+    }
 
-        .text-section p:last-child {
-            margin-bottom: 0;
-        }
+    .text-section p:last-child {
+        margin-bottom: 0;
+    }
 
-        .full-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            background: #f5f5f7;
-        }
+    /* ===== FULL-WIDTH IMAGE ===== */
+    .full-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #f5f5f7;
+    }
 
-        .full-image img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+    .full-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
-        .book-link {
-            display: block;
-            width: 100%;
-            background: #f5f5f7;
-        }
+    /* ===== LINKED IMAGE (book) ===== */
+    .book-link {
+        display: block;
+        width: 100%;
+        background: #f5f5f7;
+    }
 
-        .book-link img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: opacity 0.25s ease;
-        }
+    .book-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: opacity 0.25s ease;
+    }
 
-        .book-link:hover img {
-            opacity: 0.92;
-        }
+    .book-link:hover img {
+        opacity: 0.92;
+    }
 
-        .cta-section {
-            background: #f5f5f7;
-            padding: 64px 24px;
-            text-align: center;
-        }
+    /* ===== LEARN MORE LINK ===== */
+    .learn-more {
+        display: inline-block;
+        margin-top: 6px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #7a7a85;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(122,122,133,0.4);
+        padding-bottom: 1px;
+        transition: all 0.2s ease;
+        letter-spacing: 0.2px;
+    }
 
-        .cta-inner {
-            max-width: 720px;
-            margin: 0 auto;
-        }
+    .learn-more:hover {
+        color: #4a117c;
+        border-bottom-color: #4a117c;
+    }
 
-        .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(24px, 3vw, 34px);
-            font-weight: 700;
-            color: #111;
-            line-height: 1.25;
-            margin-bottom: 16px;
-            text-align: center;
-        }
+    .learn-more::after {
+        content: ' →';
+        font-family: 'Inter', sans-serif;
+        transition: transform 0.2s ease;
+        display: inline-block;
+    }
 
-        .cta-text {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(16px, 1.6vw, 18px);
-            color: #3a3a3e;
-            line-height: 1.6;
-            margin-bottom: 32px;
-            text-align: center;
-        }
+    .learn-more:hover::after {
+        transform: translateX(3px);
+    }
 
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #4a117c 0%, #8b3cc7 60%, #c994e2 100%);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            padding: 16px 40px;
-            border-radius: 44px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(74,17,124,0.2);
-            letter-spacing: 0.3px;
-        }
+    /* ===== UPCOMING BANNER (под заголовком) ===== */
+    .upcoming-banner {
+        display: block;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        background: #f5f5f7;
+        padding: 18px 32px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 60px;
+        border: 1px solid #e8e8ec;
+        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(74,17,124,0.28);
-        }
+    .upcoming-banner:hover {
+        background: #ebe9f0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(74,17,124,0.08);
+    }
 
-        .cta-button i {
-            font-size: 18px;
-        }
+    .upcoming-banner-text {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 2.4vw, 26px);
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        background: linear-gradient(135deg, #7a7a85 0%, #4a117c 50%, #8b3cc7 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
 
-        .event-section {
-            background: #ffffff;
-            padding: 80px 24px;
-            text-align: center;
-        }
+    .upcoming-banner-text i {
+        background: linear-gradient(135deg, #7a7a85, #4a117c, #8b3cc7);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 0.9em;
+        display: inline-block;
+        animation: arrowSlide 1.6s ease-in-out infinite;
+    }
 
-        .event-inner {
-            max-width: 720px;
-            margin: 0 auto;
-        }
+    @keyframes arrowSlide {
+        0%   { transform: translateX(0); }
+        50%  { transform: translateX(8px); }
+        100% { transform: translateX(0); }
+    }
 
-        .event-label {
-            display: inline-block;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #4a117c;
-            background: #f0eef5;
-            padding: 8px 20px;
-            border-radius: 40px;
-            margin-bottom: 24px;
-        }
+    .upcoming-banner:hover .upcoming-banner-text i {
+        animation-play-state: paused;
+        transform: translateX(10px);
+    }
 
-        .event-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 700;
-            color: #111;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            text-align: center;
-        }
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+        background: #f5f5f7;
+        padding: 64px 24px;
+        text-align: center;
+    }
 
-        .event-date {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(20px, 2.4vw, 26px);
-            font-weight: 600;
-            color: #4a117c;
-            margin-bottom: 32px;
-            text-align: center;
-        }
+    .cta-inner {
+        max-width: 720px;
+        margin: 0 auto;
+    }
 
-        .event-details {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(16px, 1.6vw, 18px);
-            color: #3a3a3e;
-            line-height: 1.7;
-            margin-bottom: 12px;
-            text-align: center;
-        }
+    .cta-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(24px, 3vw, 34px);
+        font-weight: 700;
+        color: #111;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        text-align: center;
+    }
 
-        .event-details strong {
-            color: #111;
-            font-weight: 600;
-        }
+    .cta-text {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.6vw, 18px);
+        color: #3a3a3e;
+        line-height: 1.6;
+        margin-bottom: 32px;
+        text-align: center;
+    }
 
-        .event-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 32px;
-            background: #ffffff;
-            color: #4a117c;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            padding: 14px 32px;
-            border-radius: 44px;
-            text-decoration: none;
-            border: 1.5px solid #4a117c;
-            transition: all 0.25s ease;
-        }
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #4a117c 0%, #8b3cc7 60%, #c994e2 100%);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 16px 40px;
+        border-radius: 44px;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 12px rgba(74,17,124,0.2);
+        letter-spacing: 0.3px;
+    }
 
-        .event-button:hover {
-            background: #4a117c;
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(74,17,124,0.2);
-        }
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(74,17,124,0.28);
+    }
 
-        .event-button i {
-            font-size: 16px;
-        }
+    .cta-button i {
+        font-size: 18px;
+    }
 
-        .footer {
-            background: #f5f5f7;
-            padding: 64px 24px 40px;
-            margin-top: 48px;
-        }
+    /* ===== EVENT SECTION ===== */
+    .event-section {
+        background: #ffffff;
+        padding: 80px 24px;
+        text-align: center;
+    }
 
-        .footer-inner {
-            max-width: 860px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    .event-inner {
+        max-width: 720px;
+        margin: 0 auto;
+    }
 
-        .footer-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(20px, 2.2vw, 26px);
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 32px;
-            text-align: center;
-        }
+    .event-label {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #4a117c;
+        background: #f0eef5;
+        padding: 8px 20px;
+        border-radius: 40px;
+        margin-bottom: 24px;
+    }
 
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
+    .event-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        color: #111;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        text-align: center;
+    }
 
-        .footer-socials a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #e8e8ec;
-            color: #4a117c;
-            font-size: 22px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-        }
+    .event-date {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 2.4vw, 26px);
+        font-weight: 600;
+        color: #4a117c;
+        margin-bottom: 32px;
+        text-align: center;
+    }
 
-        .footer-socials a:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, #4a117c, #8b3cc7);
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 6px 16px rgba(74,17,124,0.25);
-        }
+    .event-details {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.6vw, 18px);
+        color: #3a3a3e;
+        line-height: 1.7;
+        margin-bottom: 12px;
+        text-align: center;
+    }
 
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
+    .event-details strong {
+        color: #111;
+        font-weight: 600;
+    }
 
-        .footer-email,
-        .footer-site {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            color: #111;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            background: #ffffff;
-            border: 1px solid #e8e8ec;
-            transition: all 0.25s ease;
-        }
+    .event-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 32px;
+    }
 
-        .footer-email i,
-        .footer-site i {
-            color: #4a117c;
-            font-size: 18px;
-        }
+    .event-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #ffffff;
+        color: #4a117c;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 14px 32px;
+        border-radius: 44px;
+        text-decoration: none;
+        border: 1.5px solid #4a117c;
+        transition: all 0.25s ease;
+    }
 
-        .footer-email:hover,
-        .footer-site:hover {
-            transform: translateY(-2px);
-            border-color: #4a117c;
-            color: #4a117c;
-            box-shadow: 0 4px 12px rgba(74,17,124,0.12);
-        }
+    .event-button:hover {
+        background: #4a117c;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(74,17,124,0.2);
+    }
 
-        .footer-bottom {
-            border-top: 1px solid #e0e0e6;
-            padding-top: 24px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #888891;
-            text-align: center;
-            line-height: 1.6;
-        }
+    .event-button i {
+        font-size: 16px;
+    }
 
-        .footer-bottom a {
-            color: #4a117c;
-            text-decoration: none;
-            font-weight: 500;
-        }
+    /* ===== FOOTER ===== */
+    .footer {
+        background: #f5f5f7;
+        padding: 64px 24px 40px;
+        margin-top: 48px;
+    }
 
-        .footer-bottom a:hover {
-            text-decoration: underline;
-        }
+    .footer-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+    }
 
-        @media (max-width: 768px) {
-            .hero-carousel {
-                height: clamp(360px, 50vh, 450px);
-            }
-            .text-section {
-                padding: 48px 24px;
-            }
-            .cta-section,
-            .event-section {
-                padding: 56px 24px;
-            }
-            .footer {
-                padding: 48px 20px 32px;
-            }
-            .footer-socials {
-                gap: 14px;
-            }
-            .footer-socials a {
-                width: 46px;
-                height: 46px;
-                font-size: 19px;
-            }
-            .footer-email,
-            .footer-site {
-                font-size: 14px;
-                padding: 10px 18px;
-            }
-            .cta-button {
-                font-size: 15px;
-                padding: 14px 32px;
-            }
-        }
-    </style>
+    .footer-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 2.2vw, 26px);
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .footer-socials {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+
+    .footer-socials a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        color: #4a117c;
+        font-size: 22px;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .footer-socials a:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #4a117c, #8b3cc7);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 6px 16px rgba(74,17,124,0.25);
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .footer-email,
+    .footer-site {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #111;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 40px;
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        transition: all 0.25s ease;
+    }
+
+    .footer-email i,
+    .footer-site i {
+        color: #4a117c;
+        font-size: 18px;
+    }
+
+    .footer-email:hover,
+    .footer-site:hover {
+        transform: translateY(-2px);
+        border-color: #4a117c;
+        color: #4a117c;
+        box-shadow: 0 4px 12px rgba(74,17,124,0.12);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #e0e0e6;
+        padding-top: 24px;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        color: #888891;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .footer-bottom a {
+        color: #4a117c;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .footer-bottom a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .hero-carousel { height: clamp(360px, 50vh, 450px); }
+        .text-section { padding: 48px 24px; }
+        .cta-section, .event-section { padding: 56px 24px; }
+        .footer { padding: 48px 20px 32px; }
+        .footer-socials { gap: 14px; }
+        .footer-socials a { width: 46px; height: 46px; font-size: 19px; }
+        .footer-email, .footer-site { font-size: 14px; padding: 10px 18px; }
+        .cta-button { font-size: 15px; padding: 14px 32px; }
+        .upcoming-banner { padding: 14px 24px; }
+    }
+</style>
 </head>
 <body>
 
@@ -480,7 +559,15 @@
     <!-- INTRO -->
     <section class="text-section center-heading">
         <h1>«Fifth Element» Exhibition</h1>
-        <p>Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book "The Fifth Element · 五行".</p>
+
+        <a href="fox-event.html" class="upcoming-banner">
+            <div class="upcoming-banner-text">
+                Upcoming event
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <p style="margin-top: 32px;">Welcome to the Five Elements exhibition project. Here you will find exhibition dates and locations, view the works of author Konstantin Medragon, and discover his book "The Fifth Element · 五行".</p>
     </section>
 
     <!-- IMAGE 1 -->
@@ -491,10 +578,13 @@
     <!-- UNIVERSAL LANGUAGE -->
     <section class="text-section">
         <h2>A Universal Language of Reality</h2>
-        <p>The Five Elements are a universal way of classifying reality itself — a way of describing existence through five colors, five sounds, five tastes, five emotions, and five pairs of organs. Everything that surrounds us, everything we experience, can be understood through this prism.</p>
+        <p>A project dedicated to a universal method based on the interpretation of the Five Elements — a way of describing existence through five colors, five sounds, five tastes, five emotions, and five pairs of organs. Everything that surrounds us, everything we experience, can be understood through this prism.</p>
         <p>The exhibition presents five paintings, each corresponding to one of the Elements. The properties of each Element are conveyed not only through color but also through texture — powerful, tactile images that embody the spirit of each element.</p>
         <p>Water — depth, mystery, and hidden threat beneath a calm surface. It is the force that carves canyons over millennia and the whisper that moves through dreams. In this painting, Water speaks through deep blues and blacks, through flowing and receding textures, inviting the viewer to look beneath the surface.</p>
-        <p>Fire — transformation, passion, and the relentless drive to consume and create anew. It is the spark of inspiration and the flame of destruction. The painting burns with reds, oranges, and golds, its textures rough and radiant, as if the canvas itself is ablaze.</p>
+        <a href="water.html" class="learn-more">Learn more about water meaning</a>
+
+        <p style="margin-top: 28px;">Fire — transformation, passion, and the relentless drive to consume and create anew. It is the spark of inspiration and the flame of destruction. The painting burns with reds, oranges, and golds, its textures rough and radiant, as if the canvas itself is ablaze.</p>
+        <a href="fire.html" class="learn-more">Learn more about fire meaning</a>
     </section>
 
     <!-- IMAGE 2 -->
@@ -505,8 +595,15 @@
     <!-- WOOD / METAL / EARTH -->
     <section class="text-section">
         <p>Wood — growth, expansion, and the gentle persistence of life pushing through stone. It is the first stirring of spring and the slow unfolding of destiny. Greens and browns dominate this canvas, and textures rise and branch, reaching upward toward the light.</p>
-        <p>Metal — precision, clarity, and the edge of truth. It is the blade that cuts through illusion and the mirror that reflects the soul. The painting is executed in whites, silvers, and cool greys, its textures hard and brilliant, like the surface of a polished sword.</p>
-        <p>Earth — the center, the fulcrum, the place where all things return and from which all things emerge. It is the stomach of the human being — the cauldron of reflection and transformation. Yellows, ochres, and warm browns fill this canvas, and textures are dense, grounded, and endlessly fertile.</p>
+        <a href="tree.html" class="learn-more">Learn more about wood meaning</a>
+
+        <p style="margin-top: 28px;">Metal — precision, clarity, and the edge of truth. It is the blade that cuts through illusion and the mirror that reflects the soul. The painting is executed in whites, silvers, and cool greys, its textures hard and brilliant, like the surface of a polished sword.</p>
+        <a href="metal.html" class="learn-more">Learn more about metal meaning</a>
+
+        <p style="margin-top: 28px;">Earth — the center, the fulcrum, the place where all things return and from which all things emerge. It is the stomach of the human being — the cauldron of reflection and transformation. Yellows, ochres, and warm browns fill this canvas, and textures are dense, grounded, and endlessly fertile.</p>
+        <a href="earth.html" class="learn-more">Learn more about earth meaning</a>
+
+        <p style="margin-top: 28px;">It is no coincidence that a human being has five fingers on each limb — the body itself carries the signature of the Five Elements. Earth, as the fifth and central element, is the sign of the human being: the one who can observe, reflect, and name the world through these five forces.</p>
     </section>
 
     <!-- IMAGE 3 -->
@@ -529,7 +626,8 @@
     <section class="text-section">
         <h2>About the Book</h2>
         <p>The book "The Fifth Element · 五行" is a journey into this universal language. It describes ten Hollywood actors whose stories reveal the meaning of the five main Elements in our lives and characters. Through their examples, you will see how the elements shape destiny, talent, and a person's path. The book is written by Konstantin Medragon — an artist and researcher of ancient knowledge. It is both a practical guide and a philosophical reflection on time, nature, and the human being.</p>
-        <p>You can get acquainted with the book and the author's works at a series of exhibitions. Follow the schedule and locations on this website. The next exhibition will be held at Peter Dallmann's art gallery "Fox Eat Broccoli" in Koh Samui, Thailand.</p>
+        <a href="book_sample.html" class="learn-more">Read a sample</a>
+        <p style="margin-top: 28px;">You can get acquainted with the book and the author's works at a series of exhibitions. Follow the schedule and locations on this website. The next exhibition will be held at Peter Dallmann's art gallery "Fox Eat Broccoli" in Koh Samui, Thailand.</p>
     </section>
 
     <!-- CTA: GET THE BOOK -->
@@ -552,10 +650,16 @@
             <div class="event-date">October 1, 2026</div>
             <p class="event-details"><strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann</p>
             <p class="event-details">Koh Samui, Thailand</p>
-            <a href="https://maps.app.goo.gl/T9fy6sdWiY1b2whk6" class="event-button" target="_blank" rel="noopener">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Open in Google Maps</span>
-            </a>
+            <div class="event-buttons">
+                <a href="https://maps.app.goo.gl/T9fy6sdWiY1b2whk6" class="event-button" target="_blank" rel="noopener">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Open in Google Maps</span>
+                </a>
+                <a href="fox-event.html" class="event-button">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Learn more about the exhibition</span>
+                </a>
+            </div>
         </div>
     </section>
 
