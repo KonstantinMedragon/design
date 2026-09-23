@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brochure — The Fifth Element · 五行</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    @page { size: A5; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+        background: #e5e5e5;
+        font-family: 'Inter', sans-serif;
+        min-height: 100vh;
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .flyer-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .flyer {
+        width: 148mm;
+        min-height: 210mm;
+        background: #ffffff;
+        color: #111;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        flex-shrink: 0;
+    }
+
+    /* ====== ВЕРХНЯЯ ПОЛОСА ====== */
+    .top-bar {
+        height: 5mm;
+        background: linear-gradient(90deg,
+            #284131 0%, #9b1614 25%, #e09112 50%, #cdccd1 75%, #4095d5 100%
+        );
+        flex-shrink: 0;
+    }
+
+    /* ====== ЛЕГЕНДА ====== */
+    .elements-legend {
+        display: flex;
+        flex-shrink: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e8e8ec;
+    }
+
+    .legend-item {
+        flex: 1;
+        text-align: center;
+        padding: 1.8mm 1mm;
+        font-family: 'Inter', sans-serif;
+        font-size: 6.5pt;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .legend-wood   { color: #284131; }
+    .legend-fire   { color: #9b1614; }
+    .legend-earth  { color: #e09112; }
+    .legend-metal  { color: #7a7a85; }
+    .legend-water  { color: #4095d5; }
+
+    /* ====== HEADER ====== */
+    .header {
+        padding: 5mm 10mm 3mm;
+        text-align: center;
+        border-bottom: 1px solid #e8e8ec;
+    }
+
+    .title {
+        font-family: 'Playfair Display', serif;
+        font-size: 21pt;
+        font-weight: 800;
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.4px;
+        margin-bottom: 1mm;
+    }
+
+    .author {
+        font-family: 'Inter', sans-serif;
+        font-size: 9pt;
+        font-weight: 500;
+        color: #5a5a60;
+        letter-spacing: 0.5px;
+    }
+
+    /* ====== CONTENT ====== */
+    .content {
+        flex: 1;
+        padding: 4mm 10mm 3mm;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ==== EVENT ==== */
+    .event-block {
+        margin-bottom: 3mm;
+        text-align: center;
+    }
+
+    .event-date {
+        font-family: 'Playfair Display', serif;
+        font-size: 14pt;
+        font-weight: 700;
+        color: #111;
+        line-height: 1.2;
+        margin-bottom: 0.5mm;
+    }
+
+    .event-time {
+        font-family: 'Inter', sans-serif;
+        font-size: 10pt;
+        font-weight: 600;
+        color: #3a3a3e;
+        margin-bottom: 1.5mm;
+    }
+
+    .event-venue {
+        font-family: 'Inter', sans-serif;
+        font-size: 8.5pt;
+        color: #3a3a3e;
+        line-height: 1.4;
+    }
+
+    .event-venue strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .map-link {
+        display: inline-block;
+        margin-top: 1.5mm;
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        font-weight: 600;
+        color: #3a3a3e;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(58,58,62,0.3);
+        padding-bottom: 1px;
+    }
+
+    .map-link:hover {
+        border-bottom-color: #3a3a3e;
+    }
+
+    /* ==== PROGRAM ==== */
+    .program {
+        list-style: none;
+        margin-bottom: 2mm;
+        text-align: left;
+        padding: 2.5mm 3mm;
+        background: #f5f5f7;
+        border-radius: 2.5mm;
+    }
+
+    .program li {
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #3a3a3e;
+        padding: 0.6mm 0 0.6mm 4.5mm;
+        position: relative;
+        line-height: 1.35;
+    }
+
+    .program li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 2.2mm;
+        width: 1.8mm;
+        height: 1.8mm;
+        border-radius: 50%;
+        background: #ccd0d8;
+    }
+
+    .program li strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .family-note {
+        padding: 2mm 4mm;
+        background: #ffffff;
+        border: 1px dashed #ccd0d8;
+        border-radius: 2.5mm;
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #3a3a3e;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.35;
+        margin-bottom: 3mm;
+    }
+
+    /* ==== SECTIONS ==== */
+    .section {
+        margin-bottom: 3mm;
+        position: relative;
+        padding-left: 8mm;
+    }
+
+    .section-number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6mm;
+        height: 6mm;
+        border-radius: 50%;
+        background: #ccd0d8;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 9pt;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 12pt;
+        font-weight: 700;
+        color: #111;
+        line-height: 1.2;
+        margin-bottom: 1mm;
+        letter-spacing: -0.2px;
+    }
+
+    .section-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 8.5pt;
+        color: #3a3a3e;
+        line-height: 1.5;
+        margin-bottom: 1mm;
+    }
+
+    .section-text strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .section-list {
+        list-style: none;
+        margin-top: 1mm;
+    }
+
+    .section-list li {
+        font-family: 'Inter', sans-serif;
+        font-size: 8.5pt;
+        color: #3a3a3e;
+        padding: 0.5mm 0 0.5mm 4.5mm;
+        position: relative;
+        line-height: 1.4;
+    }
+
+    .section-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 2.3mm;
+        width: 1.8mm;
+        height: 1.8mm;
+        border-radius: 50%;
+        background: #ccd0d8;
+    }
+
+    .section-list li strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    /* ==== ELEMENTS STRIP ==== */
+    .elements-strip {
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5mm 0;
+    }
+
+    .element-dot {
+        flex: 1;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        font-size: 6pt;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+    }
+
+    .element-dot .dot-circle {
+        display: block;
+        width: 3.5mm;
+        height: 3.5mm;
+        border-radius: 50%;
+        margin: 0 auto 0.8mm;
+    }
+
+    .el-wood .dot-circle  { background: #284131; }
+    .el-fire .dot-circle  { background: #9b1614; }
+    .el-earth .dot-circle { background: #e09112; }
+    .el-metal .dot-circle { background: #cdccd1; }
+    .el-water .dot-circle { background: #4095d5; }
+
+    .el-wood  { color: #284131; }
+    .el-fire  { color: #9b1614; }
+    .el-earth { color: #e09112; }
+    .el-metal { color: #7a7a85; }
+    .el-water { color: #4095d5; }
+
+    /* ==== QR BLOCK ==== */
+    .qr-block {
+        display: flex;
+        gap: 4mm;
+        align-items: center;
+        margin-top: 1.5mm;
+        padding: 2.5mm;
+        background: #f5f5f7;
+        border-radius: 2.5mm;
+    }
+
+    .qr-block a {
+        flex-shrink: 0;
+        display: block;
+        line-height: 0;
+    }
+
+    .qr-block img {
+        width: 24mm;
+        height: 24mm;
+        object-fit: contain;
+        display: block;
+        border-radius: 1.5mm;
+        background: #ffffff;
+        padding: 1.5mm;
+    }
+
+    .qr-info {
+        flex: 1;
+    }
+
+    .qr-info-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 10pt;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1mm;
+        line-height: 1.2;
+    }
+
+    .qr-info-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 7.5pt;
+        color: #3a3a3e;
+        line-height: 1.4;
+    }
+
+    .qr-info-text strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    /* ==== FOOTER ==== */
+    .footer {
+        margin-top: auto;
+        padding: 3mm 10mm 4mm;
+        border-top: 1px solid #e8e8ec;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        font-size: 7.5pt;
+        color: #5a5a60;
+        line-height: 1.5;
+    }
+
+    .footer-link {
+        color: #3a3a3e;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 8.5pt;
+        display: inline-block;
+        margin-bottom: 0.8mm;
+    }
+
+    /* ====== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ====== */
+    @media screen and (max-width: 640px) {
+        body { padding: 12px; }
+        .flyer { zoom: 0.62; }
+    }
+    @media screen and (max-width: 480px) {
+        body { padding: 8px; }
+        .flyer { zoom: 0.52; }
+    }
+    @media screen and (max-width: 380px) {
+        .flyer { zoom: 0.44; }
+    }
+
+    @media print {
+        body { background: #ffffff; padding: 0; min-height: auto; display: block; }
+        .flyer-wrapper { display: block; }
+        .flyer { box-shadow: none; margin: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="flyer-wrapper">
+<div class="flyer">
+    <!-- ВЕРХНЯЯ ПОЛОСА -->
+    <div class="top-bar"></div>
+
+    <!-- ЛЕГЕНДА -->
+    <div class="elements-legend">
+        <div class="legend-item legend-wood">Wood</div>
+        <div class="legend-item legend-fire">Fire</div>
+        <div class="legend-item legend-earth">Earth</div>
+        <div class="legend-item legend-metal">Metal</div>
+        <div class="legend-item legend-water">Water</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1 class="title">The Fifth Element · 五行</h1>
+        <div class="author">Konstantin Medragon · Interactive Performance &amp; Exhibition</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- EVENT -->
+        <div class="event-block">
+            <div class="event-date">October 1, 2026</div>
+            <div class="event-time">17:00 · Opening Reception</div>
+            <div class="event-venue">
+                <strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann<br>
+                Koh Samui, Thailand
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Fox+Eat+Broccoli+Koh+Samui" class="map-link" target="_blank">
+                📍 Open location in Google Maps
+            </a>
+        </div>
+
+        <!-- PROGRAM -->
+        <ul class="program">
+            <li><strong>Free entry</strong> — everyone is welcome</li>
+            <li>Welcome drinks &amp; light refreshments</li>
+            <li>Short artist lecture on the concept</li>
+            <li>Presentation of the works and the book</li>
+        </ul>
+
+        <!-- FAMILY NOTE -->
+        <div class="family-note">
+            Bring your family — parents with children are warmly welcome.
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="section">
+            <div class="section-number">1</div>
+            <div class="section-title">The Project</div>
+            <p class="section-text">
+                A project dedicated to a <strong>universal method</strong> based on the interpretation of the Five Elements. Through this method, one can understand one's own predispositions — the patterns that shape character, decisions, and destiny.
+            </p>
+            <div class="elements-strip">
+                <div class="element-dot el-wood"><span class="dot-circle"></span>Wood</div>
+                <div class="element-dot el-fire"><span class="dot-circle"></span>Fire</div>
+                <div class="element-dot el-earth"><span class="dot-circle"></span>Earth</div>
+                <div class="element-dot el-metal"><span class="dot-circle"></span>Metal</div>
+                <div class="element-dot el-water"><span class="dot-circle"></span>Water</div>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="section">
+            <div class="section-number">2</div>
+            <div class="section-title">The Structure</div>
+            <ul class="section-list">
+                <li><strong>An exhibition of five paintings</strong> — chamber version, presented here at this gallery</li>
+                <li><strong>Interactive games with the natural elements</strong> — participants experience the elements directly</li>
+                <li><strong>A book</strong> — available for purchase here, and on Amazon</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="section">
+            <div class="section-number">3</div>
+            <div class="section-title">The Book</div>
+            <p class="section-text">
+                A journey into the universal language of the elements, told through ten Hollywood actors and their stories.
+            </p>
+
+            <div class="qr-block">
+                <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" target="_blank" rel="noopener">
+                    <img src="images/qr-book.png" alt="QR — order the book on Amazon">
+                </a>
+                <div class="qr-info">
+                    <div class="qr-info-title">The Fifth Element · 五行</div>
+                    <div class="qr-info-text">
+                        By Konstantin Medragon. <strong>Scan or tap the QR code</strong> to order the hardcover on Amazon.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a><br>
+        konstantinmedragon@gmail.com · +66 81 014 3190
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
