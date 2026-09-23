@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Wood — The Fifth Element · 五行</title>
+<meta name="description" content="Wood — growth, prosperity, creativity. In the Five Elements tradition, Wood corresponds to the Liver and Spleen, the planet Jupiter, the sour taste, and the color green.">
+<meta name="keywords" content="Wood element, Five Elements, 五行, Wood in Chinese medicine, Liver Spleen, Jupiter, green color, Konstantin Medragon">
+<meta name="author" content="Konstantin Medragon">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Wood — The Fifth Element · 五行">
+<meta property="og:description" content="Wood — growth, prosperity, creativity. In the Five Elements tradition, Wood corresponds to the Liver and Spleen, the planet Jupiter, the sour taste, and the color green.">
+<meta property="og:image" content="https://skycode.codes/images/tree.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://skycode.codes/tree.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Fifth Element · 五行">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wood — The Fifth Element · 五行">
+<meta name="twitter:description" content="Wood — growth, prosperity, creativity. Liver and Spleen, planet Jupiter, sour taste, green color.">
+<meta name="twitter:image" content="https://skycode.codes/images/tree.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: #ffffff;
+        font-family: 'Inter', sans-serif;
+        color: #111;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ===== ВЕРХНЯЯ ПОЛОСА 5 ЦВЕТОВ ===== */
+    .top-bar {
+        height: 6px;
+        background: linear-gradient(90deg,
+            #284131 0%, #9b1614 25%, #e09112 50%, #cdccd1 75%, #4095d5 100%
+        );
+    }
+
+    /* ===== ЛЕГЕНДА ЭЛЕМЕНТОВ ===== */
+    .elements-legend {
+        display: flex;
+        background: #ffffff;
+        border-bottom: 1px solid #e8e8ec;
+    }
+
+    .legend-item {
+        flex: 1;
+        text-align: center;
+        padding: 12px 4px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s ease;
+    }
+
+    .legend-item:hover {
+        background: #f5f5f7;
+    }
+
+    .legend-wood   { color: #284131; }
+    .legend-fire   { color: #9b1614; }
+    .legend-earth  { color: #e09112; }
+    .legend-metal  { color: #7a7a85; }
+    .legend-water  { color: #4095d5; }
+
+    /* ===== КНОПКА ВОЗВРАТА ===== */
+    .back-button-wrap {
+        text-align: center;
+        padding: 24px 24px 8px;
+        background: #ffffff;
+    }
+
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 40px;
+        text-decoration: none;
+        border: 1px solid #e8e8ec;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .back-button i {
+        font-size: 12px;
+        color: #284131;
+        transition: transform 0.25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        border-color: #284131;
+        color: #284131;
+        box-shadow: 0 8px 20px rgba(40,65,49,0.15);
+    }
+
+    .back-button:hover i {
+        transform: translateX(-3px);
+    }
+
+    /* ===== HERO IMAGE ===== */
+    .hero {
+        width: 100%;
+        display: block;
+        background: #f5f5f7;
+    }
+
+    .hero img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+        padding: 48px 24px 24px;
+        text-align: center;
+    }
+
+    .element-label {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #284131;
+        background: rgba(40,65,49,0.08);
+        padding: 8px 20px;
+        border-radius: 40px;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 7vw, 60px);
+        font-weight: 800;
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(14px, 1.7vw, 17px);
+        font-weight: 400;
+        color: #5a5a60;
+        letter-spacing: 0.3px;
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+    }
+
+    .content p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.8vw, 18px);
+        font-weight: 400;
+        color: #3a3a3e;
+        line-height: 1.75;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .content p strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .content p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ===== CORRESPONDENCES BLOCK ===== */
+    .correspondences {
+        margin: 40px 0 0;
+        padding: 28px 32px;
+        background: #f5f5f7;
+        border-radius: 20px;
+        border-left: 3px solid #284131;
+    }
+
+    .correspondences-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 2.4vw, 24px);
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+
+    .correspondences-list {
+        list-style: none;
+    }
+
+    .correspondences-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        padding: 12px 0;
+        border-bottom: 1px solid #e0e0e6;
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(14px, 1.6vw, 16px);
+    }
+
+    .correspondences-list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .correspondences-list li:first-child {
+        padding-top: 0;
+    }
+
+    .correspondences-label {
+        color: #5a5a60;
+        font-weight: 500;
+        flex-shrink: 0;
+    }
+
+    .correspondences-value {
+        color: #111;
+        font-weight: 600;
+        text-align: right;
+    }
+
+    /* ===== NAVIGATE OTHER ELEMENTS ===== */
+    .elements-nav {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px 24px 48px;
+        text-align: center;
+        border-top: 1px solid #e8e8ec;
+    }
+
+    .elements-nav-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(20px, 2.4vw, 24px);
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 24px;
+        line-height: 1.25;
+    }
+
+    .elements-nav-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .element-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: 40px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1.5px solid;
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .element-link .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .el-water-link {
+        color: #4095d5;
+        border-color: rgba(64,149,213,0.4);
+    }
+    .el-water-link .dot { background: #4095d5; }
+    .el-water-link:hover {
+        background: #4095d5;
+        color: #ffffff;
+        border-color: #4095d5;
+    }
+    .el-water-link:hover .dot { background: #ffffff; }
+
+    .el-fire-link {
+        color: #9b1614;
+        border-color: rgba(155,22,20,0.4);
+    }
+    .el-fire-link .dot { background: #9b1614; }
+    .el-fire-link:hover {
+        background: #9b1614;
+        color: #ffffff;
+        border-color: #9b1614;
+    }
+    .el-fire-link:hover .dot { background: #ffffff; }
+
+    .el-earth-link {
+        color: #e09112;
+        border-color: rgba(224,145,18,0.4);
+    }
+    .el-earth-link .dot { background: #e09112; }
+    .el-earth-link:hover {
+        background: #e09112;
+        color: #ffffff;
+        border-color: #e09112;
+    }
+    .el-earth-link:hover .dot { background: #ffffff; }
+
+    .el-metal-link {
+        color: #7a7a85;
+        border-color: rgba(122,122,133,0.4);
+    }
+    .el-metal-link .dot { background: #7a7a85; }
+    .el-metal-link:hover {
+        background: #7a7a85;
+        color: #ffffff;
+        border-color: #7a7a85;
+    }
+    .el-metal-link:hover .dot { background: #ffffff; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        background: #f5f5f7;
+        padding: 48px 24px 40px;
+        text-align: center;
+        border-top: 1px solid #e8e8ec;
+    }
+
+    .footer-link {
+        color: #4a117c;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        display: inline-block;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(74,17,124,0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.2s ease;
+    }
+
+    .footer-link:hover {
+        border-bottom-color: #4a117c;
+    }
+
+    .footer-contact {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #5a5a60;
+        line-height: 1.6;
+    }
+
+    .footer-contact a {
+        color: #3a3a3e;
+        text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+        color: #4a117c;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 640px) {
+        .back-button-wrap {
+            padding: 20px 20px 4px;
+        }
+
+        .back-button {
+            padding: 8px 14px;
+            font-size: 12px;
+            gap: 6px;
+        }
+
+        .back-button i { font-size: 11px; }
+
+        .legend-item {
+            padding: 10px 2px;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .header { padding: 36px 20px 20px; }
+
+        .element-label {
+            font-size: 10px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+        }
+
+        .content { padding: 24px 20px 48px; }
+
+        .correspondences { padding: 22px 22px; }
+
+        .correspondences-list li {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .correspondences-value {
+            text-align: left;
+        }
+
+        .elements-nav { padding: 24px 20px 40px; }
+
+        .elements-nav-grid {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .element-link {
+            justify-content: center;
+        }
+
+        .footer { padding: 40px 20px 32px; }
+    }
+
+    @media (max-width: 380px) {
+        .legend-item { font-size: 8px; letter-spacing: 0.6px; }
+    }
+
+    @media print {
+        .back-button-wrap { display: none; }
+        .elements-nav { display: none; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ВЕРХНЯЯ ПОЛОСА -->
+<div class="top-bar"></div>
+
+<!-- ЛЕГЕНДА -->
+<div class="elements-legend">
+    <a href="tree.html" class="legend-item legend-wood">Wood</a>
+    <a href="fire.html" class="legend-item legend-fire">Fire</a>
+    <a href="earth.html" class="legend-item legend-earth">Earth</a>
+    <a href="metal.html" class="legend-item legend-metal">Metal</a>
+    <a href="water.html" class="legend-item legend-water">Water</a>
+</div>
+
+<!-- КНОПКА ВОЗВРАТА -->
+<div class="back-button-wrap">
+    <a href="art.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to exhibition</span>
+    </a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero">
+    <img src="images/tree.webp" alt="Wood — The Fifth Element">
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="element-label">Wood · 木</div>
+    <h1 class="title">Wood</h1>
+    <div class="subtitle">Growth, prosperity, creativity</div>
+</header>
+
+<!-- CONTENT -->
+<div class="content">
+    <p>Wood is the element of <strong>growth and prosperity</strong>, of creativity — and also of expansiveness. It is the first stirring of spring, the force that pushes a young shoot through stone, the slow unfolding of destiny.</p>
+
+    <p>In a person, Wood corresponds to <strong>decisiveness</strong> — and to <strong>anger</strong>. It is the energy that moves forward, breaks through, expands. When balanced, it becomes vision and initiative. When excessive, it turns into irritation and impatience.</p>
+
+    <p>Wood is the element of the East, of morning, of the beginning of every cycle. It reminds us that growth is not a straight line — it branches, curves, and finds its way toward the light.</p>
+
+    <div class="correspondences">
+        <h2 class="correspondences-title">Correspondences</h2>
+        <ul class="correspondences-list">
+            <li>
+                <span class="correspondences-label">Organs</span>
+                <span class="correspondences-value">Liver &amp; Spleen</span>
+            </li>
+            <li>
+                <span class="correspondences-label">Planet</span>
+                <span class="correspondences-value">Jupiter</span>
+            </li>
+            <li>
+                <span class="correspondences-label">Taste</span>
+                <span class="correspondences-value">Sour</span>
+            </li>
+            <li>
+                <span class="correspondences-label">Color</span>
+                <span class="correspondences-value">Green</span>
+            </li>
+            <li>
+                <span class="correspondences-label">Emotion</span>
+                <span class="correspondences-value">Decisiveness · Anger</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- NAVIGATE OTHER ELEMENTS -->
+<nav class="elements-nav">
+    <h2 class="elements-nav-title">Explore other elements</h2>
+    <div class="elements-nav-grid">
+        <a href="water.html" class="element-link el-water-link"><span class="dot"></span>Water</a>
+        <a href="fire.html" class="element-link el-fire-link"><span class="dot"></span>Fire</a>
+        <a href="earth.html" class="element-link el-earth-link"><span class="dot"></span>Earth</a>
+        <a href="metal.html" class="element-link el-metal-link"><span class="dot"></span>Metal</a>
+    </div>
+</nav>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
+    <div class="footer-contact">
+        <a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a> · <a href="tel:+66810143190">+66 81 014 3190</a>
+    </div>
+</footer>
+
+</body>
+</html>
