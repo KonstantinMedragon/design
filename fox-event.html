@@ -9,13 +9,13 @@
 <meta name="author" content="Konstantin Medragon">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph / Facebook / LinkedIn / Telegram / WhatsApp -->
+<!-- Open Graph -->
 <meta property="og:title" content="The Fifth Element · 五行 — Interactive Performance & Exhibition">
 <meta property="og:description" content="October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui. Free entry. Drinks, artist lecture, presentation of works and book.">
 <meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://skycode.codes/flyer.html">
+<meta property="og:url" content="https://skycode.codes/fox-event.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Fifth Element · 五行">
 
@@ -31,24 +31,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
-    @page { size: A5; margin: 0; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-        background: #e5e5e5;
+    body {
+        background: #ffffff;
         font-family: 'Inter', sans-serif;
-        min-height: 100vh;
-        padding: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        color: #111;
+        line-height: 1.6;
+        overflow-x: hidden;
     }
 
-    /* ====== КНОПКА ВОЗВРАТА ====== */
+    /* ===== КНОПКА ВОЗВРАТА ===== */
     .back-button {
         position: fixed;
-        top: 20px;
-        left: 20px;
+        top: 16px;
+        left: 16px;
         z-index: 1000;
         display: inline-flex;
         align-items: center;
@@ -58,7 +55,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 13px;
         font-weight: 600;
-        padding: 10px 20px;
+        padding: 10px 18px;
         border-radius: 40px;
         text-decoration: none;
         border: 1px solid #e8e8ec;
@@ -84,37 +81,17 @@
         transform: translateX(-3px);
     }
 
-    .flyer-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .flyer {
-        width: 148mm;
-        min-height: 210mm;
-        background: #ffffff;
-        color: #111;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-        flex-shrink: 0;
-    }
-
-    /* ====== ВЕРХНЯЯ ПОЛОСА ====== */
+    /* ===== ВЕРХНЯЯ ПОЛОСА 5 ЦВЕТОВ ===== */
     .top-bar {
-        height: 5mm;
+        height: 6px;
         background: linear-gradient(90deg,
             #284131 0%, #9b1614 25%, #e09112 50%, #cdccd1 75%, #4095d5 100%
         );
-        flex-shrink: 0;
     }
 
-    /* ====== ЛЕГЕНДА ====== */
+    /* ===== ЛЕГЕНДА ЭЛЕМЕНТОВ ===== */
     .elements-legend {
         display: flex;
-        flex-shrink: 0;
         background: #ffffff;
         border-bottom: 1px solid #e8e8ec;
     }
@@ -122,11 +99,11 @@
     .legend-item {
         flex: 1;
         text-align: center;
-        padding: 1.8mm 1mm;
+        padding: 12px 4px;
         font-family: 'Inter', sans-serif;
-        font-size: 6.5pt;
+        font-size: 11px;
         font-weight: 600;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
     }
 
@@ -136,67 +113,60 @@
     .legend-metal  { color: #7a7a85; }
     .legend-water  { color: #4095d5; }
 
-    /* ====== HEADER ====== */
+    /* ===== HEADER ===== */
     .header {
-        padding: 5mm 10mm 3mm;
+        padding: 64px 24px 32px;
         text-align: center;
         border-bottom: 1px solid #e8e8ec;
     }
 
     .title {
         font-family: 'Playfair Display', serif;
-        font-size: 21pt;
+        font-size: clamp(28px, 6vw, 44px);
         font-weight: 800;
         color: #111;
-        line-height: 1.1;
-        letter-spacing: -0.4px;
-        margin-bottom: 1mm;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
     }
 
-    .author {
+    .subtitle {
         font-family: 'Inter', sans-serif;
-        font-size: 9pt;
+        font-size: clamp(13px, 1.6vw, 16px);
         font-weight: 500;
         color: #5a5a60;
         letter-spacing: 0.5px;
     }
 
-    /* ====== CONTENT ====== */
-    .content {
-        flex: 1;
-        padding: 4mm 10mm 3mm;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* ==== EVENT ==== */
+    /* ===== EVENT BLOCK ===== */
     .event-block {
-        margin-bottom: 3mm;
+        padding: 48px 24px 40px;
         text-align: center;
     }
 
     .event-date {
         font-family: 'Playfair Display', serif;
-        font-size: 14pt;
+        font-size: clamp(24px, 4vw, 34px);
         font-weight: 700;
         color: #111;
         line-height: 1.2;
-        margin-bottom: 0.5mm;
+        margin-bottom: 8px;
     }
 
     .event-time {
         font-family: 'Inter', sans-serif;
-        font-size: 10pt;
+        font-size: clamp(15px, 1.8vw, 18px);
         font-weight: 600;
         color: #3a3a3e;
-        margin-bottom: 1.5mm;
+        margin-bottom: 20px;
     }
 
     .event-venue {
         font-family: 'Inter', sans-serif;
-        font-size: 8.5pt;
+        font-size: clamp(14px, 1.6vw, 16px);
         color: #3a3a3e;
-        line-height: 1.4;
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
     .event-venue strong {
@@ -205,47 +175,62 @@
     }
 
     .map-link {
-        display: inline-block;
-        margin-top: 1.5mm;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         font-family: 'Inter', sans-serif;
-        font-size: 8pt;
+        font-size: 14px;
         font-weight: 600;
-        color: #3a3a3e;
+        color: #4a117c;
         text-decoration: none;
-        border-bottom: 1px solid rgba(58,58,62,0.3);
-        padding-bottom: 1px;
+        padding: 12px 24px;
+        border-radius: 40px;
+        border: 1.5px solid #4a117c;
+        transition: all 0.25s ease;
+        background: #ffffff;
     }
 
     .map-link:hover {
-        border-bottom-color: #3a3a3e;
+        background: #4a117c;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(74,17,124,0.2);
     }
 
-    /* ==== PROGRAM ==== */
+    .map-link i {
+        font-size: 14px;
+    }
+
+    /* ===== PROGRAM ===== */
+    .program-wrap {
+        padding: 0 24px 40px;
+    }
+
     .program {
         list-style: none;
-        margin-bottom: 2mm;
-        text-align: left;
-        padding: 2.5mm 3mm;
+        max-width: 720px;
+        margin: 0 auto;
         background: #f5f5f7;
-        border-radius: 2.5mm;
+        border-radius: 20px;
+        padding: 24px 28px;
     }
 
     .program li {
         font-family: 'Inter', sans-serif;
-        font-size: 8pt;
+        font-size: 15px;
         color: #3a3a3e;
-        padding: 0.6mm 0 0.6mm 4.5mm;
+        padding: 10px 0 10px 26px;
         position: relative;
-        line-height: 1.35;
+        line-height: 1.5;
     }
 
     .program li::before {
         content: '';
         position: absolute;
         left: 0;
-        top: 2.2mm;
-        width: 1.8mm;
-        height: 1.8mm;
+        top: 17px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: #ccd0d8;
     }
@@ -255,38 +240,49 @@
         font-weight: 600;
     }
 
+    /* ===== FAMILY NOTE ===== */
+    .family-note-wrap {
+        padding: 0 24px 56px;
+    }
+
     .family-note {
-        padding: 2mm 4mm;
-        background: #ffffff;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        background: #fafafc;
         border: 1px dashed #ccd0d8;
-        border-radius: 2.5mm;
+        border-radius: 16px;
         font-family: 'Inter', sans-serif;
-        font-size: 8pt;
+        font-size: 14px;
         color: #3a3a3e;
         font-weight: 500;
         text-align: center;
-        line-height: 1.35;
-        margin-bottom: 3mm;
+        line-height: 1.5;
     }
 
-    /* ==== SECTIONS ==== */
+    /* ===== SECTIONS ===== */
     .section {
-        margin-bottom: 3mm;
-        position: relative;
-        padding-left: 8mm;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
     }
 
     .section-number {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 6mm;
-        height: 6mm;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background: #ccd0d8;
         color: #111;
         font-family: 'Inter', sans-serif;
-        font-size: 9pt;
+        font-size: 16px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -295,20 +291,19 @@
 
     .section-title {
         font-family: 'Playfair Display', serif;
-        font-size: 12pt;
+        font-size: clamp(22px, 3vw, 30px);
         font-weight: 700;
         color: #111;
         line-height: 1.2;
-        margin-bottom: 1mm;
-        letter-spacing: -0.2px;
+        letter-spacing: -0.3px;
     }
 
     .section-text {
         font-family: 'Inter', sans-serif;
-        font-size: 8.5pt;
+        font-size: clamp(15px, 1.7vw, 17px);
         color: #3a3a3e;
-        line-height: 1.5;
-        margin-bottom: 1mm;
+        line-height: 1.7;
+        margin-bottom: 16px;
     }
 
     .section-text strong {
@@ -318,25 +313,25 @@
 
     .section-list {
         list-style: none;
-        margin-top: 1mm;
+        margin-top: 8px;
     }
 
     .section-list li {
         font-family: 'Inter', sans-serif;
-        font-size: 8.5pt;
+        font-size: clamp(15px, 1.7vw, 17px);
         color: #3a3a3e;
-        padding: 0.5mm 0 0.5mm 4.5mm;
+        padding: 8px 0 8px 24px;
         position: relative;
-        line-height: 1.4;
+        line-height: 1.55;
     }
 
     .section-list li::before {
         content: '';
         position: absolute;
         left: 0;
-        top: 2.3mm;
-        width: 1.8mm;
-        height: 1.8mm;
+        top: 18px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: #ccd0d8;
     }
@@ -346,29 +341,30 @@
         font-weight: 600;
     }
 
-    /* ==== ELEMENTS STRIP ==== */
+    /* ===== ELEMENTS STRIP ===== */
     .elements-strip {
         display: flex;
         justify-content: space-between;
-        margin: 1.5mm 0;
+        margin: 20px 0 8px;
+        gap: 8px;
     }
 
     .element-dot {
         flex: 1;
         text-align: center;
         font-family: 'Inter', sans-serif;
-        font-size: 6pt;
+        font-size: 10px;
         font-weight: 600;
-        letter-spacing: 0.6px;
+        letter-spacing: 0.8px;
         text-transform: uppercase;
     }
 
     .element-dot .dot-circle {
         display: block;
-        width: 3.5mm;
-        height: 3.5mm;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
-        margin: 0 auto 0.8mm;
+        margin: 0 auto 8px;
     }
 
     .el-wood .dot-circle  { background: #284131; }
@@ -383,15 +379,16 @@
     .el-metal { color: #7a7a85; }
     .el-water { color: #4095d5; }
 
-    /* ==== QR BLOCK ==== */
+    /* ===== QR BLOCK ===== */
     .qr-block {
         display: flex;
-        gap: 4mm;
+        gap: 20px;
         align-items: center;
-        margin-top: 1.5mm;
-        padding: 2.5mm;
+        margin-top: 20px;
+        padding: 20px 24px;
         background: #f5f5f7;
-        border-radius: 2.5mm;
+        border-radius: 16px;
+        flex-wrap: wrap;
     }
 
     .qr-block a {
@@ -401,33 +398,34 @@
     }
 
     .qr-block img {
-        width: 24mm;
-        height: 24mm;
+        width: 120px;
+        height: 120px;
         object-fit: contain;
         display: block;
-        border-radius: 1.5mm;
+        border-radius: 12px;
         background: #ffffff;
-        padding: 1.5mm;
+        padding: 8px;
     }
 
     .qr-info {
         flex: 1;
+        min-width: 200px;
     }
 
     .qr-info-title {
         font-family: 'Playfair Display', serif;
-        font-size: 10pt;
+        font-size: 18px;
         font-weight: 700;
         color: #111;
-        margin-bottom: 1mm;
-        line-height: 1.2;
+        margin-bottom: 8px;
+        line-height: 1.25;
     }
 
     .qr-info-text {
         font-family: 'Inter', sans-serif;
-        font-size: 7.5pt;
+        font-size: 14px;
         color: #3a3a3e;
-        line-height: 1.4;
+        line-height: 1.55;
     }
 
     .qr-info-text strong {
@@ -435,54 +433,105 @@
         font-weight: 600;
     }
 
-    /* ==== FOOTER ==== */
+    /* ===== FOOTER ===== */
     .footer {
-        margin-top: auto;
-        padding: 3mm 10mm 4mm;
-        border-top: 1px solid #e8e8ec;
+        background: #f5f5f7;
+        padding: 48px 24px 40px;
         text-align: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 7.5pt;
-        color: #5a5a60;
-        line-height: 1.5;
+        border-top: 1px solid #e8e8ec;
+        margin-top: 32px;
     }
 
     .footer-link {
-        color: #3a3a3e;
+        color: #4a117c;
         text-decoration: none;
         font-weight: 600;
-        font-size: 8.5pt;
+        font-size: 15px;
         display: inline-block;
-        margin-bottom: 0.8mm;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(74,17,124,0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.2s ease;
     }
 
-    /* ====== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ====== */
-    @media screen and (max-width: 800px) {
-        body { padding: 70px 16px 24px; }
-        .back-button { top: 14px; left: 14px; padding: 8px 16px; font-size: 12px; }
+    .footer-link:hover {
+        border-bottom-color: #4a117c;
     }
 
-    @media screen and (max-width: 640px) {
-        body { padding: 64px 10px 20px; }
-        .flyer { zoom: 0.68; }
-        .back-button { top: 12px; left: 12px; padding: 8px 14px; font-size: 11px; }
+    .footer-contact {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #5a5a60;
+        line-height: 1.6;
     }
 
-    @media screen and (max-width: 480px) {
-        body { padding: 60px 6px 16px; }
-        .flyer { zoom: 0.56; }
-        .back-button { top: 10px; left: 10px; padding: 7px 12px; font-size: 10px; gap: 6px; }
-        .back-button i { font-size: 10px; }
+    .footer-contact a {
+        color: #3a3a3e;
+        text-decoration: none;
     }
 
-    @media screen and (max-width: 380px) {
-        .flyer { zoom: 0.46; }
+    .footer-contact a:hover {
+        color: #4a117c;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 640px) {
+        .back-button {
+            top: 12px;
+            left: 12px;
+            padding: 8px 14px;
+            font-size: 12px;
+            gap: 6px;
+        }
+
+        .back-button i { font-size: 11px; }
+
+        .header { padding: 56px 20px 28px; }
+
+        .legend-item {
+            padding: 10px 2px;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .event-block { padding: 36px 20px 32px; }
+
+        .program-wrap { padding: 0 20px 32px; }
+        .family-note-wrap { padding: 0 20px 44px; }
+
+        .program { padding: 20px 22px; }
+        .program li { font-size: 14px; padding: 8px 0 8px 24px; }
+        .program li::before { top: 15px; }
+
+        .section { padding: 0 20px 40px; }
+
+        .section-number { width: 36px; height: 36px; font-size: 14px; }
+
+        .section-list li { padding: 6px 0 6px 22px; }
+        .section-list li::before { top: 16px; }
+
+        .elements-strip { gap: 4px; }
+        .element-dot .dot-circle { width: 32px; height: 32px; }
+        .element-dot { font-size: 9px; }
+
+        .qr-block {
+            flex-direction: column;
+            text-align: center;
+            padding: 24px 20px;
+        }
+
+        .qr-info { min-width: auto; }
+
+        .footer { padding: 40px 20px 32px; }
+    }
+
+    @media (max-width: 380px) {
+        .legend-item { font-size: 8px; letter-spacing: 0.6px; }
+        .element-dot { font-size: 8px; }
+        .element-dot .dot-circle { width: 28px; height: 28px; }
     }
 
     @media print {
-        body { background: #ffffff; padding: 0; min-height: auto; display: block; }
-        .flyer-wrapper { display: block; }
-        .flyer { box-shadow: none; margin: 0; }
         .back-button { display: none; }
     }
 </style>
@@ -495,102 +544,116 @@
     <span>Back to exhibition</span>
 </a>
 
-<div class="flyer-wrapper">
-<div class="flyer">
-    <div class="top-bar"></div>
+<!-- ВЕРХНЯЯ ПОЛОСА -->
+<div class="top-bar"></div>
 
-    <div class="elements-legend">
-        <div class="legend-item legend-wood">Wood</div>
-        <div class="legend-item legend-fire">Fire</div>
-        <div class="legend-item legend-earth">Earth</div>
-        <div class="legend-item legend-metal">Metal</div>
-        <div class="legend-item legend-water">Water</div>
-    </div>
-
-    <div class="header">
-        <h1 class="title">The Fifth Element · 五行</h1>
-        <div class="author">Konstantin Medragon · Interactive Performance &amp; Exhibition</div>
-    </div>
-
-    <div class="content">
-
-        <div class="event-block">
-            <div class="event-date">October 1, 2026</div>
-            <div class="event-time">17:00 · Opening Reception</div>
-            <div class="event-venue">
-                <strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann<br>
-                Koh Samui, Thailand
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Fox+Eat+Broccoli+Koh+Samui" class="map-link" target="_blank" rel="noopener">
-                📍 Open location in Google Maps
-            </a>
-        </div>
-
-        <ul class="program">
-            <li><strong>Free entry</strong> — everyone is welcome</li>
-            <li>Welcome drinks &amp; light refreshments</li>
-            <li>Short artist lecture on the concept</li>
-            <li>Presentation of the works and the book</li>
-        </ul>
-
-        <div class="family-note">
-            Bring your family — parents with children are warmly welcome.
-        </div>
-
-        <div class="section">
-            <div class="section-number">1</div>
-            <div class="section-title">The Project</div>
-            <p class="section-text">
-                A project dedicated to a <strong>universal method</strong> based on the interpretation of the Five Elements. Through this method, one can understand one's own predispositions — the patterns that shape character, decisions, and destiny.
-            </p>
-            <div class="elements-strip">
-                <div class="element-dot el-wood"><span class="dot-circle"></span>Wood</div>
-                <div class="element-dot el-fire"><span class="dot-circle"></span>Fire</div>
-                <div class="element-dot el-earth"><span class="dot-circle"></span>Earth</div>
-                <div class="element-dot el-metal"><span class="dot-circle"></span>Metal</div>
-                <div class="element-dot el-water"><span class="dot-circle"></span>Water</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-number">2</div>
-            <div class="section-title">The Structure</div>
-            <ul class="section-list">
-                <li><strong>An exhibition of five paintings</strong> — chamber version, presented here at this gallery</li>
-                <li><strong>Interactive games with the natural elements</strong> — participants experience the elements directly</li>
-                <li><strong>A book</strong> — available for purchase here, and on Amazon</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-number">3</div>
-            <div class="section-title">The Book</div>
-            <p class="section-text">
-                A journey into the universal language of the elements, told through ten Hollywood actors and their stories.
-            </p>
-
-            <div class="qr-block">
-                <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" target="_blank" rel="noopener">
-                    <img src="images/qr-book.png" alt="QR — order the book on Amazon">
-                </a>
-                <div class="qr-info">
-                    <div class="qr-info-title">The Fifth Element · 五行</div>
-                    <div class="qr-info-text">
-                        By Konstantin Medragon. <strong>Scan or tap the QR code</strong> to order the hardcover on Amazon.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a><br>
-        konstantinmedragon@gmail.com · +66 81 014 3190
-    </div>
-
+<!-- ЛЕГЕНДА -->
+<div class="elements-legend">
+    <div class="legend-item legend-wood">Wood</div>
+    <div class="legend-item legend-fire">Fire</div>
+    <div class="legend-item legend-earth">Earth</div>
+    <div class="legend-item legend-metal">Metal</div>
+    <div class="legend-item legend-water">Water</div>
 </div>
+
+<!-- HEADER -->
+<header class="header">
+    <h1 class="title">The Fifth Element · 五行</h1>
+    <div class="subtitle">Konstantin Medragon · Interactive Performance &amp; Exhibition</div>
+</header>
+
+<!-- EVENT -->
+<section class="event-block">
+    <div class="event-date">October 1, 2026</div>
+    <div class="event-time">17:00 · Opening Reception</div>
+    <div class="event-venue">
+        <strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann<br>
+        Koh Samui, Thailand
+    </div>
+    <a href="https://maps.app.goo.gl/T9fy6sdWiY1b2whk6" class="map-link" target="_blank" rel="noopener">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Open location in Google Maps</span>
+    </a>
+</section>
+
+<!-- PROGRAM -->
+<div class="program-wrap">
+    <ul class="program">
+        <li><strong>Free entry</strong> — everyone is welcome</li>
+        <li>Welcome drinks &amp; light refreshments</li>
+        <li>Short artist lecture on the concept</li>
+        <li>Presentation of the works and the book</li>
+    </ul>
 </div>
+
+<!-- FAMILY NOTE -->
+<div class="family-note-wrap">
+    <div class="family-note">
+        Bring your family — parents with children are warmly welcome.
+    </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <h2 class="section-title">The Project</h2>
+    </div>
+    <p class="section-text">
+        A project dedicated to a <strong>universal method</strong> based on the interpretation of the Five Elements. Through this method, one can understand one's own predispositions — the patterns that shape character, decisions, and destiny.
+    </p>
+    <div class="elements-strip">
+        <div class="element-dot el-wood"><span class="dot-circle"></span>Wood</div>
+        <div class="element-dot el-fire"><span class="dot-circle"></span>Fire</div>
+        <div class="element-dot el-earth"><span class="dot-circle"></span>Earth</div>
+        <div class="element-dot el-metal"><span class="dot-circle"></span>Metal</div>
+        <div class="element-dot el-water"><span class="dot-circle"></span>Water</div>
+    </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <h2 class="section-title">The Structure</h2>
+    </div>
+    <ul class="section-list">
+        <li><strong>An exhibition of five paintings</strong> — chamber version, presented here at this gallery</li>
+        <li><strong>Interactive games with the natural elements</strong> — participants experience the elements directly</li>
+        <li><strong>A book</strong> — available for purchase here, and on Amazon</li>
+    </ul>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <h2 class="section-title">The Book</h2>
+    </div>
+    <p class="section-text">
+        A journey into the universal language of the elements, told through ten Hollywood actors and their stories.
+    </p>
+
+    <div class="qr-block">
+        <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" target="_blank" rel="noopener">
+            <img src="images/qr-book.png" alt="QR — order the book on Amazon">
+        </a>
+        <div class="qr-info">
+            <div class="qr-info-title">The Fifth Element · 五行</div>
+            <div class="qr-info-text">
+                By Konstantin Medragon. <strong>Scan or tap the QR code</strong> to order the hardcover on Amazon.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
+    <div class="footer-contact">
+        <a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a> · <a href="tel:+66810143190">+66 81 014 3190</a>
+    </div>
+</footer>
 
 </body>
 </html>
