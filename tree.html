@@ -178,7 +178,7 @@
     .content {
         max-width: 720px;
         margin: 0 auto;
-        padding: 32px 24px 64px;
+        padding: 32px 24px 80px;
     }
 
     .content p {
@@ -200,155 +200,6 @@
         margin-bottom: 0;
     }
 
-    /* ===== CORRESPONDENCES BLOCK ===== */
-    .correspondences {
-        margin: 40px 0 0;
-        padding: 28px 32px;
-        background: #f5f5f7;
-        border-radius: 20px;
-        border-left: 3px solid #284131;
-    }
-
-    .correspondences-title {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(20px, 2.4vw, 24px);
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 20px;
-        line-height: 1.25;
-    }
-
-    .correspondences-list {
-        list-style: none;
-    }
-
-    .correspondences-list li {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 16px;
-        padding: 12px 0;
-        border-bottom: 1px solid #e0e0e6;
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(14px, 1.6vw, 16px);
-    }
-
-    .correspondences-list li:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-
-    .correspondences-list li:first-child {
-        padding-top: 0;
-    }
-
-    .correspondences-label {
-        color: #5a5a60;
-        font-weight: 500;
-        flex-shrink: 0;
-    }
-
-    .correspondences-value {
-        color: #111;
-        font-weight: 600;
-        text-align: right;
-    }
-
-    /* ===== NAVIGATE OTHER ELEMENTS ===== */
-    .elements-nav {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 32px 24px 48px;
-        text-align: center;
-        border-top: 1px solid #e8e8ec;
-    }
-
-    .elements-nav-title {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(20px, 2.4vw, 24px);
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 24px;
-        line-height: 1.25;
-    }
-
-    .elements-nav-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .element-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        border-radius: 40px;
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        border: 1.5px solid;
-        transition: all 0.25s ease;
-        letter-spacing: 0.3px;
-    }
-
-    .element-link .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .el-water-link {
-        color: #4095d5;
-        border-color: rgba(64,149,213,0.4);
-    }
-    .el-water-link .dot { background: #4095d5; }
-    .el-water-link:hover {
-        background: #4095d5;
-        color: #ffffff;
-        border-color: #4095d5;
-    }
-    .el-water-link:hover .dot { background: #ffffff; }
-
-    .el-fire-link {
-        color: #9b1614;
-        border-color: rgba(155,22,20,0.4);
-    }
-    .el-fire-link .dot { background: #9b1614; }
-    .el-fire-link:hover {
-        background: #9b1614;
-        color: #ffffff;
-        border-color: #9b1614;
-    }
-    .el-fire-link:hover .dot { background: #ffffff; }
-
-    .el-earth-link {
-        color: #e09112;
-        border-color: rgba(224,145,18,0.4);
-    }
-    .el-earth-link .dot { background: #e09112; }
-    .el-earth-link:hover {
-        background: #e09112;
-        color: #ffffff;
-        border-color: #e09112;
-    }
-    .el-earth-link:hover .dot { background: #ffffff; }
-
-    .el-metal-link {
-        color: #7a7a85;
-        border-color: rgba(122,122,133,0.4);
-    }
-    .el-metal-link .dot { background: #7a7a85; }
-    .el-metal-link:hover {
-        background: #7a7a85;
-        color: #ffffff;
-        border-color: #7a7a85;
-    }
-    .el-metal-link:hover .dot { background: #ffffff; }
-
     /* ===== FOOTER ===== */
     .footer {
         background: #f5f5f7;
@@ -363,7 +214,7 @@
         font-weight: 600;
         font-size: 15px;
         display: inline-block;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         border-bottom: 1px solid rgba(74,17,124,0.3);
         padding-bottom: 2px;
         transition: border-color 0.2s ease;
@@ -377,7 +228,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 14px;
         color: #5a5a60;
-        line-height: 1.6;
+        line-height: 1.8;
     }
 
     .footer-contact a {
@@ -387,6 +238,10 @@
 
     .footer-contact a:hover {
         color: #4a117c;
+    }
+
+    .footer-contact .contact-line {
+        display: block;
     }
 
     /* ===== АДАПТИВ ===== */
@@ -417,30 +272,7 @@
             margin-bottom: 16px;
         }
 
-        .content { padding: 24px 20px 48px; }
-
-        .correspondences { padding: 22px 22px; }
-
-        .correspondences-list li {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-        }
-
-        .correspondences-value {
-            text-align: left;
-        }
-
-        .elements-nav { padding: 24px 20px 40px; }
-
-        .elements-nav-grid {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .element-link {
-            justify-content: center;
-        }
+        .content { padding: 24px 20px 64px; }
 
         .footer { padding: 40px 20px 32px; }
     }
@@ -451,7 +283,6 @@
 
     @media print {
         .back-button-wrap { display: none; }
-        .elements-nav { display: none; }
     }
 </style>
 </head>
@@ -486,60 +317,25 @@
 <header class="header">
     <div class="element-label">Wood · 木</div>
     <h1 class="title">Wood</h1>
-    <div class="subtitle">Growth, prosperity, creativity</div>
 </header>
 
 <!-- CONTENT -->
 <div class="content">
-    <p>Wood is the element of <strong>growth and prosperity</strong>, of creativity — and also of expansiveness. It is the first stirring of spring, the force that pushes a young shoot through stone, the slow unfolding of destiny.</p>
+    <p>Wood is the element of growth and prosperity, of creativity — and also of expansiveness. It is the first stirring of spring, the force that pushes a young shoot through stone, the slow unfolding of destiny.</p>
 
-    <p>In a person, Wood corresponds to <strong>decisiveness</strong> — and to <strong>anger</strong>. It is the energy that moves forward, breaks through, expands. When balanced, it becomes vision and initiative. When excessive, it turns into irritation and impatience.</p>
+    <p>In a person, Wood corresponds to decisiveness — and to anger. It is the energy that moves forward, breaks through, expands. When balanced, it becomes vision and initiative. When excessive, it turns into irritation and impatience.</p>
 
     <p>Wood is the element of the East, of morning, of the beginning of every cycle. It reminds us that growth is not a straight line — it branches, curves, and finds its way toward the light.</p>
 
-    <div class="correspondences">
-        <h2 class="correspondences-title">Correspondences</h2>
-        <ul class="correspondences-list">
-            <li>
-                <span class="correspondences-label">Organs</span>
-                <span class="correspondences-value">Liver &amp; Spleen</span>
-            </li>
-            <li>
-                <span class="correspondences-label">Planet</span>
-                <span class="correspondences-value">Jupiter</span>
-            </li>
-            <li>
-                <span class="correspondences-label">Taste</span>
-                <span class="correspondences-value">Sour</span>
-            </li>
-            <li>
-                <span class="correspondences-label">Color</span>
-                <span class="correspondences-value">Green</span>
-            </li>
-            <li>
-                <span class="correspondences-label">Emotion</span>
-                <span class="correspondences-value">Decisiveness · Anger</span>
-            </li>
-        </ul>
-    </div>
+    <p>Wood is tied to the <strong>Liver and Spleen</strong> — the organs that plan the body's growth. Its planet is <strong>Jupiter</strong>, the great benefic. Its taste is <strong>sour</strong>, the taste of ripening. Its color is <strong>green</strong>, the color of the first leaves of spring.</p>
 </div>
-
-<!-- NAVIGATE OTHER ELEMENTS -->
-<nav class="elements-nav">
-    <h2 class="elements-nav-title">Explore other elements</h2>
-    <div class="elements-nav-grid">
-        <a href="water.html" class="element-link el-water-link"><span class="dot"></span>Water</a>
-        <a href="fire.html" class="element-link el-fire-link"><span class="dot"></span>Fire</a>
-        <a href="earth.html" class="element-link el-earth-link"><span class="dot"></span>Earth</a>
-        <a href="metal.html" class="element-link el-metal-link"><span class="dot"></span>Metal</a>
-    </div>
-</nav>
 
 <!-- FOOTER -->
 <footer class="footer">
     <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
     <div class="footer-contact">
-        <a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a> · <a href="tel:+66810143190">+66 81 014 3190</a>
+        <span class="contact-line"><a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a></span>
+        <span class="contact-line"><a href="tel:+66810143190">+66 81 014 3190</a></span>
     </div>
 </footer>
 
