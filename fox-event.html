@@ -3,27 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>The Fifth Element · 五行 — Interactive Performance & Exhibition</title>
-<meta name="description" content="An interactive performance and exhibition by Konstantin Medragon. October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui, Thailand. Free entry.">
-<meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, art exhibition, interactive performance, Koh Samui, Fox Eat Broccoli">
+<title>The Fifth Element · 五行 — Exhibition at Fox Eat Broccoli</title>
+<meta name="description" content="The Fifth Element · 五行 — a permanent exhibition at Fox Eat Broccoli gallery, Koh Samui. Free entry. Five paintings placed in a small hall to reveal the two cycles of the Five Elements.">
+<meta name="keywords" content="Fifth Element, Five Elements, 五行, Konstantin Medragon, Fox Eat Broccoli, Koh Samui, free exhibition, contemporary art">
 <meta name="author" content="Konstantin Medragon">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph -->
-<meta property="og:title" content="The Fifth Element · 五行 — Interactive Performance & Exhibition">
-<meta property="og:description" content="October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui. Free entry. Drinks, artist lecture, presentation of works and book.">
-<meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
+<meta property="og:title" content="The Fifth Element · 五行 — Exhibition at Fox Eat Broccoli">
+<meta property="og:description" content="A permanent exhibition at Fox Eat Broccoli, Koh Samui. Free entry.">
+<meta property="og:image" content="https://skycode.codes/images/fox.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://skycode.codes/fox-event.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Fifth Element · 五行">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Fifth Element · 五行 — Interactive Performance & Exhibition">
-<meta name="twitter:description" content="October 1, 2026, 17:00 — Fox Eat Broccoli gallery, Koh Samui. Free entry. Drinks, artist lecture, presentation of works and book.">
-<meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
+<meta name="twitter:title" content="The Fifth Element · 五行 — Exhibition at Fox Eat Broccoli">
+<meta name="twitter:description" content="A permanent exhibition at Fox Eat Broccoli, Koh Samui. Free entry.">
+<meta name="twitter:image" content="https://skycode.codes/images/fox.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,7 +115,7 @@
 
     /* ===== HEADER ===== */
     .header {
-        padding: 32px 24px 32px;
+        padding: 32px 24px 24px;
         text-align: center;
         border-bottom: 1px solid #e8e8ec;
     }
@@ -140,40 +138,115 @@
         letter-spacing: 0.5px;
     }
 
-    /* ===== EVENT BLOCK ===== */
-    .event-block {
-        padding: 48px 24px 40px;
+    /* ===== FOX IMAGE ===== */
+    .fox-image-wrap {
+        display: flex;
+        justify-content: center;
+        padding: 48px 24px 32px;
+    }
+
+    .fox-image {
+        display: block;
+        max-width: 100%;
+        width: auto;
+        max-height: 60vh;
+        border-radius: 20px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ===== FREE BADGE ===== */
+    .free-badge-wrap {
+        text-align: center;
+        padding: 0 24px 48px;
+    }
+
+    .free-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #4a117c;
+        background: #f0eef5;
+        padding: 10px 24px;
+        border-radius: 40px;
+    }
+
+    /* ===== TEXT SECTION ===== */
+    .text-section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+        text-align: left;
+    }
+
+    .text-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(22px, 3vw, 30px);
+        font-weight: 700;
+        color: #111;
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .text-section p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.7vw, 18px);
+        color: #3a3a3e;
+        line-height: 1.75;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .text-section p:last-child {
+        margin-bottom: 0;
+    }
+
+    .text-section p strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    /* ===== VENUE BLOCK ===== */
+    .venue-block {
+        max-width: 720px;
+        margin: 0 auto 48px;
+        padding: 28px 32px;
+        background: #f5f5f7;
+        border-radius: 20px;
         text-align: center;
     }
 
-    .event-date {
+    .venue-label {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #7a7a85;
+        margin-bottom: 12px;
+    }
+
+    .venue-name {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(24px, 4vw, 34px);
+        font-size: clamp(20px, 2.4vw, 26px);
         font-weight: 700;
         color: #111;
-        line-height: 1.2;
-        margin-bottom: 8px;
+        line-height: 1.3;
+        margin-bottom: 6px;
     }
 
-    .event-time {
+    .venue-city {
         font-family: 'Inter', sans-serif;
-        font-size: clamp(15px, 1.8vw, 18px);
-        font-weight: 600;
-        color: #3a3a3e;
+        font-size: 15px;
+        color: #5a5a60;
         margin-bottom: 20px;
-    }
-
-    .event-venue {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(14px, 1.6vw, 16px);
-        color: #3a3a3e;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .event-venue strong {
-        color: #111;
-        font-weight: 600;
     }
 
     .map-link {
@@ -201,238 +274,6 @@
 
     .map-link i {
         font-size: 14px;
-    }
-
-    /* ===== PROGRAM ===== */
-    .program-wrap {
-        padding: 0 24px 40px;
-    }
-
-    .program {
-        list-style: none;
-        max-width: 720px;
-        margin: 0 auto;
-        background: #f5f5f7;
-        border-radius: 20px;
-        padding: 24px 28px;
-    }
-
-    .program li {
-        font-family: 'Inter', sans-serif;
-        font-size: 15px;
-        color: #3a3a3e;
-        padding: 10px 0 10px 26px;
-        position: relative;
-        line-height: 1.5;
-    }
-
-    .program li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 17px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #ccd0d8;
-    }
-
-    .program li strong {
-        color: #111;
-        font-weight: 600;
-    }
-
-    /* ===== FAMILY NOTE ===== */
-    .family-note-wrap {
-        padding: 0 24px 56px;
-    }
-
-    .family-note {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 18px 24px;
-        background: #fafafc;
-        border: 1px dashed #ccd0d8;
-        border-radius: 16px;
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        color: #3a3a3e;
-        font-weight: 500;
-        text-align: center;
-        line-height: 1.5;
-    }
-
-    /* ===== SECTIONS ===== */
-    .section {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 24px 48px;
-    }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 16px;
-    }
-
-    .section-number {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: #ccd0d8;
-        color: #111;
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .section-title {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(22px, 3vw, 30px);
-        font-weight: 700;
-        color: #111;
-        line-height: 1.2;
-        letter-spacing: -0.3px;
-    }
-
-    .section-text {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(15px, 1.7vw, 17px);
-        color: #3a3a3e;
-        line-height: 1.7;
-        margin-bottom: 16px;
-    }
-
-    .section-text strong {
-        color: #111;
-        font-weight: 600;
-    }
-
-    .section-list {
-        list-style: none;
-        margin-top: 8px;
-    }
-
-    .section-list li {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(15px, 1.7vw, 17px);
-        color: #3a3a3e;
-        padding: 8px 0 8px 24px;
-        position: relative;
-        line-height: 1.55;
-    }
-
-    .section-list li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 18px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #ccd0d8;
-    }
-
-    .section-list li strong {
-        color: #111;
-        font-weight: 600;
-    }
-
-    /* ===== ELEMENTS STRIP ===== */
-    .elements-strip {
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0 8px;
-        gap: 8px;
-    }
-
-    .element-dot {
-        flex: 1;
-        text-align: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-    }
-
-    .element-dot .dot-circle {
-        display: block;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        margin: 0 auto 8px;
-    }
-
-    .el-wood .dot-circle  { background: #284131; }
-    .el-fire .dot-circle  { background: #9b1614; }
-    .el-earth .dot-circle { background: #e09112; }
-    .el-metal .dot-circle { background: #cdccd1; }
-    .el-water .dot-circle { background: #4095d5; }
-
-    .el-wood  { color: #284131; }
-    .el-fire  { color: #9b1614; }
-    .el-earth { color: #e09112; }
-    .el-metal { color: #7a7a85; }
-    .el-water { color: #4095d5; }
-
-    /* ===== QR BLOCK ===== */
-    .qr-block {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        margin-top: 20px;
-        padding: 20px 24px;
-        background: #f5f5f7;
-        border-radius: 16px;
-        flex-wrap: wrap;
-    }
-
-    .qr-block a {
-        flex-shrink: 0;
-        display: block;
-        line-height: 0;
-    }
-
-    .qr-block img {
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-        display: block;
-        border-radius: 12px;
-        background: #ffffff;
-        padding: 8px;
-    }
-
-    .qr-info {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .qr-info-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 18px;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 8px;
-        line-height: 1.25;
-    }
-
-    .qr-info-text {
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        color: #3a3a3e;
-        line-height: 1.55;
-    }
-
-    .qr-info-text strong {
-        color: #111;
-        font-weight: 600;
     }
 
     /* ===== FOOTER ===== */
@@ -464,7 +305,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 14px;
         color: #5a5a60;
-        line-height: 1.6;
+        line-height: 1.8;
     }
 
     .footer-contact a {
@@ -474,6 +315,10 @@
 
     .footer-contact a:hover {
         color: #4a117c;
+    }
+
+    .footer-contact .contact-line {
+        display: block;
     }
 
     /* ===== АДАПТИВ ===== */
@@ -490,7 +335,7 @@
 
         .back-button i { font-size: 11px; }
 
-        .header { padding: 24px 20px 28px; }
+        .header { padding: 24px 20px 20px; }
 
         .legend-item {
             padding: 10px 2px;
@@ -498,41 +343,40 @@
             letter-spacing: 1px;
         }
 
-        .event-block { padding: 36px 20px 32px; }
+        .fox-image-wrap {
+            padding: 32px 20px 24px;
+        }
 
-        .program-wrap { padding: 0 20px 32px; }
-        .family-note-wrap { padding: 0 20px 44px; }
+        .fox-image {
+            max-height: 50vh;
+            border-radius: 16px;
+        }
 
-        .program { padding: 20px 22px; }
-        .program li { font-size: 14px; padding: 8px 0 8px 24px; }
-        .program li::before { top: 15px; }
+        .free-badge-wrap {
+            padding: 0 20px 36px;
+        }
 
-        .section { padding: 0 20px 40px; }
+        .free-badge {
+            font-size: 11px;
+            padding: 8px 18px;
+        }
 
-        .section-number { width: 36px; height: 36px; font-size: 14px; }
+        .text-section {
+            padding: 0 20px 40px;
+        }
 
-        .section-list li { padding: 6px 0 6px 22px; }
-        .section-list li::before { top: 16px; }
-
-        .elements-strip { gap: 4px; }
-        .element-dot .dot-circle { width: 32px; height: 32px; }
-        .element-dot { font-size: 9px; }
-
-        .qr-block {
-            flex-direction: column;
-            text-align: center;
+        .venue-block {
+            margin: 0 20px 40px;
             padding: 24px 20px;
         }
 
-        .qr-info { min-width: auto; }
-
-        .footer { padding: 40px 20px 32px; }
+        .footer {
+            padding: 40px 20px 32px;
+        }
     }
 
     @media (max-width: 380px) {
         .legend-item { font-size: 8px; letter-spacing: 0.6px; }
-        .element-dot { font-size: 8px; }
-        .element-dot .dot-circle { width: 28px; height: 28px; }
     }
 
     @media print {
@@ -565,99 +409,45 @@
 <!-- HEADER -->
 <header class="header">
     <h1 class="title">The Fifth Element · 五行</h1>
-    <div class="subtitle">Konstantin Medragon · Interactive Performance &amp; Exhibition</div>
+    <div class="subtitle">Konstantin Medragon · Permanent Exhibition</div>
 </header>
 
-<!-- EVENT -->
-<section class="event-block">
-    <div class="event-date">October 1, 2026</div>
-    <div class="event-time">17:00 · Opening Reception</div>
-    <div class="event-venue">
-        <strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann<br>
-        Koh Samui, Thailand
+<!-- FOX IMAGE -->
+<div class="fox-image-wrap">
+    <img src="images/fox.jpg" alt="Fox Eat Broccoli gallery — The Fifth Element exhibition" class="fox-image">
+</div>
+
+<!-- FREE BADGE -->
+<div class="free-badge-wrap">
+    <div class="free-badge">
+        Permanent exhibition · Free entry
     </div>
+</div>
+
+<!-- DESCRIPTION -->
+<section class="text-section">
+    <h2>About the Exhibition</h2>
+    <p>Five paintings are placed in a <strong>small, intimate hall</strong> — arranged so that the visitor can feel, step by step, the two fundamental cycles of the Five Elements: the cycle of <strong>creation</strong> and the cycle of <strong>control</strong>. What looks like a simple sequence of works turns into a quiet lesson in how the elements give birth to one another, and how each of them keeps the next one in balance.</p>
+    <p>Each painting is accompanied by <strong>fragments from the book</strong> — passages that unfold the element as a metaphor for everything in the manifested world, including the human personality. These fragments are not decoration. They are the layer behind the surface, the same way texture carries meaning behind color.</p>
+</section>
+
+<!-- VENUE -->
+<div class="venue-block">
+    <span class="venue-label">Location</span>
+    <div class="venue-name">Fox Eat Broccoli</div>
+    <div class="venue-city">Art gallery by Peter Dallmann · Koh Samui, Thailand</div>
     <a href="https://maps.app.goo.gl/T9fy6sdWiY1b2whk6" class="map-link" target="_blank" rel="noopener">
         <i class="fas fa-map-marker-alt"></i>
         <span>Open location in Google Maps</span>
     </a>
-</section>
-
-<!-- PROGRAM -->
-<div class="program-wrap">
-    <ul class="program">
-        <li><strong>Free entry</strong> — everyone is welcome</li>
-        <li>Welcome drinks &amp; light refreshments</li>
-        <li>Short artist lecture on the concept</li>
-        <li>Presentation of the works and the book</li>
-    </ul>
-</div>
-
-<!-- FAMILY NOTE -->
-<div class="family-note-wrap">
-    <div class="family-note">
-        Bring your family — parents with children are warmly welcome.
-    </div>
-</div>
-
-<!-- SECTION 1 -->
-<div class="section">
-    <div class="section-header">
-        <div class="section-number">1</div>
-        <h2 class="section-title">The Project</h2>
-    </div>
-    <p class="section-text">
-        A project dedicated to a <strong>universal method</strong> based on the interpretation of the Five Elements. Through this method, one can understand one's own predispositions — the patterns that shape character, decisions, and destiny.
-    </p>
-    <div class="elements-strip">
-        <div class="element-dot el-wood"><span class="dot-circle"></span>Wood</div>
-        <div class="element-dot el-fire"><span class="dot-circle"></span>Fire</div>
-        <div class="element-dot el-earth"><span class="dot-circle"></span>Earth</div>
-        <div class="element-dot el-metal"><span class="dot-circle"></span>Metal</div>
-        <div class="element-dot el-water"><span class="dot-circle"></span>Water</div>
-    </div>
-</div>
-
-<!-- SECTION 2 -->
-<div class="section">
-    <div class="section-header">
-        <div class="section-number">2</div>
-        <h2 class="section-title">The Structure</h2>
-    </div>
-    <ul class="section-list">
-        <li><strong>An exhibition of five paintings</strong> — chamber version, presented here at this gallery</li>
-        <li><strong>Interactive games with the natural elements</strong> — participants experience the elements directly</li>
-        <li><strong>A book</strong> — available for purchase here, and on Amazon</li>
-    </ul>
-</div>
-
-<!-- SECTION 3 -->
-<div class="section">
-    <div class="section-header">
-        <div class="section-number">3</div>
-        <h2 class="section-title">The Book</h2>
-    </div>
-    <p class="section-text">
-        A journey into the universal language of the elements, told through ten Hollywood actors and their stories.
-    </p>
-
-    <div class="qr-block">
-        <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING" target="_blank" rel="noopener">
-            <img src="images/qr-book.png" alt="QR — order the book on Amazon">
-        </a>
-        <div class="qr-info">
-            <div class="qr-info-title">The Fifth Element · 五行</div>
-            <div class="qr-info-text">
-                By Konstantin Medragon. <strong>Scan or tap the QR code</strong> to order the hardcover on Amazon.
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
     <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
     <div class="footer-contact">
-        <a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a> · <a href="tel:+66810143190">+66 81 014 3190</a>
+        <span class="contact-line"><a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a></span>
+        <span class="contact-line"><a href="tel:+66810143190">+66 81 014 3190</a></span>
     </div>
 </footer>
 
