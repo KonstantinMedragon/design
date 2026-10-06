@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
+    html { scroll-behavior: smooth; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -37,6 +38,117 @@
         color: #111;
         line-height: 1.5;
         overflow-x: hidden;
+    }
+
+    /* ===== BURGER MENU ===== */
+    .burger-wrapper {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+    }
+
+    .burger-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        padding: 0;
+    }
+
+    .burger-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    .burger-btn span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #111;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .burger-btn.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger-btn.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .burger-btn.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .burger-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        min-width: 260px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
+        border: 1px solid #e8e8ec;
+        padding: 12px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.22s ease;
+    }
+
+    .burger-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .burger-menu a {
+        display: block;
+        padding: 12px 26px;
+        color: #111;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .burger-menu a:hover {
+        background: #f5f5f7;
+        color: #4a117c;
+    }
+
+    .menu-group-title {
+        padding: 14px 26px 6px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: #7a7a85;
+    }
+
+    .burger-menu .sub {
+        padding-left: 42px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #3a3a3e;
+    }
+
+    .burger-menu .sub:hover {
+        color: #4a117c;
     }
 
     /* ===== HERO CAROUSEL ===== */
@@ -357,15 +469,6 @@
         text-align: center;
     }
 
-    .event-date {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(20px, 2.4vw, 26px);
-        font-weight: 600;
-        color: #4a117c;
-        margin-bottom: 32px;
-        text-align: center;
-    }
-
     .event-details {
         font-family: 'Inter', sans-serif;
         font-size: clamp(16px, 1.6vw, 18px);
@@ -530,6 +633,10 @@
     }
 
     @media (max-width: 768px) {
+        .burger-wrapper { top: 14px; right: 14px; }
+        .burger-btn { width: 44px; height: 44px; }
+        .burger-menu { min-width: 230px; top: 56px; }
+
         .hero-carousel { height: clamp(360px, 50vh, 450px); }
         .text-section { padding: 48px 24px; }
         .cta-section, .event-section { padding: 56px 24px; }
@@ -543,6 +650,22 @@
 </style>
 </head>
 <body>
+
+    <!-- BURGER MENU -->
+    <div class="burger-wrapper">
+        <button class="burger-btn" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="burger-menu" id="burgerMenu">
+            <a href="author.html">Author</a>
+            <div class="menu-group-title">Exhibitions</div>
+            <a href="fox-event.html" class="sub">Current</a>
+            <a href="old-event.html" class="sub">Future</a>
+            <a href="#book" data-scroll="book">Book</a>
+        </nav>
+    </div>
 
     <!-- HERO CAROUSEL -->
     <div class="hero-carousel">
@@ -560,7 +683,7 @@
     <section class="text-section center-heading">
         <h1>«Fifth Element» Exhibition</h1>
 
-        <a href="fox-event.html" class="upcoming-banner">
+        <a href="old-event.html" class="upcoming-banner">
             <div class="upcoming-banner-text">
                 Upcoming event
                 <i class="fas fa-arrow-right"></i>
@@ -623,7 +746,7 @@
     </a>
 
     <!-- ABOUT THE BOOK -->
-    <section class="text-section">
+    <section class="text-section" id="book">
         <h2>About the Book</h2>
         <p>The book "The Fifth Element · 五行" is a journey into this universal language. It describes ten Hollywood actors whose stories reveal the meaning of the five main Elements in our lives and characters. Through their examples, you will see how the elements shape destiny, talent, and a person's path. The book is written by Konstantin Medragon — an artist and researcher of ancient knowledge. It is both a practical guide and a philosophical reflection on time, nature, and the human being.</p>
         <a href="https://www.amazon.com/dp/B0HK64GGY1?spcref=HARDCOVER_LISTING&asin=B0HK64GGY1&revisionId=&format=4&depth=1" class="learn-more" target="_blank" rel="noopener">Read a sample</a>
@@ -642,12 +765,11 @@
         </div>
     </section>
 
-    <!-- UPCOMING EXHIBITION -->
+    <!-- CURRENT EXHIBITION -->
     <section class="event-section">
         <div class="event-inner">
-            <span class="event-label">Upcoming Exhibition</span>
+            <span class="event-label">Current Exhibition</span>
             <h2 class="event-title">The Fifth Element · 五行</h2>
-            <div class="event-date">October 1, 2026</div>
             <p class="event-details"><strong>Fox Eat Broccoli</strong> — art gallery by Peter Dallmann</p>
             <p class="event-details">Koh Samui, Thailand</p>
             <div class="event-buttons">
@@ -702,6 +824,44 @@
     </footer>
 
     <script>
+        // ===== BURGER MENU =====
+        const burgerBtn = document.getElementById('burgerBtn');
+        const burgerMenu = document.getElementById('burgerMenu');
+
+        burgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = burgerMenu.classList.toggle('open');
+            burgerBtn.classList.toggle('open', isOpen);
+            burgerBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!burgerMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                burgerMenu.classList.remove('open');
+                burgerBtn.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        burgerMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('open');
+                burgerBtn.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Smooth scroll for #book anchor
+        document.querySelectorAll('a[href="#book"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.getElementById('book');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
         // ===== INFINITE CAROUSEL =====
         const track = document.getElementById('slidesTrack');
         const dotsContainer = document.getElementById('sliderDots');
