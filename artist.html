@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Konstantin Medragon — Artist</title>
+<meta name="description" content="Konstantin Medragon — artist and author whose work grows out of two decades of research across the ancient East. Biography and works.">
+<meta name="keywords" content="Konstantin Medragon, artist, biography, contemporary art, Five Elements, texture painting, Koh Samui">
+<meta name="author" content="Konstantin Medragon">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Konstantin Medragon — Artist">
+<meta property="og:description" content="Artist and author whose work grows out of two decades of research across the ancient East.">
+<meta property="og:image" content="https://skycode.codes/images/artist.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://skycode.codes/artist.html">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="The Fifth Element · 五行">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Konstantin Medragon — Artist">
+<meta name="twitter:description" content="Artist and author whose work grows out of two decades of research across the ancient East.">
+<meta name="twitter:image" content="https://skycode.codes/images/artist.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: #ffffff;
+        font-family: 'Inter', sans-serif;
+        color: #111;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ===== КНОПКА ВОЗВРАТА ===== */
+    .back-button-wrap {
+        text-align: center;
+        padding: 24px 24px 8px;
+        background: #ffffff;
+    }
+
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #111;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 40px;
+        text-decoration: none;
+        border: 1px solid #e8e8ec;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: all 0.25s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .back-button i {
+        font-size: 12px;
+        color: #4a117c;
+        transition: transform 0.25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        border-color: #4a117c;
+        color: #4a117c;
+        box-shadow: 0 8px 20px rgba(74,17,124,0.15);
+    }
+
+    .back-button:hover i {
+        transform: translateX(-3px);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+        padding: 32px 24px 24px;
+        text-align: center;
+        border-bottom: 1px solid #e8e8ec;
+    }
+
+    .title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(32px, 7vw, 52px);
+        font-weight: 800;
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(13px, 1.6vw, 16px);
+        font-weight: 500;
+        color: #5a5a60;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== TEXT SECTION ===== */
+    .text-section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 48px 24px 8px;
+        text-align: left;
+    }
+
+    .text-section p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(16px, 1.7vw, 18px);
+        color: #3a3a3e;
+        line-height: 1.75;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .text-section p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ===== FULL-WIDTH IMAGE ===== */
+    .full-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #f5f5f7;
+        margin-top: 32px;
+    }
+
+    .full-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* ===== CAPTION ===== */
+    .caption {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 16px 24px 8px;
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-style: italic;
+        color: #7a7a85;
+        letter-spacing: 0.2px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        background: #f5f5f7;
+        padding: 48px 24px 40px;
+        text-align: center;
+        border-top: 1px solid #e8e8ec;
+        margin-top: 48px;
+    }
+
+    .footer-link {
+        color: #4a117c;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        display: inline-block;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(74,17,124,0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.2s ease;
+    }
+
+    .footer-link:hover {
+        border-bottom-color: #4a117c;
+    }
+
+    .footer-contact {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #5a5a60;
+        line-height: 1.8;
+    }
+
+    .footer-contact a {
+        color: #3a3a3e;
+        text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+        color: #4a117c;
+    }
+
+    .footer-contact .contact-line {
+        display: block;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 640px) {
+        .back-button-wrap {
+            padding: 20px 20px 4px;
+        }
+
+        .back-button {
+            padding: 8px 14px;
+            font-size: 12px;
+            gap: 6px;
+        }
+
+        .back-button i { font-size: 11px; }
+
+        .header { padding: 24px 20px 20px; }
+
+        .text-section {
+            padding: 32px 20px 8px;
+        }
+
+        .caption {
+            padding: 12px 20px 4px;
+            font-size: 13px;
+        }
+
+        .footer {
+            padding: 40px 20px 32px;
+        }
+    }
+
+    @media print {
+        .back-button-wrap { display: none; }
+    }
+</style>
+</head>
+<body>
+
+<!-- КНОПКА ВОЗВРАТА -->
+<div class="back-button-wrap">
+    <a href="art.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to exhibition</span>
+    </a>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <h1 class="title">Konstantin Medragon</h1>
+    <div class="subtitle">Artist · Author</div>
+</header>
+
+<!-- PORTRAIT -->
+<div class="full-image">
+    <img src="images/artist.jpg" alt="Konstantin Medragon — artist portrait">
+</div>
+
+<!-- BIOGRAPHY -->
+<section class="text-section">
+    <p>Konstantin Medragon is an artist and author whose work grows out of two decades of travel and research across the ancient East. Since 2004 he has been studying the region — its cultures, its images, its ways of seeing — and over time, this immersion shaped his vision as a painter. What began as a search for understanding became a way of seeing.</p>
+
+    <p>His artistic path unfolded in three periods. The first (2013–2017) was shaped by the guidance of Vitaly Valge — the craft, the discipline, and the foundations of the visual language were learned during these years.</p>
+</section>
+
+<!-- WORK 1: PURPLE BOUQUET -->
+<div class="full-image">
+    <img src="images/purple_bouquet.jpg" alt="Purple Bouquet — painting by Konstantin Medragon">
+</div>
+<div class="caption">Purple Bouquet, 2019</div>
+
+<!-- BIOGRAPHY CONTINUED -->
+<section class="text-section">
+    <p>The middle period (2017–2022) was devoted to multi-layered painting and form. Works from this time include <em>Dragon Island</em> and <em>Purple Bouquet</em> — canvases where depth was built layer by layer, and where the surface began to carry meaning beyond the image itself.</p>
+</section>
+
+<!-- WORK 2: DRAGON ISLAND -->
+<div class="full-image">
+    <img src="images/dragon_island.jpg" alt="Dragon Island — painting by Konstantin Medragon">
+</div>
+<div class="caption">Dragon Island, 2022</div>
+
+<!-- BIOGRAPHY CONTINUED -->
+<section class="text-section">
+    <p>The current period, after 2022, is textural. It is here that the series <em>The Fifth Element · 五行</em> was born, along with the book of the same name. In these works, texture is no longer a technique — it is a language.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="https://skycode.codes/art.html" class="footer-link">skycode.codes/art.html</a>
+    <div class="footer-contact">
+        <span class="contact-line"><a href="mailto:konstantinmedragon@gmail.com">konstantinmedragon@gmail.com</a></span>
+        <span class="contact-line"><a href="tel:+66810143190">+66 81 014 3190</a></span>
+    </div>
+</footer>
+
+</body>
+</html>
