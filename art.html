@@ -273,8 +273,12 @@
     /* ===== LINKED IMAGE (book) ===== */
     .book-link {
         display: block;
-        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
         background: #f5f5f7;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
     .book-link img {
@@ -709,6 +713,13 @@
         .cta-button { font-size: 15px; padding: 14px 32px; }
         .upcoming-banner { padding: 14px 24px; }
 
+        /* На мобильных book-изображение возвращается на полную ширину */
+        .book-link {
+            max-width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
         .video-wrap {
             max-width: 300px;
             margin-top: 32px;
@@ -733,7 +744,7 @@
             <span></span>
         </button>
         <nav class="burger-menu" id="burgerMenu">
-            <a href="author.html">Author</a>
+            <a href="artist.html">Artist</a>
             <div class="menu-group-title">Exhibitions</div>
             <a href="fox-event.html" class="sub">Current</a>
             <a href="old-event.html" class="sub">Future</a>
