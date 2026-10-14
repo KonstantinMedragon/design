@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Projects — Heavenly Design Bureau</title>
+    <title>The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon</title>
 
-    <meta name="description" content="Portfolio of web design and development: Bauco, Bread, CV Bakharev, Medragon, Pilates, Samui Brew.">
+    <meta name="description" content="The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon">
     <meta name="keywords" content="web design portfolio, website development, landing page design, heavenly design bureau, skycode">
     <meta name="author" content="Heavenly Design Bureau">
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="https://skycode.codes/project-en.html" />
 
-    <meta property="og:title" content="Projects — Heavenly Design Bureau">
-    <meta property="og:description" content="A rotating 3D cylinder with our work.">
+    <meta property="og:title" content="The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon">
+    <meta property="og:description" content="The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon">
     <meta property="og:image" content="https://skycode.codes/images/proicon.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -21,8 +21,8 @@
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Projects — Heavenly Design Bureau">
-    <meta name="twitter:description" content="A rotating 3D cylinder with our work.">
+    <meta name="twitter:title" content="The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon">
+    <meta name="twitter:description" content="The Fifth Element Exhibition portfolio dinamic rotation. By Konstantin Medragon">
     <meta name="twitter:image" content="https://skycode.codes/images/proicon.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -280,6 +280,7 @@
 
                 const direction = new THREE.Vector3(x, 0, z).normalize();
                 plane.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
+                plane.rotateZ(Math.PI / 2); // поворот изображения на 90°
 
                 setPanelGeometry(plane, layout.maxPanelWidth, layout.maxPanelHeight);
             });
@@ -375,6 +376,7 @@
 
                 const direction = new THREE.Vector3(x, 0, z).normalize();
                 mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction);
+                mesh.rotateZ(Math.PI / 2); // поворот изображения на 90°
 
                 clickableObjects.push(mesh);
                 cylinderGroup.add(mesh);
@@ -429,7 +431,7 @@
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = -1.2;   // ← обратное направление вращения
+            controls.autoRotateSpeed = -1.2;   // обратное направление вращения
             controls.enableZoom = true;
             controls.enablePan = false;
             controls.zoomSpeed = 0.8;
